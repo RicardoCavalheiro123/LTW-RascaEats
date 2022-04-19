@@ -6,7 +6,6 @@
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $categories = getCategories($db);
-    var_dump($categories);
 
 
 ?>
@@ -36,13 +35,22 @@
             Fast-Food
             </h2>
             <article>
-                <img src="https://picsum.photos/200/300?2" alt="Restaurant photo">
-                <p>Restaurante 1</p>
-                <p>9.3</p>
-                <p>Gaia</p>
+                <img src="https://picsum.photos/300/300?food1" alt="Restaurant photo">
+                <div class="Details">
+                    <p>Restaurante 1</p>
+                    <p>9.3</p>
+                    <p>Gaia</p>
+                </div>
+                
             </article>
             <article>
-                <img src="https://picsum.photos/200/300?1" alt="Restaurant photo">
+                <img src="https://picsum.photos/300/300?food2" alt="Restaurant photo">
+                <p>Restaurante 5</p>
+                <p>8.1</p>
+                <p>Maia</p>
+            </article>
+            <article>
+                <img src="https://picsum.photos/300/300?food3" alt="Restaurant photo">
                 <p>Restaurante 2</p>
                 <p>9.5</p>
                 <p>Gaia</p> 
@@ -54,13 +62,19 @@
             Italiano
             </h2>
             <article>
-                <img src="https://picsum.photos/200/300?3" alt="Restaurant photo">
+                <img src="https://picsum.photos/300/300?food4" alt="Restaurant photo">
                 <p>Restaurante 3</p>
                 <p>9.3</p>
                 <p>Gaia</p>
             </article>
             <article>
-                <img src="https://picsum.photos/200/300?4" alt="Restaurant photo">
+                <img src="https://picsum.photos/300/300?food5" alt="Restaurant photo">
+                <p>Restaurante 5</p>
+                <p>8.1</p>
+                <p>Maia</p>
+            </article>
+            <article>
+                <img src="https://picsum.photos/300/300?food6" alt="Restaurant photo">
                 <p>Restaurante 4</p>
                 <p>9.5</p>
                 <p>Gaia</p> 

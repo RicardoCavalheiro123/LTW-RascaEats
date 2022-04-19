@@ -1,19 +1,19 @@
 CREATE TABLE Client(
     clientId int PRIMARY KEY,
-    name varchar,
-    email varchar,
-    phoneNumber int,
-    adress varchar,
-    password varchar,
-    username varchar
+    name varchar NOT NULL,
+    email varchar NOT NULL,
+    phoneNumber int NOT NULL,
+    adress varchar NOT NULL,
+    password varchar NOT NULL,
+    username varchar NOT NULL
 );
 
 CREATE TABLE Restaurant(
     restaurantId int PRIMARY KEY,
-    name varchar,
-    adress varchar,
-    category varchar,
-    phoneNumber int,
+    name varchar NOT NULL,
+    adress varchar NOT NULL,
+    category varchar NOT NULL,
+    phoneNumber int NOT NULL,
     rating real
 );
 

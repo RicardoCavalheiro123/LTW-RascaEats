@@ -68,7 +68,7 @@
     </script>
 
     <section id= "restaurants">
-
+        
     </section>
 
     </body>
