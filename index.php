@@ -34,22 +34,23 @@
             <h2>
             Fast-Food
             </h2>
+            
             <article>
-                <img src="https://picsum.photos/300/300?food1" alt="Restaurant photo">
-                <p>Restaurante 1</p>
-                <p>9.3</p>
+                <a href="restaurant.php?id=1"><img src="https://picsum.photos/300/300?food1" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=1"><p>Restaurante 1</p></a>
+                <p>9.3/10</p>
                 <p>Gaia</p>
             </article>
             <article>
-                <img src="https://picsum.photos/300/300?food2" alt="Restaurant photo">
-                <p>Restaurante 5</p>
-                <p>8.1</p>
+                <a href="restaurant.php?id=2"><img src="https://picsum.photos/300/300?food2" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=2"><p>Restaurante 2</p></a>
+                <p>8.1/10</p>
                 <p>Maia</p>
             </article>
             <article>
-                <img src="https://picsum.photos/300/300?food3" alt="Restaurant photo">
-                <p>Restaurante 2</p>
-                <p>9.5</p>
+                <a href="restaurant.php?id=3"><img src="https://picsum.photos/300/300?food3" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=3"><p>Restaurante 3</p></a>
+                <p>9.5/10</p>
                 <p>Gaia</p> 
             </article>
             
@@ -59,28 +60,35 @@
             Italiano
             </h2>
             <article>
-                <img src="https://picsum.photos/300/300?food4" alt="Restaurant photo">
-                <p>Restaurante 3</p>
-                <p>9.3</p>
+                <a href="restaurant.php?id=4"><img src="https://picsum.photos/300/300?food4" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=4"><p>Restaurante 4</p></a>
+                <p>9.3/10</p>
                 <p>Gaia</p>
             </article>
             <article>
-                <img src="https://picsum.photos/300/300?food5" alt="Restaurant photo">
-                <p>Restaurante 5</p>
-                <p>8.1</p>
+                <a href="restaurant.php?id=5"><img src="https://picsum.photos/300/300?food5" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=5"><p>Restaurante 5</p></a>
+                <p>8.1/10</p>
                 <p>Maia</p>
             </article>
             <article>
-                <img src="https://picsum.photos/300/300?food6" alt="Restaurant photo">
-                <p>Restaurante 4</p>
-                <p>9.5</p>
+                <a href="restaurant.php?id=6"><img src="https://picsum.photos/300/300?food6" alt="Restaurant photo"></a>
+                <a href="restaurant.php?id=6"><p>Restaurante 6</p></a>
+                <p>9.5/10</p>
                 <p>Gaia</p> 
             </article>
             
         </section>
         
     </section>
-    
+    <footer>
+        <div class="footer-content">
+            <h3>Descubra e reserve dos melhores restaurantes</h3>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2022 Rasca Eats</p>
+        </div>
+    </footer>
 
     </body>
 </html>
