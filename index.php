@@ -17,15 +17,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Ex</title>
 </head>
 <body>
-    <header> 
-        <img src="logo.png" alt="Logo" > <br>
-        <input type="button" value="Login/Register"> <br>
-        <input type="text" placeholder = "Search Restaurants">
-        <input type="button" value="Search">
-
+<header>
+        <h1>Rasca Eats</h1>
+        <i class="fa-solid fa-utensils"></i>
+        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
+            <div class="login">
+                <input type="button" value="Login | Register">
+            </div>
+        </form>
+        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
+            <div class="search">
+                <input type="text" class="searchInput" name="search" placeholder="search...">
+                <button type="submit" class="searchButton">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
+            
     </header>
     
 

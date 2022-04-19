@@ -12,11 +12,19 @@
     <header>
         <h1>Rasca Eats</h1>
         <i class="fa-solid fa-utensils"></i>
-        <div class= "login"><input type="button" value="Login | Register"></div>
-        <div class= "search"><input type="text" name="search" placeholder = "Search Restaurants"></div>
-        <div class= "searchButton"><button type="submit">
-            search
-        </button></div>
+        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
+            <div class="login">
+                <input type="button" value="Login | Register">
+            </div>
+        </form>
+        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
+            <div class="search">
+                <input type="text" class="searchInput" name="search" placeholder="search...">
+                <button type="submit" class="searchButton">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
             
     </header>
     <div class="hero">
