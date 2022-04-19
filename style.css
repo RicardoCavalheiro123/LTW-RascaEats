@@ -26,35 +26,63 @@ header i {
     
 }
 
-header .login{
+#loginForm{
     grid-column: 3; grid-row: 1;
     display: block;
     text-align: right;
     padding-top: 0.5em;
 }
 
-header .search{
-    grid-column: 1; grid-row: 2;
+#loginForm > .login > input[type="button"] {
+    background: none;
+    border: none;
 }
 
-header .search input {
-    display: block;
-    box-sizing: border-box;
+header form{
+    grid-column: 1/4; grid-row: 2;
+}
+.search{
+
     width: 100%;
+    display: inline-flex;
 }
 
-header .searchButton {
-    grid-column: 2/4; grid-row: 3;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    width: 100%;
-    padding-top: 0.3em;
+.searchInput{
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #b1bfd8;
+    border-radius: 5px 0 0 5px;
+    background: rgb(242, 242, 242);
+    transition: background 0.25s, box-shadow 0.25s;
 }
 
-header .searchButton input{
-    display: block;
-    width: 100%;
+.searchInput::placeholder{
+    color:rgb(0, 0, 0)
+}
+
+.searchButton{
+    width: 3em;
+    background: #b1bfd8;
+    background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
+    color: black ;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+    
+}
+
+.searchButton:active{
+    box-shadow: 5px 0 20px 9px #bbc7dd;
+}
+
+.searchInput:focus{
+    background: white;
 }
 
 .hero{
