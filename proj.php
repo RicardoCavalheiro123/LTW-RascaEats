@@ -5,7 +5,7 @@
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $restaurants = getRestaurants($db);
+
 
 
 
@@ -21,15 +21,16 @@
     <title>Ex</title>
 </head>
 <body>
-    <header> 
-        <img src="logo.png" alt="Logo" > <br>
-        <input type="button" value="Login/Register"> <br>
-        <input type="text" placeholder = "Search Restaurants">
-        <input type="button" value="Search">
-
+<header>
+        <h1>Rasca Eats</h1>
+        <i class="fa-solid fa-utensils"></i>
+        <div class= "login"><input type="button" value="Login | Register"></div>
+        <div class= "search"><input type="text" name="search" placeholder = "Search Restaurants"></div>
+        <div class= "searchButton"><button type="submit">
+            search
+        </button></div>
+            
     </header>
-
-
     <div class="hero">
         <div class="form-box">
             <div class="button-box">
@@ -38,33 +39,36 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <form id="login" class = "input-group">
+                <i class="fa-solid fa-user"></i>
                 <input type="text" class = "input-field" placeholder="Username" required>
+                <i class="fa-solid fa-lock"></i>
                 <input type="text" class = "input-field" placeholder="Password" required>
                 <button type="submit" class = "submit-btn">Log in</button>
             </form>
             <form id="register" class = "input-group">
+                <i class="fa-solid fa-user"></i>
                 <input type="text" class = "input-field" placeholder="Username" required>
+                <i class="fa-solid fa-envelope"></i>
                 <input type="email" class = "input-field" placeholder="Email" required>
+                <i class="fa-solid fa-lock"></i>
                 <input type="text" class = "input-field" placeholder="Password" required>
-                <input type="checkbox" class= "check-box"><span>I agree to the terms & conditions</span>
+                <i class="fa-solid fa-map-location-dot"></i>
+                <input type="text" class = "input-field" placeholder="Adress" required>
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" class = "input-field" placeholder="Phone Number" required>
                 <button type="submit" class = "submit-btn">Register</button>
             </form>
         </div>
+        
     </div>
-    <script>
-        var x = document.getElementById("login")
-        var y = document.getElementById("register")
-        var z = document.getElementById("btn")
-        function register(){
-            x.style.left = "-400px";
-            y.style.left = "50px";
-            z.style.left = "110px";
-        }
-        function login(){
-            x.style.left = "50px";
-            y.style.left = "450px";
-            z.style.left = "0";
-        }
+    <footer>
+        <div class="footer-content">
+            <h3>Descubra e reserve dos melhores restaurantes</h3>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2022 Rasca Eats</p>
+        </div>
+    </footer>
     </script>
 
     <section id= "restaurants">
