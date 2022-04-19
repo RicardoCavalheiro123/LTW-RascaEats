@@ -36,12 +36,9 @@
             </h2>
             <article>
                 <img src="https://picsum.photos/300/300?food1" alt="Restaurant photo">
-                <div class="Details">
-                    <p>Restaurante 1</p>
-                    <p>9.3</p>
-                    <p>Gaia</p>
-                </div>
-                
+                <p>Restaurante 1</p>
+                <p>9.3</p>
+                <p>Gaia</p>
             </article>
             <article>
                 <img src="https://picsum.photos/300/300?food2" alt="Restaurant photo">

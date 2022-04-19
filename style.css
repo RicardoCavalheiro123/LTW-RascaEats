@@ -200,9 +200,6 @@ header .searchButton input{
     grid-column-end: 4;
 }
 
-.details{
-    width: 300px;
-}
 footer{
     background-color: transparent;
     height: auto;
