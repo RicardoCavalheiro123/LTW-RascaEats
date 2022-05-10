@@ -47,19 +47,19 @@
     
 
     <section id= "restaurant">
-        <h2>
+        <p>
             Category
-        </h2>
-        <h2>
+        </p>
+        <p>
             Nome
-        </h2>
-        <h2>
+        </p>
+        <p>
             Rating
-        </h2>
-        <h2>
+        </p>
+        <p>
             Morada <br>
             Contacto
-        </h2>
+        </p>
         <img src="https://picsum.photos/300/300?food1" alt="Restaurant photo">
     </section>
     <section id = "reviews"> 
