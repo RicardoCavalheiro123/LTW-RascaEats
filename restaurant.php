@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="restaurant.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
     <title>Restaurante</title>
 </head>
 <body>
@@ -44,7 +45,7 @@
 
     <section id= "restaurant">
         <p>
-            Category
+            Categoria
         </p>
         <p>
             Nome
@@ -53,29 +54,48 @@
             Rating
         </p>
         <p>
-            Morada <br>
             Contacto
         </p>
-        <img src="https://picsum.photos/300/300?food1" alt="Restaurant photo">
+        <p>
+            Morada
+        </p>
+        <img class = "slide" src="https://picsum.photos/500/300?food1" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/500/300?food2" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/500/300?food3" alt="Restaurant photo">
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+        
+    </section>
+
+    <section id = "car">
+        carrinho
+    </section>
+    <section id = "dishes">
+        <p>Prato 1 .............. 25€</p>
+        <input class="quantity" type="number" value="0">
+        <p>Prato 2 .............. 35€</p>
+        <input class="quantity" type="number" value="0">
+        <p>Prato 3 .............. 15€</p>
+        <input class="quantity" type="number" value="0">
     </section>
     <section id = "reviews"> 
             Deixe o seu comentário
             <article>
-                <h3>abc disse: </h3>
-                <h4>Gostei muito</h4>
+                <h4>abc disse: </h4>
+                <p>Gostei muito</p>
             </article>
             <article>
-                <h3>abc disse: </h3>
-                <h4>Gostei muito</h4>
+                <h4>abc disse: </h4>
+                <p>Gostei muito</p>
             </article>
             <article>
-                <h3>abc disse: </h3>
-                <h4>Gostei muito</h4>
+                <h4>abc disse: </h4>
+                <p>Gostei muito</p>
             </article>
         </section>
     <footer>
         <div class="footer-content">
-            <h3>Descubra e reserve dos melhores restaurantes</h3>
+            <h4>Descubra e reserve dos melhores restaurantes</h4>
         </div>
         <div class="footer-bottom">
             <p>copyright &copy;2022 Rasca Eats</p>

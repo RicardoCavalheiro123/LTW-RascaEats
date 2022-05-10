@@ -1,3 +1,5 @@
+PRAGMA foreign_keys=ON;
+
 CREATE TABLE Client(
     clientId int PRIMARY KEY,
     name varchar NOT NULL,
@@ -16,6 +18,15 @@ CREATE TABLE Restaurant(
     phoneNumber int NOT NULL,
     rating real
 );
+
+CREATE TABLE RestaurantPhoto(
+    restaurantId int PRIMARY KEY,
+    photo varchar,
+    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
+        REFERENCES Restaurant(restaurantId) 
+        ON DELETE CASCADE
+        ON UPDATE CASCADE  
+)
 
 CREATE TABLE RestaurantOwner (
     ownerId int PRIMARY KEY,
