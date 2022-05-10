@@ -12,9 +12,11 @@ header {
     
 }
 
-header h1 {
+header h1 a{
     grid-column: 1; grid-row: 1/1;
     padding-bottom: 0.2em;
+    color:#000;
+    text-decoration: none
 }
 
 header i {
@@ -33,11 +35,6 @@ header i {
     padding-top: 0.5em;
 }
 
-#loginForm > .login > input[type="button"] {
-    background: none;
-    border: none;
-}
-
 header form{
     grid-column: 1/4; grid-row: 2;
 }
@@ -45,6 +42,11 @@ header form{
 
     width: 100%;
     display: inline-flex;
+}
+
+.login a{
+    color: #4a6aa4;
+    text-decoration: none;
 }
 
 .searchInput{
@@ -160,7 +162,7 @@ header form{
     border-radius: 30px;
     margin-top: 1em;
 }
-#login{
+#login a{
     left: 50px;
 }
 
