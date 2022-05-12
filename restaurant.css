@@ -1,0 +1,16 @@
+#restaurant {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    justify-items: center;
+}
+
+#restaurant p:nth-child(1){
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+#restaurant p:nth-child(2){
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
