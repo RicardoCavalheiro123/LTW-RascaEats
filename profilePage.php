@@ -32,9 +32,6 @@
         <div class="header">
 
             <h1>Profile Page</h1>
-            <p>
-            Joana
-            </p>
 
             <img class="avatar" src="pinheiro.jpg" alt="Avatar">
     </div>

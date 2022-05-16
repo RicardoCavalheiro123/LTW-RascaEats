@@ -28,7 +28,7 @@
         $validLogin = $stmt->fetch();
         if($validLogin){
             //$clientId = client::getClientId($db, $username, $password);
-            if($clientId){
+            if($validLogin){
                 $_SESSION['id'] = $validLogin['clientId'];
                 $_SESSION['name'] = $username; 
             }
