@@ -25,7 +25,7 @@ CREATE TABLE Client(
 
 CREATE TABLE Restaurant(
     restaurantId int PRIMARY KEY,
-    reataurantName varchar NOT NULL,
+    restaurantName varchar NOT NULL,
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber int NOT NULL,
