@@ -12,7 +12,7 @@
     $categories = getCategories($db);
     $restaurant = getRestaurant($db);
 
-    //$comments = getComments($db);
+    $comments = getComments($db);
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +107,8 @@
     </section>
     <section id = "reviews"> 
             Deixe o seu comentário
-            <?php// output_comments($comments)?>
+
+            <?php output_comments($comments) ?>
         </section>
     <footer>
         <div class="footer-content">

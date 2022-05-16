@@ -1,5 +1,18 @@
 PRAGMA foreign_keys=ON;
 
+DROP TABLE IF EXISTS Client;
+DROP TABLE IF EXISTS Restaurant;
+DROP TABLE IF EXISTS RestaurantOwner;
+DROP TABLE IF EXISTS RestaurantPhoto;
+DROP TABLE IF EXISTS Dish;
+DROP TABLE IF EXISTS DishPhoto;
+DROP TABLE IF EXISTS Request;
+DROP TABLE IF EXISTS Currentrequest;
+DROP TABLE IF EXISTS FavRestaurant;
+DROP TABLE IF EXISTS FavDish;
+DROP TABLE IF EXISTS Comments;
+
+
 CREATE TABLE Client(
     clientId int PRIMARY KEY,
     clientName varchar NOT NULL,
@@ -19,15 +32,6 @@ CREATE TABLE Restaurant(
     rating real
 );
 
-CREATE TABLE RestaurantPhoto(
-    restaurantId int PRIMARY KEY,
-    photo varchar,
-    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
-        REFERENCES Restaurant(restaurantId) 
-        ON DELETE CASCADE
-        ON UPDATE CASCADE  
-);
-
 CREATE TABLE RestaurantOwner (
     ownerId int PRIMARY KEY,
     restaurantId int,
@@ -41,6 +45,15 @@ CREATE TABLE RestaurantOwner (
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE    
+);
+
+CREATE TABLE RestaurantPhoto(
+    restaurantId int PRIMARY KEY,
+    photo varchar,
+    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
+        REFERENCES Restaurant(restaurantId) 
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE Dish(
@@ -126,7 +139,7 @@ CREATE TABLE Comments(
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE 
-)
+);
 
 
 
