@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Client;
 DROP TABLE IF EXISTS Restaurant;
 DROP TABLE IF EXISTS RestaurantOwner;
+DROP TABLE IF EXISTS RestaurantPhoto;
 DROP TABLE IF EXISTS Dish;
 DROP TABLE IF EXISTS DishPhoto;
 DROP TABLE IF EXISTS Request;
@@ -31,7 +32,7 @@ CREATE TABLE Restaurant(
 CREATE TABLE RestaurantOwner (
     ownerId int PRIMARY KEY,
     restaurantId int,
-    name varchar,
+    restaurantName varchar,
     email varchar,
     phoneNumber int,
     adress varchar,
@@ -55,7 +56,7 @@ CREATE TABLE RestaurantPhoto(
 CREATE TABLE Dish(
     dishId int PRIMARY KEY,
     restaurantId int,
-    name varchar,
+    dishName varchar,
     price real,
     category varchar,
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
@@ -124,9 +125,10 @@ CREATE TABLE FavDish(
 );
 
 CREATE TABLE Comments(
-    clientId int,
-    restaurantId int,
-    comment varchar,
+    clientId int NOT NULL,
+    restaurantId int NOT NULL,
+    comment varchar NOT NULL,
+    published date NOT NULL,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
         ON DELETE CASCADE
@@ -215,11 +217,11 @@ INSERT INTO FavDish VALUES(2,23);
 
 ----//----
 
-INSERT INTO Comments VALUES(1,1,"Muito bom");
-INSERT INTO Comments VALUES(1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia");
-INSERT INTO Comments VALUES(2,3,"Já comi melhor");
-INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho");
-INSERT INTO Comments VALUES(2,2,"Não passou o vibe check");
+INSERT INTO Comments VALUES(1,1,"Muito bom",'2022-5-13');
+INSERT INTO Comments VALUES(1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia",'2022-4-11');
+INSERT INTO Comments VALUES(2,3,"Já comi melhor",'2022-2-1');
+INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",'2022-1-22');
+INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",'2022-6-17');
 
 
 INSERT INTO RestaurantOwner VALUES(1, 1,  "Francisco Maldonado", "kiko@gmail.com",

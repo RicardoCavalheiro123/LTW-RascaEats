@@ -8,6 +8,7 @@
 
                 <br>
                 <span class="username"><p><?php echo $comment['username'] ?></p></span>
+                <span class="date"><?=date('Y-m-d', strtotime($comment['published']))?></span>
                 <span class ="comment"><p><?php echo $comment['comment'] ?></p></span>
                     
             </article>

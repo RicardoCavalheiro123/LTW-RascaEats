@@ -55,7 +55,7 @@
             <?php echo $restaurant['category'] ?>
         </p>
         <p>
-            <?php echo $restaurant['reataurantName'] ?>
+            <?php echo $restaurant['restaurantName'] ?>
         </p>
         <p>
             <?php echo $restaurant['rating'] ?>
@@ -89,7 +89,7 @@
         <?php 
             foreach($menu as $dish){ ?>
             <article>
-                <p class="dishName"><?php echo $dish['name'] ?></p>
+                <p class="dishName"><?php echo $dish['dishName'] ?></p>
                 <p class = "dishPrice"><?php echo $dish['price'] ?></p>
                 <input class="quantity" type="number" value="0">
                 <button class="buy">Adicionar ao carrinho</button></article> <?php
@@ -99,11 +99,18 @@
         
     </section>
     <section id = "reviews"> 
-            Deixe o seu comentário - 
-            <?php output_comments($comments) ?>
+            <?php output_comments($comments)?>
 
-            <input type="text" id ="comment-box" placeholder="Enter comment">
-            <button id="post">Post</button>
+            <h3>Deixe o seu comentário - </h3>
+
+            <?php echo "<form method='POST' action='".setComments($db)."'>
+                <input type='hidden' name='clientId' value='1'>
+                <input type='hidden' name='restaurantId' value='2'>
+                <input type='hidden' name='date' value='".date('Y-m-d')."'>
+                <textarea name='comment'></textarea><br>
+                <button type='submit' name='commentSubmit'>Comment</button>
+            </form>"; ?>
+
 
         </section>
     <footer>

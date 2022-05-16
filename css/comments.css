@@ -7,4 +7,29 @@
     border: 1px;
     border-style: solid;
     padding: 0.5em;
+    background-color: rgb(241, 241, 241);
+}
+
+#reviews form textarea{
+    width: 100%;
+    height: 5em;
+    background-color: rgb(233, 233, 233);
+    resize: none;
+    border: none;
+    margin-top: 0.5em;
+}
+
+#reviews form button{
+    width: 6em;
+    height: 2.5em;
+    background-color: rgb(32, 74, 150);
+    color: white;
+    border: none;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#reviews h3{
+    margin-top: 2.5em;
+    text-decoration: underline;
 }
