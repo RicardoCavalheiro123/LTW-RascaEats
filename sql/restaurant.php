@@ -13,7 +13,13 @@
 
     function getRestaurant($db){
         $stmt = $db->prepare('SELECT * FROM Restaurant WHERE restaurantId = ?');
-        $stmt->execute();
+        $stmt->execute(array($_GET['id']));
+        return $stmt->fetch();
+    }
+
+    function getMenu($db){
+        $stmt = $db->prepare('SELECT * FROM Dish WHERE restaurantId = ?');
+        $stmt->execute(array($_GET['id']));
         return $stmt->fetchAll();
     }
 ?>

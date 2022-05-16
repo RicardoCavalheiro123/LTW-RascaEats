@@ -13,22 +13,23 @@ function attachBuyEvents(){
                                                     }
                                                     const price = document.createElement("td")
                                                     price.textContent = button.parentElement.querySelector(".dishPrice").textContent
+                                                    console.log(price)
                                                     const total = document.createElement("td")
-                                                    total.textContent = parseInt(price.textContent) * parseInt(quantity.textContent)
+                                                    total.textContent = parseFloat(price.textContent) * parseFloat(quantity.textContent)
 
                                                     const rows = table.querySelectorAll("tr td:nth-child(1)")
                                                     found = false;
-                                                    var t = 0
+                                                    var t = 0.0
                                                     for(const row of rows){
                                                         t += parseInt(row.parentElement.querySelector("td:nth-child(4)").textContent, 10)
                                                         if(row.textContent == name.textContent){
-                                                            row.parentElement.querySelector("td:nth-child(2)").textContent = parseInt(row.parentElement.querySelector("td:nth-child(2)").textContent) + parseInt(quantity.textContent)
-                                                            row.parentElement.querySelector("td:nth-child(4)").textContent = parseInt(row.parentElement.querySelector("td:nth-child(4)").textContent) + parseInt(total.textContent)
+                                                            row.parentElement.querySelector("td:nth-child(2)").textContent = parseFloat(row.parentElement.querySelector("td:nth-child(2)").textContent) + parseFloat(quantity.textContent)
+                                                            row.parentElement.querySelector("td:nth-child(4)").textContent = parseFloat(row.parentElement.querySelector("td:nth-child(4)").textContent) + parseFloat(total.textContent)
                                                             found = true
                                                             break
                                                         }
                                                     }
-                                                    table.querySelector("tfoot th:nth-child(2)").textContent = parseInt(t, 10) + parseInt(total.textContent, 10)
+                                                    table.querySelector("tfoot th:nth-child(2)").textContent = parseFloat(t, 10) + parseFloat(total.textContent, 10)
                                                     if(found){
                                                         return
                                                     }

@@ -9,9 +9,9 @@
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $categories = getCategories($db);
+    
     $restaurant = getRestaurant($db);
-
+    $menu = getMenu($db);
     $comments = getComments($db);
 ?>
 
@@ -35,7 +35,7 @@
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
             <div class="login">
-                <a href="proj.php">Login | Register</a>
+                <a href="login_register.php">Login | Register</a>
             </div>
         </form>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
@@ -52,19 +52,19 @@
 
     <section id= "restaurant">
         <p>
-            Categoria
+            <?php echo $restaurant['category'] ?>
         </p>
         <p>
-            Nome
+            <?php echo $restaurant['reataurantName'] ?>
         </p>
         <p>
-            Rating
+            <?php echo $restaurant['rating'] ?>
         </p>
         <p>
-            Contacto
+            <?php echo $restaurant['phoneNumber'] ?>
         </p>
         <p>
-            Morada
+            <?php echo $restaurant['adress'] ?>
         </p>
         <img class = "slide" src="https://picsum.photos/500/300?food1" alt="Restaurant photo">
         <img class = "slide" src="https://picsum.photos/500/300?food2" alt="Restaurant photo">
@@ -86,24 +86,16 @@
       </table>
     </section>
     <section id = "dishes">
-        <article>
-            <p class="dishName">Prato 1</p>
-            <p class = "dishPrice">25</p>
-            <input class="quantity" type="number" value="0">
-            <button class="buy">Adicionar ao carrinho</button>
-        </article>
-        <article>
-            <p class="dishName">Prato 2</p>
-            <p class = "dishPrice">35</p>
-            <input class="quantity" type="number" value="0">
-            <button class="buy">Adicionar ao carrinho</button>
-        </article>
-        <article>
-            <p class="dishName">Prato 3</p>
-            <p class = "dishPrice">15</p>
-            <input class="quantity" type="number" value="0">
-            <button class="buy">Adicionar ao carrinho</button>
-        </article>
+        <?php 
+            foreach($menu as $dish){ ?>
+            <article>
+                <p class="dishName"><?php echo $dish['name'] ?></p>
+                <p class = "dishPrice"><?php echo $dish['price'] ?></p>
+                <input class="quantity" type="number" value="0">
+                <button class="buy">Adicionar ao carrinho</button></article> <?php
+            }
+        ?>
+    
         
     </section>
     <section id = "reviews"> 
