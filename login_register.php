@@ -1,3 +1,15 @@
+<?php 
+session_start();
+require_once('sql/connection.php');
+require_once('sql/restaurant.php');
+
+$db = getDatabaseConnection();
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$categories = getCategories($db);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +21,7 @@
     <title>Ex</title>
 </head>
 <body>
-    <header>
+<header>
         <h1>Rasca Eats</h1>
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
@@ -34,25 +46,33 @@
                 <button type="button" class="toggle-btn" onclick="login()">Log in</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form id="login" class = "input-group">
+            <form id="login" action= "server.php" method="POST" class = "input-group">
                 <i class="fa-solid fa-user"></i>
-                <input type="text" class = "input-field" placeholder="Username" required>
+                <input type="text" class = "input-field" name = "username" placeholder="Username" required>
                 <i class="fa-solid fa-lock"></i>
-                <input type="text" class = "input-field" placeholder="Password" required>
-                <button type="submit" class = "submit-btn">Log in</button>
+                <input type="text" class = "input-field" name = "password" placeholder="Password" required>
+                <button type="submit" name = "submit_login" class = "submit-btn">Log in</button>
+                <?php
+                    if(isset($_SESSION["error"])){
+                        $error = $_SESSION["error"];
+                        echo "<div class= error> $error </div>";
+                    }
+                ?>  
             </form>
-            <form id="register" class = "input-group">
+            <form id="register" action = "server.php" method = "POST" class = "input-group">
+                <i class="fa-solid fa-signature"></i>
+                <input type="text" class = "input-field" name = "name" placeholder= " Full Name" required>
                 <i class="fa-solid fa-user"></i>
-                <input type="text" class = "input-field" placeholder="Username" required>
+                <input type="text" class = "input-field" name = "username" placeholder="Username" required>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" class = "input-field" placeholder="Email" required>
+                <input type="email" class = "input-field" name = "email" placeholder="Email" required>
                 <i class="fa-solid fa-lock"></i>
-                <input type="text" class = "input-field" placeholder="Password" required>
+                <input type="text" class = "input-field" name = "password" placeholder="Password" required>
                 <i class="fa-solid fa-map-location-dot"></i>
-                <input type="text" class = "input-field" placeholder="Adress" required>
+                <input type="text" class = "input-field" name = "adress" placeholder="Adress" required>
                 <i class="fa-solid fa-phone"></i>
-                <input type="text" class = "input-field" placeholder="Phone Number" required>
-                <button type="submit" class = "submit-btn">Register</button>
+                <input type="tel" class = "input-field" name = "phone_number" placeholder="Phone Number" required>
+                <button type="submit" name = "submit_register" class = "submit-btn">Register</button>
             </form>
         </div>
         
@@ -65,6 +85,11 @@
             <p>copyright &copy;2022 Rasca Eats</p>
         </div>
     </footer>
+    </script>
+
+    <section id= "restaurants">
+        
+    </section>
     <script>
         var x = document.getElementById("login")
         var y = document.getElementById("register")
@@ -79,6 +104,9 @@
             y.style.left = "450px";
             z.style.left = "0";
     }
-</script>
-</body>
+    </script>
+    </body>
 </html>
+<?php
+    unset($_SESSION["error"]);
+?>

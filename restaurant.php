@@ -31,7 +31,7 @@
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
             <div class="login">
-                <a href="proj.php">Login | Register</a>
+                <a href="login_register.php">Login | Register</a>
             </div>
         </form>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">

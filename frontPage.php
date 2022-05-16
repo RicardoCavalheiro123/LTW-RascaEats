@@ -1,16 +1,17 @@
 <?php 
-
+    declare(strict_types = 1);
+    session_start();
     require_once('sql/connection.php');
     require_once('sql/restaurant.php');
-
-    require_once('templates/comments.php');
-    require_once('sql/comments.php');
+    require_once('templates/common.php');
+    //require_once('templates/comments.php');
+    //require_once('sql/comments.php');
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $categories = getCategories($db);
 
-    $comments = getComments($db);
+    //$comments = getComments($db);
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +29,23 @@
         <h1><a href="index.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
-            <div class="login">
-                <a href="proj.php">Login | Register</a>
-            </div>
+            <?php 
+            if (isset($_SESSION['id'])){
+                //drawLogoutForm($_SESSION['name']);
+                echo'<form action="login_register.php" method="post" class="logout">
+                        <a href="profilePage.php">antol</a>
+                        <button type="submit">Logout</button>
+                    </form>';
+                
+            }
+            else{
+                
+                echo '<div class="login">
+                        <a href="login_register.php">Login | Register</a>
+                    </div>';
+            }
+                ?>
+            
         </form>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
             <div class="search">

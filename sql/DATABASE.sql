@@ -1,5 +1,16 @@
+DROP TABLE IF EXISTS Client;
+DROP TABLE IF EXISTS Restaurant;
+DROP TABLE IF EXISTS RestaurantOwner;
+DROP TABLE IF EXISTS Dish;
+DROP TABLE IF EXISTS DishPhoto;
+DROP TABLE IF EXISTS Request;
+DROP TABLE IF EXISTS Currentrequest;
+DROP TABLE IF EXISTS FavRestaurant;
+DROP TABLE IF EXISTS FavDish;
+DROP TABLE IF EXISTS Comments;
+
 CREATE TABLE Client(
-    clientId int PRIMARY KEY,
+    clientId int PRIMARY KEY NOT NULL,
     clientName varchar NOT NULL,
     email varchar NOT NULL,
     phoneNumber int NOT NULL,
