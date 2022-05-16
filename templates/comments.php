@@ -2,7 +2,8 @@
 
     function output_comments($comment){ ?>
             <article class="comment">
-            <p><?php echo $comment['text'] ?></article></p><?php
+            <span class="user"><?php echo $comment['username']; ?>Disse:</span>
+            <p><?php echo $comment['text'] ?></p><?php
     }
     
 ?>
