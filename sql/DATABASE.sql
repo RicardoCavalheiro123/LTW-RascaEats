@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys=ON;
 
 DROP TABLE IF EXISTS Client;
 DROP TABLE IF EXISTS Restaurant;
@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS FavRestaurant;
 DROP TABLE IF EXISTS FavDish;
 DROP TABLE IF EXISTS Comments;
 
+
 CREATE TABLE Client(
     clientId int PRIMARY KEY,
     clientName varchar NOT NULL,
@@ -24,7 +25,7 @@ CREATE TABLE Client(
 
 CREATE TABLE Restaurant(
     restaurantId int PRIMARY KEY,
-    reataurantName varchar NOT NULL,
+    restaurantName varchar NOT NULL,
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber int NOT NULL,

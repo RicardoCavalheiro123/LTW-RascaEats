@@ -1,0 +1,10 @@
+.comments .username p{
+    color: rgb(32, 74, 150);
+    font-size: 1.5em;
+}
+
+.comments .comment p{
+    border: 1px;
+    border-style: solid;
+    padding: 0.5em;
+}
