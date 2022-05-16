@@ -10,4 +10,10 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    function getRestaurant($db){
+        $stmt = $db->prepare('SELECT * FROM Restaurant WHERE restaurantId = ?');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 ?>
