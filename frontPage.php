@@ -32,10 +32,11 @@
             <?php 
             if (isset($_SESSION['id'])){
                 //drawLogoutForm($_SESSION['name']);
-                echo'<form action="login_register.php" method="post" class="logout">
+                echo'<form action="actionlogout.php" method="get" id="logout2">
                         <a href="profilePage.php">antol</a>
-                        <button type="submit">Logout</button>
+                        <a href="actionlogout.php">Logout</a>
                     </form>';
+                    
                 
             }
             else{

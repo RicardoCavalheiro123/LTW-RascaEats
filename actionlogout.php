@@ -4,5 +4,5 @@
   session_start();
   session_destroy();
 
-  header('Location: frontPage.php ');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
