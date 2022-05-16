@@ -64,7 +64,8 @@
     </section>
     <section id = "reviews"> 
             Deixe o seu comentário
-            <?php output_comments($comments)?>
+            <?php //output_comments($comments)
+            var_dump($comments)?>
         </section>
     <footer>
         <div class="footer-content">
