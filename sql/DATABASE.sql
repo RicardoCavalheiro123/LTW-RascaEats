@@ -21,7 +21,7 @@ CREATE TABLE Client(
 
 CREATE TABLE Restaurant(
     restaurantId int PRIMARY KEY,
-    reataurantName varchar NOT NULL,
+    restaurantName varchar NOT NULL,
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber int NOT NULL,
@@ -41,6 +41,15 @@ CREATE TABLE RestaurantOwner (
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE    
+);
+
+CREATE TABLE RestaurantPhoto(
+    restaurantId int PRIMARY KEY,
+    photo varchar,
+    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
+        REFERENCES Restaurant(restaurantId) 
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE Dish(
@@ -126,7 +135,7 @@ CREATE TABLE Comments(
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE 
-)
+);
 
 
 

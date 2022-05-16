@@ -1,9 +1,14 @@
 <?php 
 
-    function output_comments($comment){ ?>
+    function output_comments($comments){
+            
+        foreach($comments as $comment ){?>
+
             <article class="comment">
-            <span class="user"><?php echo $comment['username']; ?>Disse:</span>
-            <p><?php echo $comment['text'] ?></p><?php
+                <p><?php echo $comment['username'] ?> disse: </p>
+                <p><?php echo $comment['comment'] ?></p>
+            </article>
+<?php   }
     }
     
 ?>
