@@ -6,6 +6,8 @@
     require_once('templates/comments.php');
     require_once('sql/comments.php');
 
+    require_once('templates/dishes.php');
+
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -21,8 +23,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="restaurant.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/comments.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
@@ -58,7 +60,7 @@
             <?php echo $restaurant['restaurantName'] ?>
         </p>
         <p>
-            <?php echo $restaurant['rating'] ?>
+            <?php echo $restaurant['rating'] ?><i class="fa-solid fa-star"></i>
         </p>
         <p>
             <?php echo $restaurant['phoneNumber'] ?>
@@ -74,6 +76,10 @@
         
     </section>
 
+    <section id="favRestaurant">
+        <?php ?>
+    </section>
+
     <section id = "cart">
     <table>
         <thead>
@@ -86,33 +92,25 @@
       </table>
     </section>
     <section id = "dishes">
-        <?php 
-            foreach($menu as $dish){ ?>
-            <article>
-                <p class="dishName"><?php echo $dish['dishName'] ?></p>
-                <p class = "dishPrice"><?php echo $dish['price'] ?></p>
-                <input class="quantity" type="number" value="0">
-                <button class="buy">Adicionar ao carrinho</button></article> <?php
-            }
-        ?>
+
+        <?php output_dishes($menu)?>
     
-        
     </section>
     <section id = "reviews"> 
-            <?php output_comments($comments)?>
+        <?php output_comments($comments)?>
 
-            <h3>Deixe o seu comentário - </h3>
+        <h3>Deixe o seu comentário - </h3>
 
-            <?php echo "<form method='POST' action='".setComments($db)."'>
-                <input type='hidden' name='clientId' value='1'>
-                <input type='hidden' name='restaurantId' value='2'>
-                <input type='hidden' name='date' value='".date('Y-m-d')."'>
-                <textarea name='comment'></textarea><br>
-                <button type='submit' name='commentSubmit'>Comment</button>
-            </form>"; ?>
+        <?php echo "<form method='POST' action='".setComments($db)."'>
+            <input type='hidden' name='clientId' value='1'>
+            <input type='hidden' name='restaurantId' value='2'>
+            <input type='hidden' name='date' value='".date('Y-m-d')."'>
+            <textarea name='comment'></textarea><br>
+            <button type='submit' name='commentSubmit'>Comment</button>
+        </form>"; ?>
 
 
-        </section>
+    </section>
     <footer>
         <div class="footer-content">
             <h4>Descubra e reserve dos melhores restaurantes</h4>
