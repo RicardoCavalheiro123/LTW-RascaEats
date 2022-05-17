@@ -10,7 +10,6 @@
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $categories = getCategories($db);
-    
 
     //$comments = getComments($db);
 ?>
@@ -32,22 +31,20 @@
   
         <div class = "l" id="loginForm">
             <?php 
-            $username = $_SESSION["name"];
-            if (isset($_SESSION['id'])){
-                drawLogoutForm($_SESSION['name']);
-                /*echo'<form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"><'<?=$email?>'></a>
-                        <button class="button-4" role="button">Logout</button>
-                    </form>';*/
+            if (isset($_SESSION['id'])){ ?>
+                    <form action="actionlogout.php" method="get" id="logout2">
+                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
+                        <a href="actionlogout.php">Logout</a>
+                    </form>
                     
                 
-            }
-            else{
+<?php            }
+            else{ ?>
                 
-                echo '<div class="login">
+                    <div class="login">
                         <a href="login_register.php">Login | Register</a>
-                    </div>';
-            }
+                    </div>
+<?php       }
                 ?>
             
         </div>

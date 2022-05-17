@@ -39,22 +39,20 @@
         <i class="fa-solid fa-utensils"></i>
         <div class = "l" id="loginForm">
             <?php 
-            $username = $_SESSION["name"];
-            if (isset($_SESSION['id'])){
-                drawLogoutForm($_SESSION['name']);
-                /*echo'<form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"><'<?=$email?>'></a>
-                        <button class="button-4" role="button">Logout</button>
-                    </form>';*/
+            if (isset($_SESSION['id'])){ ?>
+                    <form action="actionlogout.php" method="get" id="logout2">
+                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
+                        <a href="actionlogout.php">Logout</a>
+                    </form>
                     
                 
-            }
-            else{
+<?php            }
+            else{ ?>
                 
-                echo '<div class="login">
+                    <div class="login">
                         <a href="login_register.php">Login | Register</a>
-                    </div>';
-            }
+                    </div>
+<?php       }
                 ?>
             
         </div>
@@ -119,14 +117,18 @@
 
         <h3>Deixe o seu comentário - </h3>
 
-        <?php echo "<form method='POST' action='".setComments($db)."'>
-            <input type='hidden' name='clientId' value='1'>
-            <input type='hidden' name='restaurantId' value='2'>
-            <input type='hidden' name='date' value='".date('Y-m-d')."'>
+        <?php if (!isset($_SESSION['id'])){ ?> 
+                <p><a href="login_register.php">Efetue login para comentar</a></p>
+<?php       } 
+        else{
+            echo "<form method='POST' action='".setComments($db)."'> "?>
+            <input type='hidden' name='clientId' value= <?php echo $_SESSION['id']?> >
+            <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?> >
+            <?php echo "<input type='hidden' name='date' value='".date('Y-m-d')."'> "?>
             <textarea name='comment'></textarea><br>
             <button type='submit' name='commentSubmit'>Comment</button>
-        </form>"; ?>
-
+        </form>
+<?php } ?>
 
     </section>
     <footer>
