@@ -151,8 +151,13 @@ INSERT INTO Client VALUES(2, "Ricardo Cavalheiro", "ricardao@yahoo.com",
 
 INSERT INTO Restaurant VALUES(1, "Bar de Minas", "FEUP", "Tradicional", "220202020", 5);
 INSERT INTO Restaurant VALUES(2, "McDonald's", "Campus", "Fast-Food", "220202020", 3.7);
-INSERT INTO Restaurant VALUES(3, "Snack-Bar", "Porto", "Snack", "220202020", 4.1);
 INSERT INTO Restaurant VALUES(4, "Pizza-Hut", "Maia", "Italiano", "220202020", 4.3);
+INSERT INTO Restaurant VALUES(5, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", 3.2);
+INSERT INTO Restaurant VALUES(6, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", 4.6);
+INSERT INTO Restaurant VALUES(7, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", 4.1);
+INSERT INTO Restaurant VALUES(8, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", 3.9);
+INSERT INTO Restaurant VALUES(9, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", 4.3);
+INSERT INTO Restaurant VALUES(10, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", 4.2);
 
 ----//----
 
