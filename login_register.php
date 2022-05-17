@@ -22,7 +22,7 @@ $categories = getCategories($db);
 </head>
 <body>
 <header>
-        <h1>Rasca Eats</h1>
+    <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
         <div class="login" id = "loginForm">
             <a href="login_register.php">Login | Register</a>
