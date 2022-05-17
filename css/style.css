@@ -9,6 +9,8 @@ header {
     display: grid;
     grid-template-columns: 11em 3em auto;
     padding-top: 1.5em;
+    padding-left: 4em;
+    padding-right: 4em;
     
 }
 
@@ -31,6 +33,11 @@ header i {
     
 }
 
+header h1 a{
+    text-decoration: none;
+    color: black;
+}
+
 #loginForm{
     grid-column: 3; grid-row: 1;
     display: block;
@@ -46,8 +53,8 @@ header i {
 header form{
     grid-column: 1/4; grid-row: 2;
 }
-.search{
 
+.search{
     width: 100%;
     display: inline-flex;
 }
@@ -56,10 +63,9 @@ header form{
     flex-grow: 1;
     padding: 10px;
     outline: none;
-    border: 1px solid #b1bfd8;
+    border: 1px solid rgb(32, 74, 150);
     border-radius: 5px 0 0 5px;
     background: rgb(242, 242, 242);
-    transition: background 0.25s, box-shadow 0.25s;
 }
 
 .searchInput::placeholder{
@@ -68,9 +74,8 @@ header form{
 
 .searchButton{
     width: 3em;
-    background: #b1bfd8;
-    background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
-    color: black ;
+    background-color: rgb(32, 74, 150);
+    color: white ;
     outline: none;
     border: none;
     display: flex;
@@ -82,8 +87,8 @@ header form{
     
 }
 
-.searchButton:active{
-    box-shadow: 5px 0 20px 9px #bbc7dd;
+.searchButton i{
+    padding-bottom: 0.5em;
 }
 
 .searchInput:focus{

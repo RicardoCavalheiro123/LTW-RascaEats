@@ -17,6 +17,8 @@
 
             $stmt->execute(array($clientId, $restaurantId, $comment, $date));
 
+            echo "<meta http-equiv='refresh' content='0'>";
+
         }
     }
 
