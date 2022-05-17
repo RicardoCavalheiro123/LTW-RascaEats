@@ -12,22 +12,16 @@ body {
     position: absolute;
     background: #fff;
 
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(background.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(../background.jpg);
   
 
 
     
 }
 .profile{
-    position: absolute;
-    width: 900px;
-    height: 730px;
-    z-index: 15;
-    top: 50%;
-    left: 50%;
-    margin: -360px 0 0 -450px;
+    
     background-color: rgba(255, 255, 255, 0.8); 
-
+    
 }
 
 
@@ -83,15 +77,10 @@ p {
     padding: 20px;
 }
 footer{
-    background-color: transparent;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
+    background-color: #ffa31a;
+  
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-top: 40 px;
+    padding-top: 0.5em;
     color: #fff;
 }
 .footer-content{
@@ -99,15 +88,14 @@ footer{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-
 }
 .footer-content h3{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .footer-bottom{
     background: transparent;
-    width: 100vw;
+    
+    padding: 20px 0;
     text-align: center;
 
 }
@@ -116,13 +104,4 @@ footer{
     font-size: 14px;
     word-spacing: 2px;
     text-transform: capitalize;
-    
-
-}
-footer h3{
-    color: #fff;
-}
-
-footer p{
-    color: #fff;
 }
