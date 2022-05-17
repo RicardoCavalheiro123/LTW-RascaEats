@@ -95,7 +95,8 @@ CREATE TABLE Currentrequest(
     CONSTRAINT fk_requestId FOREIGN KEY (requestId)
         REFERENCES request(requestId) 
         ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+    PRIMARY KEY(requestId, dishId)
 );
 
 CREATE TABLE FavRestaurant(
@@ -108,7 +109,8 @@ CREATE TABLE FavRestaurant(
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
-        ON UPDATE CASCADE 
+        ON UPDATE CASCADE,
+    PRIMARY KEY(clientId, restaurantId)
 );
 
 CREATE TABLE FavDish(
@@ -121,7 +123,8 @@ CREATE TABLE FavDish(
     CONSTRAINT fk_dishId FOREIGN KEY (dishId)
         REFERENCES Dish(dishId) 
         ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+    PRIMARY KEY(clientId, dishId)
 );
 
 CREATE TABLE Comments(
@@ -136,7 +139,8 @@ CREATE TABLE Comments(
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
-        ON UPDATE CASCADE 
+        ON UPDATE CASCADE,
+    PRIMARY KEY(clientId, restaurantId)
 );
 
 
