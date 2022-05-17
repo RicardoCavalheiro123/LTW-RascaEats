@@ -1,12 +1,12 @@
 <?php 
     function getRestaurantCategory($db, $category){
-        $stmt = $db->prepare('SELECT * FROM Restaurant WHERE category = :category');
-        $stmt->execute([ 'category' => $category ]);
+        $stmt = $db->prepare('SELECT * FROM Restaurant WHERE category = ? limit 3');
+        $stmt->execute(array($category));
         return $stmt->fetchAll();
     }
 
     function getCategories($db){
-        $stmt = $db->prepare('SELECT DISTINCT category FROM Restaurant');
+        $stmt = $db->prepare('SELECT DISTINCT category FROM Restaurant ORDER BY category');
         $stmt->execute();
         return $stmt->fetchAll();
     }
