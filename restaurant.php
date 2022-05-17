@@ -101,13 +101,13 @@
 
         <h3>Deixe o seu comentário - </h3>
 
-        <?php echo "<form method='POST' action='".setComments($db)."'>
+        <?php echo "<form method='POST' action='".setComments($db)."'> "?>
             <input type='hidden' name='clientId' value='1'>
-            <input type='hidden' name='restaurantId' value='2'>
-            <input type='hidden' name='date' value='".date('Y-m-d')."'>
+            <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?> >
+            <?php echo "<input type='hidden' name='date' value='".date('Y-m-d')."'> "?>
             <textarea name='comment'></textarea><br>
             <button type='submit' name='commentSubmit'>Comment</button>
-        </form>"; ?>
+        </form>
 
 
     </section>
