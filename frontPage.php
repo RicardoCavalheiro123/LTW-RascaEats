@@ -10,7 +10,6 @@
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $categories = getCategories($db);
-    
 
     //$comments = getComments($db);
 ?>
@@ -31,21 +30,20 @@
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
             <?php 
-            if (isset($_SESSION['id'])){
-                //drawLogoutForm($_SESSION['name']);
-                echo'<form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php">antol</a>
+            if (isset($_SESSION['id'])){ ?>
+                    <form action="actionlogout.php" method="get" id="logout2">
+                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
                         <a href="actionlogout.php">Logout</a>
-                    </form>';
+                    </form>
                     
                 
-            }
-            else{
+<?php            }
+            else{ ?>
                 
-                echo '<div class="login">
+                    <div class="login">
                         <a href="login_register.php">Login | Register</a>
-                    </div>';
-            }
+                    </div>
+<?php       }
                 ?>
             
         </form>
