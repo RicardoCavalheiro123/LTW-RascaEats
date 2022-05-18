@@ -4,6 +4,7 @@
     if (!isset($_SESSION['id'])) die(header('Location: /'));
     require_once('sql/connection.php');
     require_once('sql/client.php');
+    require_once('templates/common.php');
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -26,12 +27,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Profile</title>
 </head>
 <body>
 <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
+
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
             <?php 
             if (isset($_SESSION['id'])){ ?>
@@ -52,6 +55,7 @@
             
         </form>
         
+
             
     </header>
     <div class="profile">

@@ -94,8 +94,8 @@ footer{
 }
 .footer-bottom{
     background: transparent;
-    
-    padding: 20px 0;
+    color: white;
+    padding: 0px 0;
     text-align: center;
 
 }
@@ -104,4 +104,193 @@ footer{
     font-size: 14px;
     word-spacing: 2px;
     text-transform: capitalize;
+    color: white;
 }
+
+header {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 11em 3em auto;
+    padding-top: 1.5em;
+    padding-left: 4em;
+    padding-right: 4em;
+    background-color: white;
+    
+}
+
+header h1 {
+    grid-column: 1; grid-row: 1/1;
+    padding-bottom: 0.2em;
+}
+
+header h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+header i {
+    grid-column: 2; grid-row: 1;
+    text-align: left;
+    padding-top: 0.5em;
+    font-size: larger;
+    padding-left: 0.1em;
+    
+}
+
+header h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+#loginForm{
+    grid-column: 3; grid-row: 1;
+    display: block;
+    text-align: right;
+    padding-top: 0.5em;
+}
+
+#loginForm > .login > input[type="button"] {
+    background: none;
+    border: none;
+}
+
+header form{
+    grid-column: 1/4; grid-row: 2;
+}
+
+.search{
+    width: 100%;
+    display: inline-flex;
+}
+
+.searchInput{
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgb(32, 74, 150);
+    border-radius: 5px 0 0 5px;
+    background: rgb(242, 242, 242);
+}
+
+.searchInput::placeholder{
+    color:rgb(0, 0, 0)
+}
+
+.searchButton{
+    width: 3em;
+    background-color: rgb(32, 74, 150);
+    color: white ;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+    
+}
+
+.searchButton i{
+    padding-bottom: 0.5em;
+}
+
+.searchInput:focus{
+    background: white;
+}
+
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 2px 20px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+.logout > a {
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 5px;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .logout > a:before{
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .logout > a:hover {
+   background-position: 0;
+  }
+  
+  .logout > a:hover::before{
+    width: 100%;
+  }
+  
+ 
