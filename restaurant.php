@@ -111,7 +111,8 @@
         <?php output_dishes($menu)?>
     
     </section>
-    <section id = "reviews"> 
+    <section id = "reviews">
+        <h3>Comentários:</h3>
         <?php output_comments($comments)?>
 
         <h3>Deixe o seu comentário - </h3>

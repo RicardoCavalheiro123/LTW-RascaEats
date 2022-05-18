@@ -25,9 +25,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Profile</title>
 </head>
 <body>
+<header>
+        <h1><a href="frontPage.php">Rasca Eats</a></h1>
+        <i class="fa-solid fa-utensils"></i>
+        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
+            <?php 
+            if (isset($_SESSION['id'])){ ?>
+                    <form action="actionlogout.php" method="get" id="logout2">
+                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
+                        <a href="actionlogout.php">Logout</a>
+                    </form>
+                    
+                
+<?php            }
+            else{ ?>
+                
+                    <div class="login">
+                        <a href="login_register.php">Login | Register</a>
+                    </div>
+<?php       }
+                ?>
+            
+        </form>
+        
+            
+    </header>
     <div class="profile">
         <div class="header">
 

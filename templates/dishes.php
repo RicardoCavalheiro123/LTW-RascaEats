@@ -2,7 +2,7 @@
 
     function output_dishes($menu){
         foreach($menu as $dish){ ?>
-            <article>
+            <article class = "dish">
                 <p class="dishName"><?php echo $dish['dishName'] ?></p>
                 <p class = "dishPrice"><?php echo $dish['price'] ?></p>
                 <input class="quantity" type="number" value="0">

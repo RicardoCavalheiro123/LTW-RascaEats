@@ -11,30 +11,30 @@ DROP TABLE IF EXISTS FavDish;
 DROP TABLE IF EXISTS Comments;
 
 CREATE TABLE Client(
-    clientId int PRIMARY KEY NOT NULL,
+    clientId integer PRIMARY KEY,
     clientName varchar NOT NULL,
-    email varchar NOT NULL,
-    phoneNumber int NOT NULL,
+    email varchar NOT NULL UNIQUE,
+    phoneNumber integer NOT NULL UNIQUE,
     adress varchar NOT NULL,
     password varchar NOT NULL,
-    username varchar NOT NULL
+    username varchar NOT NULL UNIQUE
 );
 
 CREATE TABLE Restaurant(
-    restaurantId int PRIMARY KEY,
+    restaurantId integer PRIMARY KEY,
     restaurantName varchar NOT NULL,
     adress varchar NOT NULL,
     category varchar NOT NULL,
-    phoneNumber int NOT NULL,
+    phoneNumber integer NOT NULL,
     rating real
 );
 
 CREATE TABLE RestaurantOwner (
-    ownerId int PRIMARY KEY,
-    restaurantId int,
+    ownerId integer PRIMARY KEY,
+    restaurantId integer,
     restaurantName varchar,
     email varchar,
-    phoneNumber int,
+    phoneNumber integer,
     adress varchar,
     password varchar,
     username varchar,
@@ -45,7 +45,7 @@ CREATE TABLE RestaurantOwner (
 );
 
 CREATE TABLE RestaurantPhoto(
-    restaurantId int PRIMARY KEY,
+    restaurantId integer PRIMARY KEY,
     photo varchar,
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
@@ -54,8 +54,8 @@ CREATE TABLE RestaurantPhoto(
 );
 
 CREATE TABLE Dish(
-    dishId int PRIMARY KEY,
-    restaurantId int,
+    dishId integer PRIMARY KEY,
+    restaurantId integer,
     dishName varchar,
     price real,
     category varchar,
@@ -66,7 +66,7 @@ CREATE TABLE Dish(
 );
 
 CREATE TABLE DishPhoto(
-    dishId int PRIMARY KEY,
+    dishId integer PRIMARY KEY,
     photo varchar,
     CONSTRAINT fk_dishId FOREIGN KEY (dishId)
         REFERENCES Dish(dishId) 
@@ -75,8 +75,8 @@ CREATE TABLE DishPhoto(
 );
 
 CREATE TABLE Request(
-    requestId int PRIMARY KEY,
-    clientId int,
+    requestId integer PRIMARY KEY,
+    clientId integer,
     state varchar,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
@@ -85,9 +85,9 @@ CREATE TABLE Request(
 );
 
 CREATE TABLE Currentrequest(
-    dishId int,
-    requestId int,
-    quantidade int,
+    dishId integer,
+    requestId integer,
+    quantidade integer,
     CONSTRAINT fk_dishId FOREIGN KEY (dishId)
         REFERENCES Dish(dishId) 
         ON DELETE CASCADE
@@ -100,8 +100,8 @@ CREATE TABLE Currentrequest(
 );
 
 CREATE TABLE FavRestaurant(
-    clientId int,
-    restaurantId int,
+    clientId integer,
+    restaurantId integer,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
         ON DELETE CASCADE
@@ -114,8 +114,8 @@ CREATE TABLE FavRestaurant(
 );
 
 CREATE TABLE FavDish(
-    clientId int,
-    dishId int,
+    clientId integer,
+    dishId integer,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
         ON DELETE CASCADE
@@ -128,8 +128,8 @@ CREATE TABLE FavDish(
 );
 
 CREATE TABLE Comments(
-    clientId int NOT NULL,
-    restaurantId int NOT NULL,
+    clientId integer NOT NULL,
+    restaurantId integer NOT NULL,
     comment varchar NOT NULL,
     published date NOT NULL,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
