@@ -84,6 +84,18 @@ header{
     color: crimson;
 }
 
+#restaurant .favRestaurant button.exists:focus{
+    border:  none;
+    background: none;
+    color: black;
+}
+
+#restaurant .favRestaurant button.exists{
+    border:  none;
+    background: none;
+    color: crimson;
+}
+
 #restaurant .left-button{
     color: rgb(32, 74, 150);
     border: none;

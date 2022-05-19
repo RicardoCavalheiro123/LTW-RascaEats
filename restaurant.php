@@ -7,8 +7,9 @@
     require_once('sql/comments.php');
 
     require_once('templates/dishes.php');
-
     require_once('sql/favRestaurant.php');
+
+    session_start();
 
 
     $db = getDatabaseConnection();
@@ -38,9 +39,23 @@
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
         <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
-            <div class="login">
-                <a href="login_register.php">Login | Register</a>
-            </div>
+            <?php 
+            if (isset($_SESSION['id'])){ ?>
+                    <form action="actionlogout.php" method="get" id="logout2">
+                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
+                        <a href="actionlogout.php">Logout</a>
+                    </form>
+                    
+                
+<?php            }
+            else{ ?>
+                
+                    <div class="login">
+                        <a href="login_register.php">Login | Register</a>
+                    </div>
+<?php       }
+                ?>
+            
         </form>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
             <div class="search">
@@ -76,15 +91,26 @@
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
 
-        <span class="favRestaurant">
-            <form method='POST' action=<?php echo setFavRestaurant($db) ?>>
-                <input type='hidden' name='clientId' value='1'>
-                <input type='hidden' name='restaurantId' value='2'>
-                <button type='submit' name='favRestaurantSubmit'><i class='fa-solid fa-heart'></i></button> 
-            </form>
-        </span>
+        <?php if(isset($_SESSION['id'])){ ?>
+            <span class="favRestaurant">
+                <form method='POST' action=<?php
 
+                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
+                    else echo deleteFavRestaurant($db);
 
+                ?>>
+
+                    <input type='hidden' name='clientId' value='1'>
+                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
+                    <button type='submit' name='favRestaurantSubmit' class = <?php 
+                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
+                ?>
+                        ><i class='fa-solid fa-heart'></i></button> 
+                </form>
+
+            </span>
+        <?php } ?> 
+                
         
     </section>
 
@@ -109,14 +135,18 @@
 
         <h3>Deixe o seu comentário - </h3>
 
-        <?php echo "<form method='POST' action='".setComments($db)."'>
-            <input type='hidden' name='clientId' value='1'>
-            <input type='hidden' name='restaurantId' value='2'>
-            <input type='hidden' name='date' value='".date('Y-m-d')."'>
+        <?php if (!isset($_SESSION['id'])){ ?> 
+                <p><a href="login_register.php">Efetue login para comentar</a></p>
+<?php       } 
+        else{
+            echo "<form method='POST' action='".setComments($db)."'> "?>
+            <input type='hidden' name='clientId' value= <?php echo $_SESSION['id']?> >
+            <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?> >
+            <?php echo "<input type='hidden' name='date' value='".date('Y-m-d')."'> "?>
             <textarea name='comment'></textarea><br>
             <button type='submit' name='commentSubmit'>Comment</button>
-        </form>"; ?>
-
+        </form>
+<?php } ?>
 
     </section>
     <footer>

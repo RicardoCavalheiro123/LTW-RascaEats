@@ -16,7 +16,7 @@ $categories = getCategories($db);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Ex</title>
 </head>
@@ -24,11 +24,9 @@ $categories = getCategories($db);
 <header>
         <h1>Rasca Eats</h1>
         <i class="fa-solid fa-utensils"></i>
-        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
-            <div class="login">
-                <input type="button" value="Login | Register">
-            </div>
-        </form>
+        <div class="login" id = "loginForm">
+            <a href="login_register.php">Login | Register</a>
+        </div>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
             <div class="search">
                 <input type="text" class="searchInput" name="search" placeholder="search...">
@@ -77,19 +75,9 @@ $categories = getCategories($db);
         </div>
         
     </div>
-    <footer>
-        <div class="footer-content">
-            <h3>Descubra e reserve dos melhores restaurantes</h3>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Rasca Eats</p>
-        </div>
-    </footer>
+   
     </script>
 
-    <section id= "restaurants">
-        
-    </section>
     <script>
         var x = document.getElementById("login")
         var y = document.getElementById("register")
@@ -106,6 +94,14 @@ $categories = getCategories($db);
     }
     </script>
     </body>
+    <footer>
+        <div class="footer-content">
+            <h3>Descubra e reserve dos melhores restaurantes</h3>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2022 Rasca Eats</p>
+        </div>
+    </footer>
 </html>
 <?php
     unset($_SESSION["error"]);
