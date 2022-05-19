@@ -10,8 +10,8 @@ header{
 
 #cart{
     position: fixed;
-    right:15em;
-    top:11em;
+    right:11em;
+    top:9em;
 }
 
 #restaurant {
@@ -122,11 +122,13 @@ header{
     text-align: center;
   }
 
+  
+
   #cart table > tr :nth-child(3)::after, #cart table > tr :nth-child(4)::after{
       content: "€";
   }
   
-  #cart tfoot th:last-child::after{
+  #cart tfoot th:nth-child(2)::after{
     content: "€";
   }
   

@@ -25,39 +25,7 @@
     <title>Rasca Eats</title>
 </head>
 <body>
-<header>
-        <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
-  
-        <div class = "l" id="loginForm">
-            <?php 
-            if (isset($_SESSION['id'])){ ?>
-                    <form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
-                        <a href="actionlogout.php">Logout</a>
-                    </form>
-                    
-                
-<?php            }
-            else{ ?>
-                
-                    <div class="login">
-                        <a href="login_register.php">Login | Register</a>
-                    </div>
-<?php       }
-                ?>
-            
-        </div>
-        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
-            <div class="search">
-                <input type="text" class="searchInput" name="search" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
-            
-    </header>
+<?php output_header() ?>
     
 
     <section id= "restaurants"><?php 
@@ -80,14 +48,7 @@
         
         
     </section>
-    <footer>
-        <div class="footer-content">
-            <h3>Descubra e reserve dos melhores restaurantes</h3>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Rasca Eats</p>
-        </div>
-    </footer>
+    <?php output_footer()  ?>
 
     </body>
 </html>

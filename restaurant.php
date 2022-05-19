@@ -36,38 +36,7 @@
     <title>Restaurante</title>
 </head>
 <body>
-<header>
-        <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
-        <div class = "l" id="loginForm">
-            <?php 
-            if (isset($_SESSION['id'])){ ?>
-                    <form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
-                        <a href="actionlogout.php">Logout</a>
-                    </form>
-                    
-                
-<?php            }
-            else{ ?>
-                
-                    <div class="login">
-                        <a href="login_register.php">Login | Register</a>
-                    </div>
-<?php       }
-                ?>
-            
-        </div>
-        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
-            <div class="search">
-                <input type="text" class="searchInput" name="search" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
-            
-    </header>
+<?php output_header()?>
     
 
     <section id= "restaurant">
@@ -118,11 +87,11 @@
     <section id = "cart">
     <table>
         <thead>
-          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th></tr>
+          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th><th>Remove</th></tr>
         </thead>
         <tr></tr>
         <tfoot>
-          <tr><th colspan="3">Total:</th><th>0</th></tr>
+          <tr><th colspan="3">Total:</th><th>0</th><th></th></tr>
         </tfoot>
       </table>
     </section>

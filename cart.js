@@ -1,3 +1,18 @@
+
+
+function removeItem(){
+    const buttons = document.querySelectorAll(".remove-button")
+    const table = document.querySelector("#cart table")
+    for(const button of buttons){
+        button.addEventListener('click', function() {
+            table.querySelector("tfoot th:nth-child(2)").textContent = parseFloat(table.querySelector("tfoot th:nth-child(2)").textContent, 10) - parseFloat(button.parentElement.querySelector("td:nth-child(4)").textContent,10)
+
+            button.parentElement.remove()
+        })
+    }
+}
+
+
 function attachBuyEvents(){
     const buttons = document.querySelectorAll("#dishes button")
     for(const button of buttons){
@@ -21,7 +36,7 @@ function attachBuyEvents(){
                                                     found = false;
                                                     var t = 0.0
                                                     for(const row of rows){
-                                                        t += parseInt(row.parentElement.querySelector("td:nth-child(4)").textContent, 10)
+                                                        t += parseFloat(row.parentElement.querySelector("td:nth-child(4)").textContent, 10)
                                                         if(row.textContent == name.textContent){
                                                             row.parentElement.querySelector("td:nth-child(2)").textContent = parseFloat(row.parentElement.querySelector("td:nth-child(2)").textContent) + parseFloat(quantity.textContent)
                                                             row.parentElement.querySelector("td:nth-child(4)").textContent = parseFloat(row.parentElement.querySelector("td:nth-child(4)").textContent) + parseFloat(total.textContent)
@@ -44,12 +59,23 @@ function attachBuyEvents(){
                                                     content.appendChild(price)
                                                      
                                                     content.appendChild(total)
-
+                                                    const b = document.createElement("input")
+                                                    b.type="button"
+                                                    b.value = "X"
+                                                    b.classList.add("remove-button")
+                                                    b.addEventListener('click', function() {
+                                                        table.querySelector("tfoot th:nth-child(2)").textContent = parseFloat(table.querySelector("tfoot th:nth-child(2)").textContent, 10) - parseFloat(b.parentElement.querySelector("td:nth-child(4)").textContent,10)
+                                            
+                                                        b.parentElement.remove()
+                                                    })
+                                                    content.appendChild(b)
                                                     
                                                     table.appendChild(content)
-                                                    
                                                     })
     }
 }
 
+
+removeItem()
 attachBuyEvents()
+
