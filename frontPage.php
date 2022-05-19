@@ -26,9 +26,10 @@
 </head>
 <body>
 <header>
-        <h1><a href="index.php">Rasca Eats</a></h1>
+        <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
-        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
+  
+        <div class = "l" id="loginForm">
             <?php 
             if (isset($_SESSION['id'])){ ?>
                     <form action="actionlogout.php" method="get" id="logout2">
@@ -46,7 +47,7 @@
 <?php       }
                 ?>
             
-        </form>
+        </div>
         <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
             <div class="search">
                 <input type="text" class="searchInput" name="search" placeholder="search...">
