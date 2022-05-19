@@ -8,8 +8,10 @@
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
+    require_once('sql/favRestaurant.php');
 
     session_start();
+
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -89,11 +91,28 @@
         <img class = "slide" src="https://picsum.photos/500/300?food3" alt="Restaurant photo">
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
-        
-    </section>
 
-    <section id="favRestaurant">
-        <?php ?>
+        <?php if(isset($_SESSION['id'])){ ?>
+            <span class="favRestaurant">
+                <form method='POST' action=<?php
+
+                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
+                    else echo deleteFavRestaurant($db);
+
+                ?>>
+
+                    <input type='hidden' name='clientId' value='1'>
+                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
+                    <button type='submit' name='favRestaurantSubmit' class = <?php 
+                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
+                ?>
+                        ><i class='fa-solid fa-heart'></i></button> 
+                </form>
+
+            </span>
+        <?php } ?> 
+                
+        
     </section>
 
     <section id = "cart">

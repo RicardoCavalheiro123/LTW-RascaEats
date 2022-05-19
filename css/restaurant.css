@@ -15,14 +15,15 @@ header{
 }
 
 #restaurant {
+    display: grid;
     grid-column: 1/2;
     grid-row:2/2;
-    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto 1fr;
     justify-items: center;
     
     padding: 1em;
+    padding-left: 4em;
 }
 
 #restaurant p{
@@ -31,14 +32,15 @@ header{
 
 #restaurant p:nth-child(1){
     grid-column-start: 1;
-    grid-row-start: 1;
+    grid-row-start: 2;
     font-weight: 100;
 }
 
 #restaurant p:nth-child(2){
     grid-column-start: 1;
-    grid-row-start: 2;
+    grid-row-start: 1;
     font-weight: bold;
+    font-size: larger;
 }
 #restaurant p:nth-child(3){
     grid-column-start: 2;
@@ -64,7 +66,44 @@ header{
     justify-items: center;
 }
 
-#restaurant button{
+#restaurant .favRestaurant{
+    grid-column-start: 2;
+    grid-row-start: 1;
+
+}
+
+#restaurant .favRestaurant button{
+    border:  none;
+    background: none;
+}
+
+#restaurant .favRestaurant button:focus{
+    border:  none;
+    background: none;
+    color: crimson;
+}
+
+#restaurant .favRestaurant button.exists:focus{
+    border:  none;
+    background: none;
+    color: black;
+}
+
+#restaurant .favRestaurant button.exists{
+    border:  none;
+    background: none;
+    color: crimson;
+}
+
+#restaurant .left-button{
+    color: rgb(32, 74, 150);
+    border: none;
+    background: none;
+    font-size: large;
+    padding-top: 0.5em;
+}
+
+#restaurant .right-button{
     color: rgb(32, 74, 150);
     border: none;
     background: none;
@@ -111,9 +150,7 @@ header{
     content: " €";
 }
 
-.dish{
-    
-}
+
 
 .dish:hover{
     border: 1px;
