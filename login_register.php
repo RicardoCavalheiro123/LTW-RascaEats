@@ -21,23 +21,12 @@ $categories = getCategories($db);
     <title>Ex</title>
 </head>
 <body>
-<header>
+    <header>
         <h1><a href = "frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
-        <div class="login" id = "loginForm">
-            <a href="login_register.php">Login | Register</a>
-        </div>
-        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
-            <div class="search">
-                <input type="text" class="searchInput" name="search" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
-            
+        <i class="fa-solid fa-utensils"></i>     
     </header>
     <div class="hero">
+    
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
@@ -80,9 +69,16 @@ $categories = getCategories($db);
             </form>
         </div>
         
+        
     </div>
-   
-    </script>
+    <footer>
+            <div class="footer-content">
+                <h3>Descubra e reserve dos melhores restaurantes</h3>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2022 Rasca Eats</p>
+            </div>
+    </footer>
 
     <script>
         var x = document.getElementById("login")
@@ -99,15 +95,9 @@ $categories = getCategories($db);
             z.style.left = "0";
     }
     </script>
+    
+    
     </body>
-    <footer>
-        <div class="footer-content">
-            <h3>Descubra e reserve dos melhores restaurantes</h3>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Rasca Eats</p>
-        </div>
-    </footer>
 </html>
 <?php
     unset($_SESSION["error"]);

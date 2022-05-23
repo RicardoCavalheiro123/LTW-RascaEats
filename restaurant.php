@@ -8,8 +8,10 @@
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
+    require_once('sql/favRestaurant.php');
 
     session_start();
+
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -34,38 +36,7 @@
     <title>Restaurante</title>
 </head>
 <body>
-<header>
-        <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
-        <div class = "l" id="loginForm">
-            <?php 
-            if (isset($_SESSION['id'])){ ?>
-                    <form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
-                        <a href="actionlogout.php">Logout</a>
-                    </form>
-                    
-                
-<?php            }
-            else{ ?>
-                
-                    <div class="login">
-                        <a href="login_register.php">Login | Register</a>
-                    </div>
-<?php       }
-                ?>
-            
-        </div>
-        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
-            <div class="search">
-                <input type="text" class="searchInput" name="search" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
-            
-    </header>
+<?php output_header()?>
     
 
     <section id= "restaurant">
@@ -89,21 +60,38 @@
         <img class = "slide" src="https://picsum.photos/500/300?food3" alt="Restaurant photo">
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
-        
-    </section>
 
-    <section id="favRestaurant">
-        <?php ?>
+        <?php if(isset($_SESSION['id'])){ ?>
+            <span class="favRestaurant">
+                <form method='POST' action=<?php
+
+                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
+                    else echo deleteFavRestaurant($db);
+
+                ?>>
+
+                    <input type='hidden' name='clientId' value='1'>
+                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
+                    <button type='submit' name='favRestaurantSubmit' class = <?php 
+                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
+                ?>
+                        ><i class='fa-solid fa-heart'></i></button> 
+                </form>
+
+            </span>
+        <?php } ?> 
+                
+        
     </section>
 
     <section id = "cart">
     <table>
         <thead>
-          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th></tr>
+          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th><th>Remove</th></tr>
         </thead>
         <tr></tr>
         <tfoot>
-          <tr><th colspan="3">Total:</th><th>0</th></tr>
+          <tr><th colspan="3">Total:</th><th>0</th><th></th></tr>
         </tfoot>
       </table>
     </section>

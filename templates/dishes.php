@@ -5,7 +5,7 @@
             <article class = "dish">
                 <p class="dishName"><?php echo $dish['dishName'] ?></p>
                 <p class = "dishPrice"><?php echo $dish['price'] ?></p>
-                <input class="quantity" type="number" value="0">
+                <input class="quantity" type="number" value="1">
                 <button class="buy">Adicionar ao carrinho</button></article> <?php
             }
     }
