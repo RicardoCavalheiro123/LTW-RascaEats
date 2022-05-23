@@ -131,7 +131,9 @@ CREATE TABLE Comments(
     clientId integer NOT NULL,
     restaurantId integer NOT NULL,
     comment varchar NOT NULL,
+    rating integer NOT NULL,
     published date NOT NULL,
+    CONSTRAINT check_rating CHECK(rating <= 5 AND rating >= 0),
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
         ON DELETE CASCADE
@@ -226,11 +228,11 @@ INSERT INTO FavDish VALUES(2,23);
 
 ----//----
 
-INSERT INTO Comments VALUES(1,1,"Muito bom",'2022-5-13');
-INSERT INTO Comments VALUES(1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia",'2022-4-11');
-INSERT INTO Comments VALUES(2,3,"Já comi melhor",'2022-2-1');
-INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",'2022-1-22');
-INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",'2022-6-17');
+INSERT INTO Comments VALUES(1,1,"Muito bom",5,'2022-5-13');
+INSERT INTO Comments VALUES(1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia",2,'2022-4-11');
+INSERT INTO Comments VALUES(2,3,"Já comi melhor",3,'2022-2-1');
+INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
+INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",1,'2022-6-17');
 
 
 INSERT INTO RestaurantOwner VALUES(1, 1,  "Francisco Maldonado", "kiko@gmail.com",

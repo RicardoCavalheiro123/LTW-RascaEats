@@ -2,9 +2,46 @@
     padding-left: 4em;;
 }
 
+.comments {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 0.2 0.1 0.5;
+    padding-bottom: 0.5em;
+}
+
 .comments .username p{
     color: rgb(32, 74, 150);
     font-size: 1.5em;
+}
+
+.comments .username{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.comments .rating{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.comments .rating p{
+    font-size: 1.2em;
+
+}
+
+.comments .rating p::after{
+    content: "\2605";
+    color:rgb(237, 170, 0);
+}
+
+
+.comments .date{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.comments .date p{
+    font-size: smaller;
 }
 
 .comments .comment p{
@@ -14,6 +51,19 @@
     background-color: rgb(241, 241, 241);
 }
 
+.comments .comment{
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#reviews form{
+    display: grid;
+    grid-template-rows: auto 1.1fr;
+    grid-template-columns: 1.2fr auto;
+    row-gap: 0.5em;
+}
+
 #reviews form textarea{
     width: 100%;
     height: 5em;
@@ -21,6 +71,8 @@
     resize: none;
     border: none;
     margin-top: 0.5em;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 #reviews form button{
@@ -31,9 +83,60 @@
     border: none;
     font-weight: 400;
     cursor: pointer;
+    grid-row: 2;
+    grid-column: 1;
+    margin-top: 0.5em;
 }
 
 #reviews h3{
     margin-top: 2.5em;
     text-decoration: underline;
+    padding-bottom: 1em;
 }
+
+#reviews .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: center;
+    grid-row: 2;
+    grid-column: 2;
+    vertical-align: super;
+
+}
+
+#reviews .rating > input{
+    display: none;
+}
+
+
+#reviews .rating > label{
+    width: 1.1em;
+    font-size: 2em;
+    color: rgb(235, 199, 0);
+    cursor: pointer;
+}
+
+#reviews .rating > label::before{
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+#reviews .rating > label:hover:before,
+#reviews .rating > label:hover ~ label:before {
+    opacity: 1 !important;
+}
+
+#reviews .rating > input:checked ~ label:before{
+    opacity:1;
+}
+
+ #reviews .rating:hover > input:checked ~ label:before{ 
+    opacity: 0.4;
+}
+
+
+#reviews .rating > input:checked ~ label{
+    color: rgb(235, 199, 0);
+}
+

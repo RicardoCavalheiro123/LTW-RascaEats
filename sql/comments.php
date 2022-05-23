@@ -8,14 +8,17 @@
 
     function setComments($db){
         if(isset($_POST['commentSubmit'])){
+
             $clientId = $_POST['clientId'];
             $restaurantId = $_POST['restaurantId'];
             $date = $_POST['date'];
             $comment = $_POST['comment'];
+            $rating = $_POST['rating'];
+            
 
-            $stmt = $db->prepare('INSERT INTO Comments (clientId, restaurantId, comment, published) VALUES (?, ?, ?, ?)');
+            $stmt = $db->prepare('INSERT INTO Comments (clientId, restaurantId, comment, rating, published) VALUES (?, ?, ?, ?, ?)');
 
-            $stmt->execute(array($clientId, $restaurantId, $comment, $date));
+            $stmt->execute(array($clientId, $restaurantId, $comment, intval($rating), $date));
 
             echo "<meta http-equiv='refresh' content='0'>";
 
