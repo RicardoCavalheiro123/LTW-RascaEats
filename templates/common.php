@@ -15,13 +15,10 @@
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils"></i>
 
-        <form action="https://www.google.pt/?hl=pt-PT" method="get" id="loginForm">
+        <div class = "l" id="loginForm">
             <?php 
-            if (isset($_SESSION['id'])){ ?>
-                    <form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
-                        <a href="actionlogout.php">Logout</a>
-                    </form>
+            if (isset($_SESSION['id'])){ 
+                    drawLogoutForm($_SESSION['name'])?>
                     
                 
 <?php            }
@@ -33,7 +30,7 @@
 <?php       }
                 ?>
             
-        </form>
+        </div>
         
 
             
@@ -47,11 +44,8 @@
   
         <div class = "l" id="loginForm">
             <?php 
-            if (isset($_SESSION['id'])){ ?>
-                    <form action="actionlogout.php" method="get" id="logout2">
-                        <a href="profilePage.php"> <?php echo $_SESSION['name'] ?> </a>
-                        <a href="actionlogout.php">Logout</a>
-                    </form>
+            if (isset($_SESSION['id'])){ 
+                    drawLogoutForm($_SESSION['name'])?>
                     
                 
 <?php            }
