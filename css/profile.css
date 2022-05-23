@@ -37,7 +37,7 @@ body {
 }
 
 .header > img {
-    width:200px;
+    width:400px;
     border-radius: 10%;
     filter: grayscale(1);
     transition: .3s;
@@ -60,21 +60,31 @@ img:hover {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.details{
+    
+    padding-bottom:13em;
+}
 
 
 .details > h1 {				
     color: #1C1C1C;
     padding: 10px;
     font-size: 2em;
+    
 }
 
 .bold {
-    font-weight: 700;				
+    font-weight: 700;	
+    padding-top: 20px;
+	padding-left: 20px;
+    
+
 }
 
 p {
     color: #404040;
     padding: 20px;
+
 }
 footer{
     background-color: #ffa31a;
@@ -200,6 +210,32 @@ header form{
 }
 
 .button-4 {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 2px 20px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+
+.button-3 {
   appearance: none;
   background-color: #FAFBFC;
   border: 1px solid rgba(27, 31, 35, 0.15);
@@ -223,7 +259,39 @@ header form{
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
+  margin-top: 15px;
+
 }
+.button-3:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+  
+  .button-3:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+  }
+  
+  .button-3:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+  }
+  
+  .button-3:focus {
+    outline: 1px transparent;
+  }
+  
+  .button-3:before {
+    display: none;
+  }
+  
+  .button-3:-webkit-details-marker {
+    display: none;
+  }
 
 .button-4:hover {
   background-color: #F3F4F6;
@@ -257,6 +325,7 @@ header form{
 }
 
 .logout > a {
+
     background-image: linear-gradient(
       to right,
       #54b3d6,
@@ -269,6 +338,7 @@ header form{
     padding: 5px 5px;
     position: relative;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
   }
@@ -293,4 +363,49 @@ header form{
     width: 100%;
   }
   
- 
+  
+ .row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    justify-content: center;
+    padding-left: -100px;
+    
+ }
+
+ .row > p{
+     padding-left: 5px;
+ }
+
+ .input-field{
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    border-top: 0;
+    outline: none;
+    background: transparent;
+    margin-right: 15px;
+}
+
+.error-message {
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    float: left;
+    padding: 20px 35px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+  }
+
+  .error-text {
+    color: #cc0033;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 1px 1px rgba(250,250,250,.3);
+  }

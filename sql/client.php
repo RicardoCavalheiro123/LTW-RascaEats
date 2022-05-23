@@ -66,6 +66,19 @@
         $client['username'],
       );
     }
+    
+    function saveUsername(PDO $db2, int $id2, string $username2){
+      echo "ok";
+      $stmt = $db2->prepare('
+        Update Client set username = ?
+        WHERE clientId = ?
+      ');
+      
+      
+      if($stmt->execute(array($username2, $id2))) return true;
+      else return false;
+     
+    }
   }
 ?>
 

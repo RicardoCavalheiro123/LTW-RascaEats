@@ -11,6 +11,7 @@
     $stmt = $db->prepare('SELECT * FROM client WHERE clientId = ?');
     $stmt->execute(array($_SESSION['id']));
     $client = $stmt->fetch();
+    $username = $client['username'];
     $name = $client['clientName'];
     $email = $client['email'];
     $adress = $client['adress'];
@@ -26,7 +27,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Profile</title>
 </head>
@@ -44,12 +44,42 @@
 
     <div class="details">
         <h1>Details</h1>
-
-        <span class="bold">Name:</span> <p><?=$name?></p>
+        <div class="row">
+            <span class="bold">Name:</span> <p><?=$name?></p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3" name = "name" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            </form>
+        </div>
+        <div class="row">
+            <span class="bold">Username:</span> <p><?=$username?></p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3" name = "username" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            </form>
+        </div>
+        <div class="row">
             <span class="bold">Email:</span> <p><?=$email?></p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3" name = "email" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            </form>
+        </div>
+        <div class="row">
             <span class="bold">Password:</span> <p>***</p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3"  name = "password" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            </form>
+        </div>
+        <div class="row">
             <span class="bold">Adress:</span> <p><?=$adress?></p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3" name = "adress" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            </form>
+        </div>
+        <div class="row">
             <span class="bold">Phone Number:</span> <p><?=$phoneNumber?></p>
+            <form action="edit_profile.php" method="post" class="logout">
+                <button class="button-3" name = "phoneNumber" role="button">Edit <i class="fa-solid fa-pen-to-square"></i> </button>
+            </form>
+        </div>
     </div>
  
 </div>

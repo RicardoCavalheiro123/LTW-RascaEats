@@ -11,6 +11,7 @@
     $categories = getCategories($db);
 
     $comments = getComments($db);
+    header('Location: frontpage.php');
 ?>
 
 <!DOCTYPE html>

@@ -42,8 +42,10 @@ $categories = getCategories($db);
                 <?php
                     if(isset($_SESSION["error"])){
                         $error = $_SESSION["error"];
-                        echo "<div class= error> $error </div>";
-                    }
+                        echo "<div class= error-message>
+                                <span class= error-text > $error </span>
+                            </div>";
+                        }
                 ?>  
             </form>
             <form id="register" action = "server.php" method = "POST" class = "input-group">
