@@ -141,24 +141,7 @@ header{
     background-color: #edf6f9;
   }
 
-#dishes{
-    grid-column: 1/2;
-    grid-row:3/3;
-    padding: 1em;
-    margin:0 auto;
-}
 
-#dishes article p:nth-child(2)::after{
-    content: " €";
-}
-
-
-
-.dish:hover{
-    border: 1px;
-    border-style: solid;
-    box-shadow: gray;
-}
 
 #reviews{
     grid-column: 1/2;

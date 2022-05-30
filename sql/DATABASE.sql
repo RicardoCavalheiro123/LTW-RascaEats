@@ -234,6 +234,16 @@ INSERT INTO Comments VALUES(2,3,"Já comi melhor",3,'2022-2-1');
 INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
 INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",1,'2022-6-17');
 
+----//----
 
 INSERT INTO RestaurantOwner VALUES(1, 1,  "Francisco Maldonado", "kiko@gmail.com",
     934343431, "Gaia", "ronaldo7", "kmaldonado");
+
+----//----
+
+INSERT INTO DishPhoto VALUES(8,'images/Grande_Mac.jpg');
+INSERT INTO DishPhoto VALUES(9,'images/McGalinha.jpg');
+INSERT INTO DishPhoto VALUES(10,'images/cola.jpg');
+INSERT INTO DishPhoto VALUES(11,'images/nujetes.jpg');
+INSERT INTO DishPhoto VALUES(12,'images/Gelado_Oreo.jpg');
+INSERT INTO DishPhoto VALUES(13,'images/Tarte_de_Maca.jpg');

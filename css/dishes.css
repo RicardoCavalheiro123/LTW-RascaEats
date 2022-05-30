@@ -1,0 +1,26 @@
+#dishes article.dish button.buy {
+    width: 10em;
+    height: 1.5em;
+    background-color: rgb(32, 74, 150);
+    color: white;
+    border: none;
+}
+
+#dishes{
+    grid-column: 1/2;
+    grid-row:3/3;
+    padding: 1em;
+    margin:0 auto;
+}
+
+#dishes article p:nth-child(2)::after{
+    content: " €";
+}
+
+
+
+.dish:hover{
+    border: 1px;
+    border-style: solid;
+    box-shadow: gray;
+}
