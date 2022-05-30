@@ -8,6 +8,7 @@
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
+    require_once('sql/dishes.php');
     require_once('sql/favRestaurant.php');
 
     session_start();
@@ -18,6 +19,10 @@
     
     $restaurant = getRestaurant($db);
     $menu = getMenu($db);
+    $images = getImages($db);
+
+    
+
     $comments = getComments($db);
 ?>
 
@@ -30,6 +35,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/comments.css">
+    <link rel="stylesheet" href="css/dishes.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
@@ -134,7 +140,7 @@
     </section>
     <section id = "dishes">
 
-        <?php output_dishes($menu)?>
+        <?php output_dishes($menu,$images)?>
     
     </section>
     <section id = "reviews">

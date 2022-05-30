@@ -36,7 +36,7 @@
 
             <h1>Profile Page</h1>
 
-            <img class="avatar" src="pinheiro.jpg" alt="Avatar">
+            <img class="avatar" src="images/pinheiro.jpg" alt="Avatar">
     </div>
 
 
