@@ -124,7 +124,7 @@ header{
 
   
 
-  #cart table > tr :nth-child(3)::after, #cart table > tr :nth-child(4)::after{
+  #cart table > tr :nth-child(4)::after, #cart table > tr :nth-child(5)::after{
       content: "€";
   }
   
@@ -152,12 +152,18 @@ header{
     content: " €";
 }
 
-
+.dish{
+    padding: 1em;
+}
 
 .dish:hover{
     border: 1px;
     border-style: solid;
     box-shadow: gray;
+}
+
+.dishId{
+    display: none;
 }
 
 #reviews{
