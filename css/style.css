@@ -186,6 +186,10 @@ header form{
     flex-direction: column;
 }
 
+#searching {
+    display: none;
+}
+
 #category {
     display: grid;
     grid-template-columns: 300px 300px 300px;

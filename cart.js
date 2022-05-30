@@ -19,7 +19,6 @@ function attachBuyEvents(){
         button.addEventListener('click', function() {
                                                     const table = document.querySelector("#cart table")
 
-                                                    
                                                     const id = document.createElement("td")
                                                     id.classList.add("dishId")
                                                     id.textContent = button.parentElement.querySelector(".dishId").textContent
