@@ -17,7 +17,7 @@
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
-    $restaurant = getRestaurant($db);
+    $restaurant = Restaurant::getRestaurant($db);
     $menu = getMenu($db);
     $images = getImages($db);
 
@@ -39,6 +39,7 @@
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
+    <script src="search.js" defer></script>
     <title>Restaurante</title>
 </head>
 <body>
@@ -47,19 +48,29 @@
 
     <section id= "restaurant">
         <p>
-            <?php echo $restaurant['category'] ?>
+            <?php
+            $category = 'category';
+            echo $restaurant->$category ?>
         </p>
         <p>
-            <?php echo $restaurant['restaurantName'] ?>
+            <?php 
+            $name = 'restaurantName';
+            echo $restaurant->$name ?>
         </p>
         <p>
-            <?php echo $restaurant['rating'] ?><i class="fa-solid fa-star"></i>
+            <?php 
+            $rating = 'rating';
+            echo $restaurant->$rating ?><i class="fa-solid fa-star"></i>
         </p>
         <p>
-            <?php echo $restaurant['phoneNumber'] ?>
+            <?php
+            $phoneNumber = 'phoneNumber'; 
+            echo $restaurant->phoneNumber ?>
         </p>
         <p>
-            <?php echo $restaurant['adress'] ?>
+            <?php 
+            $address = 'adress';
+            echo $restaurant->address; ?>
         </p>
         <img class = "slide" src="https://picsum.photos/500/300?food1" alt="Restaurant photo">
         <img class = "slide" src="https://picsum.photos/500/300?food2" alt="Restaurant photo">

@@ -9,7 +9,7 @@
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $categories = getCategories($db);
+    $categories = Restaurant::getCategories($db);
 
     //$comments = getComments($db);
 ?>
@@ -22,6 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
+    <script src="search.js" defer></script>
     <title>Rasca Eats</title>
 </head>
 <body>
@@ -33,7 +34,7 @@
             <section id = "category">
                 <h2>
                 <?php echo $category['category']?>
-                </h2> <?php $restaurants = getRestaurantCategory($db, $category['category']);
+                </h2> <?php $restaurants = Restaurant::getRestaurantCategory($db, $category['category']);
                 foreach($restaurants as $restaurant){ ?>
                     <article>
                         <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="https://picsum.photos/300/300?<?php echo $restaurant['restaurantName']?>" alt="Restaurant photo"></a>
