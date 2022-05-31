@@ -58,14 +58,12 @@
                 ?>
             
         </div>
-        <form action="file:///C:/Users/antol/LTW_php/Projeto_LTW/proj.html" method="get">
-            <div class="search">
-                <input type="text" class="searchInput" name="search" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
+        <div class="search">
+            <input type="text" id="searchrestaurant" class="searchInput" name="search" placeholder="search...">
+            <button type="submit" class="searchButton">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
             
     </header>
 <?php } ?>
