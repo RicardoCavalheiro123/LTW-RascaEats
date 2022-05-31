@@ -8,7 +8,7 @@
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $categories = getCategories($db);
+    $categories = Restaurant::getCategories($db);
 
     $comments = getComments($db);
     header('Location: frontpage.php');

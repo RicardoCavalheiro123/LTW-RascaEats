@@ -58,6 +58,8 @@ header form{
 .search{
     width: 100%;
     display: inline-flex;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 .searchInput{
