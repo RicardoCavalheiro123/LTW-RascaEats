@@ -40,8 +40,8 @@ $categories = getCategories($db);
                 <input type="password" class = "input-field" name = "password" placeholder="Password" required>
                 <button type="submit" name = "submit_login" class = "submit-btn">Log in</button>
                 <?php
-                    if(isset($_SESSION["error"])){
-                        $error = $_SESSION["error"];
+                    if(isset($_SESSION["error1"])){
+                        $error = $_SESSION["error1"];
                         echo "<div class= error-message>
                                 <span class= error-text > $error </span>
                             </div>";
@@ -63,9 +63,12 @@ $categories = getCategories($db);
                 <input type="tel" class = "input-field" name = "phone_number" placeholder="Phone Number" required>
                 <button type="submit" name = "submit_register" class = "submit-btn">Register</button>
                 <?php
-                    if(isset($_SESSION["error"])){
-                        $error = $_SESSION["error"];
-                        echo "<div class= error> $error </div>";
+                    if(isset($_SESSION["error1"])){
+                        $error = $_SESSION["error1"];
+                        echo "<div class= error-message>
+                                <span class= error-text > $error </span>
+                            </div>";
+                        
                     }
                 ?> 
             </form>

@@ -44,7 +44,7 @@
         <h1>Details</h1>
         <form action="server_edit.php" method="post" class="logout">
         <?php 
-            if(isset($_POST['name'])){ ?>
+            if(isset($_POST['name1'])){ ?>
                 <div class="row">
                 <input type="text" class = "input-field" name = "newName" placeholder= " Full Name" required>
                 
@@ -59,7 +59,7 @@
             
            
           
-            if(isset($_POST['username'])){ ?>
+            else if(isset($_POST['username'])){ ?>
               <div class="row">
               <input type="text" class = "input-field" name = "newUsername" placeholder="Username" required>
 

@@ -148,10 +148,8 @@ CREATE TABLE Comments(
 
 
 INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
-    912345678, "Maia", "password", "antol");
+    912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol");
 
-INSERT INTO Client VALUES(2, "Ricardo Cavalheiro", "ricardao@yahoo.com",
-    912121299, "Póvoa", "Password", "ricardi");
 
 ----//----
 
