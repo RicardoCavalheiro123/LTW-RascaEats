@@ -11,6 +11,8 @@
     require_once('sql/dishes.php');
     require_once('sql/favRestaurant.php');
 
+    require_once('cart.php');
+
     session_start();
 
 
@@ -101,54 +103,7 @@
         
     </section>
 
-    <section id = "cart">
-    <table>
-        <thead>
-          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th><th>Remove</th></tr>
-        </thead>
-        <tr></tr>
-        <tfoot>
-          <tr><th colspan="3">Total:</th><th>0</th><th></th></tr>
-        </tfoot>
-        </table>
-        <input type="button" value="Encomendar" id="place-order" onclick = "placeOrder()">
-        <script>
-            function placeOrder(){
-                <?php 
-                    $stmt = $db->prepare('INSERT INTO Request(clientId, state) VALUES ("'.$_SESSION['id'].'", "Preparing")');
-                    $stmt->execute();
-                    $stmt = $db->prepare('SELECT last_insert_rowid()');
-                    $stmt->execute();
-                    $requestId = $stmt->fetch();
-
-                ?>;
-
-                const table = document.querySelectorAll("#cart table > tr");
-                for(const row of table){
-                    var quantity = row.querySelector("td:nth-child(3)").textContent;
-                    document.cookie = escape('currentDishQuantity') + "=" + escape(quantity);
-                    var id = row.querySelector("td:nth-child(1)").textContent;
-                    document.cookie = escape('currentDishId') + "=" + escape(id);
-                    <?php 
-                        $stmt = $db->prepare('INSERT INTO CurrentRequest VALUES (?,?,?)');
-                        $stmt->execute(array($_COOKIE['currentDishId'], $requestId['last_insert_rowid()'], $_COOKIE['currentDishQuantity']));
-                    ?>
-                    
-                    
-
-                }
-                const t = document.querySelector("#cart table");
-                const rows = document.querySelectorAll("#cart table > tr");
-                for(const row of rows){
-                    row.remove();
-                }
-                t.querySelector("tfoot th:nth-child(2)").textContent = 0;
-            }
-            
-        </script>
-    
-    
-    </section>
+    <?php output_cart(); ?>
     <section id = "dishes">
 
         <?php output_dishes($menu,$images)?>

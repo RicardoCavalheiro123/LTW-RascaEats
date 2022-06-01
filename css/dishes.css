@@ -18,9 +18,3 @@
 }
 
 
-
-.dish:hover{
-    border: 1px;
-    border-style: solid;
-    box-shadow: gray;
-}
