@@ -23,19 +23,18 @@
     if(isset($_POST['submit_login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $stmt = $db->prepare('SELECT * FROM client WHERE username = ? and password = ?');
-        $stmt->execute(array($username,$password));
+        $stmt = $db->prepare('SELECT * FROM client WHERE username = ?');
+        $stmt->execute(array($username));
         $validLogin = $stmt->fetch();
-        if($validLogin){
-            //$clientId = client::getClientId($db, $username, $password);
-            if($validLogin){
-                $_SESSION['id'] = $validLogin['clientId'];
-                $_SESSION['name'] = $username; 
-            }
+        if($validLogin && password_verify($password,$validLogin['password'])){
+            
+            $_SESSION['id'] = $validLogin['clientId'];
+            $_SESSION['name'] = $username; 
+        
             header('Location: frontpage.php');
         }
         else{
-            $_SESSION["error"] = "Username or Password incorrect";
+            $_SESSION["error1"] = "Username or Password incorrect";
             header("location: login_register.php");
         }
 
@@ -60,25 +59,24 @@
         $emailExists = $stmt->fetch();
 
         if($userExists){
-            $_SESSION["error"] = "Username already used";
+            $_SESSION["error1"] = "Username already used";
             header("location: login_register.php");
         }
         else if($phoneExists){
-            $_SESSION["error"] = "Phone Number already used";
+            $_SESSION["error1"] = "Phone Number already used";
             header("location: login_register.php");
         }
         else if($emailExists){
-            $_SESSION["error"] = "Email already used";
+            $_SESSION["error1"] = "Email already used";
             header("location: login_register.php");
         }
         else{
-            
+            $options = ['cost => 12'];
             $stmt = $db->prepare('INSERT INTO Client(clientName, email, phoneNumber, adress, password, username) VALUES(? ,?,?,?, ?, ?)');
-            $stmt->execute(array($fullName, $email, $phoneNumber, $adress, $password, $username));
+            $stmt->execute(array($fullName, $email, $phoneNumber, $adress, password_hash($password,PASSWORD_DEFAULT, $options), $username));
             $stmt = $db->prepare('SELECT clientId FROM Client WHERE username = ?');
             $stmt->execute(array($username));
             $id = $stmt->fetch();
-            
             $_SESSION['id'] = $id['clientId'];
             $_SESSION['name'] = $username; 
             header('Location: frontpage.php');
