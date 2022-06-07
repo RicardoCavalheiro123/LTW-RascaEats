@@ -11,6 +11,8 @@
     require_once('sql/dishes.php');
     require_once('sql/favRestaurant.php');
 
+    require_once('cart.php');
+
     session_start();
 
 
@@ -104,17 +106,7 @@
         
     </section>
 
-    <section id = "cart">
-    <table>
-        <thead>
-          <tr><th>Produto</th><th>Quantidade</th><th>Price</th><th>Total</th><th>Remove</th></tr>
-        </thead>
-        <tr></tr>
-        <tfoot>
-          <tr><th colspan="3">Total:</th><th>0</th><th></th></tr>
-        </tfoot>
-      </table>
-    </section>
+    <?php output_cart(); ?>
     <section id = "dishes">
 
         <?php output_dishes($menu,$images)?>

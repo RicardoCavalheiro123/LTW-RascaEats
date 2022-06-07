@@ -47,8 +47,8 @@
             Update Client set password = ?
             WHERE clientId = ?
           ');
-            
-            $stmt->execute(array($_POST['password1'],$_SESSION['id']));
+          $options = ['cost => 12'];
+            $stmt->execute(array(password_hash($_POST['password1'],PASSWORD_DEFAULT, $options),$_SESSION['id']));
             header('Location: profilePage.php');
         }
         else{
@@ -56,7 +56,6 @@
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
-        
         
     }
 

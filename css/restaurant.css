@@ -9,9 +9,8 @@ header{
 }
 
 #cart{
-    position: fixed;
-    right:11em;
-    top:9em;
+
+    grid-row-start: 2;
 }
 
 #restaurant {
@@ -140,7 +139,7 @@ header{
 
   
 
-  #cart table > tr :nth-child(3)::after, #cart table > tr :nth-child(4)::after{
+  #cart table tbody tr :nth-child(3)::after, #cart table tbody tr :nth-child(4)::after{
       content: "€";
   }
   
@@ -157,7 +156,30 @@ header{
     background-color: #edf6f9;
   }
 
+#dishes{
+    grid-column: 1/2;
+    grid-row:3/3;
+    padding: 1em;
+    margin:0 auto;
+}
 
+#dishes article p:nth-child(2)::after{
+    content: " €";
+}
+
+.dish{
+    padding: 1em;
+}
+
+.dish:hover{
+    border: 1px;
+    border-style: solid;
+    box-shadow: gray;
+}
+
+.dishId{
+    display: none;
+}
 
 #reviews{
     grid-column: 1/2;

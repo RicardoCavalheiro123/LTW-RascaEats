@@ -47,7 +47,7 @@
         <div class="row">
             <span class="bold">Name:</span> <p><?=$name?></p>
             <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "name" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="button-3" name = "name1" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
             </form>
         </div>
         <div class="row">
@@ -63,7 +63,7 @@
             </form>
         </div>
         <div class="row">
-            <span class="bold">Password:</span> <p>***</p>
+            <span class="bold">Password:</span> <p>****</p>
             <form action="edit_profile.php" method="post" class="logout">
                 <button class="button-3"  name = "password" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
             </form>
