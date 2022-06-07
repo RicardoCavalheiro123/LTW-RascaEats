@@ -40,7 +40,7 @@
 <?php function output_header(){ ?>
   <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
+        <i class="fa-solid fa-utensils" id="utensils"></i>
   
         <div class = "l" id="loginForm">
             <?php 
@@ -60,9 +60,7 @@
         </div>
         <div class="search">
             <input type="text" id="searchrestaurant" class="searchInput" name="search" placeholder="search...">
-            <button type="submit" class="searchButton">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            <i class="fa-solid fa-magnifying-glass" id="magnifyingGlass"></i>
         </div>
             
     </header>

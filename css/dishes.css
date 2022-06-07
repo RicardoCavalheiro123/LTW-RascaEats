@@ -4,6 +4,9 @@
     background-color: rgb(32, 74, 150);
     color: white;
     border: none;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    border-radius: 0.2em;
 }
 
 #dishes{
@@ -11,16 +14,20 @@
     grid-row:3/3;
     padding: 1em;
     margin:0 auto;
+    padding-left: 4em;
 }
 
-#dishes article p:nth-child(2)::after{
+#dishes article p:nth-child(3)::after{
     content: " €";
 }
 
 
+article.dish{
+    margin-bottom: 1em;
+}
 
-.dish:hover{
-    border: 1px;
-    border-style: solid;
-    box-shadow: gray;
+p.dishName {
+    color: #425e3a;
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
 }
