@@ -4,6 +4,7 @@
 
 
 <?php function drawLogoutForm(string $name) { ?>
+
   <form action="actionlogout.php" method="post" class="logout">
     <a href="orders.php">Minhas encomendas</a>
     <a href="profilePage.php"><?=$name?></a>
