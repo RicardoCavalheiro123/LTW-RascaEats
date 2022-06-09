@@ -143,17 +143,18 @@ INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
     912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol","");
 
 
+
 ----//----
 
-INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", 5);
-INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", 3.7);
-INSERT INTO Restaurant VALUES(4, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", 4.3);
-INSERT INTO Restaurant VALUES(5, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", 3.2);
-INSERT INTO Restaurant VALUES(6, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", 4.6);
-INSERT INTO Restaurant VALUES(7, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", 4.1);
-INSERT INTO Restaurant VALUES(8, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", 3.9);
-INSERT INTO Restaurant VALUES(9, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", 4.3);
-INSERT INTO Restaurant VALUES(10, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", 4.2);
+INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", 5, 1);
+INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", 3.7, 1);
+INSERT INTO Restaurant VALUES(4, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", 4.3, 1);
+INSERT INTO Restaurant VALUES(5, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", 3.2, 1);
+INSERT INTO Restaurant VALUES(6, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", 4.6, 1);
+INSERT INTO Restaurant VALUES(7, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", 4.1, 1);
+INSERT INTO Restaurant VALUES(8, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", 3.9, 1);
+INSERT INTO Restaurant VALUES(9, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", 4.3, 1);
+INSERT INTO Restaurant VALUES(10, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", 4.2, 1);
 
 ----//----
 

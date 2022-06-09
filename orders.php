@@ -2,6 +2,7 @@
     session_start();
     require_once('sql/connection.php');
     require_once('templates/common.php');
+    require_once('sql/sql_orders.php')
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
@@ -26,4 +27,7 @@
     <title>Restaurante</title>
 </head>
 <body>
-<?php output_header()?>
+<?php output_header()
+output_orders()
+output_footer()
+?>
