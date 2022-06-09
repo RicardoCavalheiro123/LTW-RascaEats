@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/comments.css">
     <link rel="stylesheet" href="css/dishes.css">
     <link rel="stylesheet" href="css/orders.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Restaurante</title>
 </head>
