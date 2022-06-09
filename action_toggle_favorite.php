@@ -16,9 +16,6 @@
     $result = $stmt->fetch();
 
     
-
-    
-    //var_dump($_POST);
     if($result){
         $stmt = $db->prepare('DELETE FROM FavRestaurant WHERE clientId = ? AND restaurantId = ?');
         $stmt->execute(array($clientId,$restaurantId));
