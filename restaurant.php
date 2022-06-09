@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/comments.css">
     <link rel="stylesheet" href="css/dishes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
@@ -69,15 +70,17 @@
             <?php
             $phoneNumber = 'phoneNumber'; 
             echo $restaurant->phoneNumber ?>
+            <i class="fa-solid fa-phone"></i>
         </p>
         <p>
             <?php 
             $address = 'adress';
             echo $restaurant->address; ?>
+            
         </p>
-        <img class = "slide" src="https://picsum.photos/500/300?food1" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/500/300?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/500/300?food3" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/650/400?food1" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
 

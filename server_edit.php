@@ -11,10 +11,21 @@
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $userPhoto = filter_input(INPUT_POST, 'userPhoto', FILTER_SANITIZE_STRING);
+      
 
 
-
-
+    if($userPhoto) {
+      $fileName = "images/user" .$userPhoto .".png";
+      echo $fileName;
+      $stmt = $db->prepare('
+        Update Client set photo = ?
+        WHERE clientId = ?
+      ');
+        
+        $stmt->execute(array($fileName,$_SESSION['id']));
+        header('Location: profilePage.php');
+    }
     if(isset($_POST['namebtn'])){
         $stmt = $db->prepare('
         Update Client set clientName = ?
@@ -22,7 +33,7 @@
       ');
     
         $stmt->execute(array($_POST['newName'],$_SESSION['id']));
-        header('Location: frontPage.php');
+        header('Location: profilePage.php');
 
     }
 
@@ -88,6 +99,20 @@
         $stmt->execute(array($_POST['newPhone_number'],$_SESSION['id']));
         header('Location: profilePage.php');
     }
+    
+    if(isset($_POST['phoneNumberbtn'])){
+        
+      $stmt = $db->prepare('
+      Update Client set phoneNumber = ?
+      WHERE clientId = ?
+    ');
+  
+      $stmt->execute(array($_POST['newPhone_number'],$_SESSION['id']));
+      header('Location: profilePage.php');
+  }
+  header('Location: profilePage.php');
+  
+  
     
 
     

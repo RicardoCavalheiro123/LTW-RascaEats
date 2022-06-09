@@ -47,6 +47,7 @@
         $email = $_POST['email'];
         $adress = $_POST['adress'];
         $phoneNumber = $_POST['phone_number'];
+        $photo = "sem foto";
         //verify if username, phoneNumber and mail are unique
         $stmt = $db->prepare('SELECT * FROM client WHERE username = ?');
         $stmt->execute(array($username));
