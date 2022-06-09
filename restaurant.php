@@ -42,6 +42,7 @@
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
+    <script src="favRestaurant.js" defer></script>
     <title>Restaurante</title>
 </head>
 <body>
@@ -80,22 +81,17 @@
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
 
+        
+
         <?php if(isset($_SESSION['id'])){ ?>
             <span class="favRestaurant">
-                <form method='POST' action=<?php
 
-                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
-                    else echo deleteFavRestaurant($db);
-
-                ?>>
-
-                    <input type='hidden' name='clientId' value='1'>
-                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
-                    <button type='submit' name='favRestaurantSubmit' class = <?php 
-                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
-                ?>
-                        ><i class='fa-solid fa-heart'></i></button> 
-                </form>
+                    <button type='submit' name='favRestaurantSubmit' <?php 
+                        if (checkFavRestaurant($db)) echo "class = exists" 
+                        ?> 
+                        onclick="toggleFavRestaurant(<?=$_SESSION['id']?>, <?=$_GET['id']?>)">
+                        <i class='fa-solid fa-heart'></i>
+                    </button> 
 
             </span>
         <?php } ?> 

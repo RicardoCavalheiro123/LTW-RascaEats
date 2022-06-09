@@ -26,22 +26,12 @@ CREATE TABLE Restaurant(
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber integer NOT NULL,
-    rating real
-);
-
-CREATE TABLE RestaurantOwner (
-    ownerId integer PRIMARY KEY,
-    restaurantId integer,
-    restaurantName varchar,
-    email varchar,
-    phoneNumber integer,
-    adress varchar,
-    password varchar,
-    username varchar,
-    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
-        REFERENCES Restaurant(restaurantId) 
+    rating real,
+    ownerId integer,
+    CONSTRAINT fk_clientId FOREIGN KEY (ownerId)
+        REFERENCES Client(clientId)
         ON DELETE CASCADE
-        ON UPDATE CASCADE    
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE RestaurantPhoto(
