@@ -44,6 +44,7 @@
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
+    <script src="favRestaurant.js" defer></script>
     <title>Restaurante</title>
 </head>
 <body>

@@ -86,19 +86,9 @@ header{
     background: none;
 }
 
-#restaurant .favRestaurant button:focus{
-    border:  none;
-    background: none;
-    color: crimson;
-}
 
-#restaurant .favRestaurant button.exists:focus{
-    border:  none;
-    background: none;
-    color: black;
-}
 
-#restaurant .favRestaurant button.exists{
+#restaurant .favRestaurant button.exists i{
     border:  none;
     background: none;
     color: crimson;

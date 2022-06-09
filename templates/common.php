@@ -5,8 +5,9 @@
 
 <?php function drawLogoutForm(string $name) { ?>
   <form action="actionlogout.php" method="post" class="logout">
+    <a href="orders.php">Minhas encomendas</a>
     <a href="profilePage.php"><?=$name?></a>
-  <button class="button-4" role="button">Logout</button>
+    <button class="button-4" role="button">Logout</button>
   </form>
 <?php } ?>
 
@@ -139,20 +140,12 @@
 
         <?php if(isset($_SESSION['id'])){ ?>
             <span class="favRestaurant">
-                <form method='POST' action=<?php
-
-                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
-                    else echo deleteFavRestaurant($db);
-
-                ?>>
-
-                    <input type='hidden' name='clientId' value='1'>
-                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
-                    <button type='submit' name='favRestaurantSubmit' class = <?php 
-                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
-                ?>
-                        ><i class='fa-solid fa-heart'></i></button> 
-                </form>
+                    <button type='submit' name='favRestaurantSubmit' <?php 
+                        if (checkFavRestaurant($db)) echo "class = exists" 
+                        ?> 
+                        onclick="toggleFavRestaurant(<?=$_SESSION['id']?>, <?=$_GET['id']?>)">
+                        <i class='fa-solid fa-heart'></i>
+                    </button> 
 
             </span>
         <?php } ?> 
