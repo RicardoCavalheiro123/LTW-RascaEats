@@ -15,19 +15,70 @@
     padding: 1em;
     margin:0 auto;
     padding-left: 4em;
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
-#dishes article p:nth-child(3)::after{
+#dishes section p.dishPrice::after{
     content: " €";
+}
+
+#dishes article p:nth-child(3){
+    grid-row: 2;
+    grid-column: 2;
 }
 
 
 article.dish{
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#dishes section {
+    display: grid;
+    grid-template-columns: auto 0.3fr;
 }
 
 p.dishName {
     color: #425e3a;
+    grid-column: 1;
+    grid-row: 1;
     font-family: 'Roboto', sans-serif;
     font-size: larger;
+}
+
+p.dishPrice {
+    grid-column: 2;
+    grid-row: inherit;
+}
+
+#dishes section a{
+    appearance: none;
+    background-color: #425e3a;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 2px 20px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-decoration: none;
+    padding-bottom: 0.1em;
+    grid-row: 3;
+    grid-column: 1/3;
 }

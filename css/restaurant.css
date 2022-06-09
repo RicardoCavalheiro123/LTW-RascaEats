@@ -163,10 +163,6 @@ header{
     margin:0 auto;
 }
 
-#dishes article p:nth-child(2)::after{
-    content: " €";
-}
-
 .dish{
     padding: 1em;
 }

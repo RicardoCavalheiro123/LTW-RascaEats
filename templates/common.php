@@ -10,10 +10,12 @@
   </form>
 <?php } ?>
 
+
+
 <?php function output_header_wo_search(){ ?>
   <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
+        <i class="fa-solid fa-utensils" id="utensils"></i>
 
         <div class = "l" id="loginForm">
             <?php 
@@ -66,6 +68,8 @@
     </header>
 <?php } ?>
 
+
+
 <?php function output_footer(){ ?>
   <footer>
         <div class="footer-content">
@@ -75,4 +79,85 @@
             <p>copyright &copy;2022 Rasca Eats</p>
         </div>
     </footer>
+<?php } ?>
+
+
+
+<?php function output_restaurant($restaurant, $db, $ratings){ ?>
+    <section id= "restaurant">
+        <p>
+            <?php
+            $category = 'category';
+            echo $restaurant->$category ?>
+        </p>
+        <p>
+            <?php 
+            $name = 'restaurantName';
+            echo $restaurant->$name ?>
+        </p>
+        <p>
+            <?php 
+            $rating = 'rating';
+
+            if(is_null($restaurant->$rating)) $restaurant->$rating = 0;
+            $count = 0; $sum = 0;
+
+
+            foreach($ratings as $rate){
+                $count += 1;
+                $sum = $sum + (int)$rate['rating'];
+                $restaurant->$rating = $rate;
+
+            }
+
+            $restaurant->$rating = $sum / $count;
+
+            
+            echo $restaurant->$rating; 
+   
+            
+            
+            ?><i class="fa-solid fa-star"></i>
+        </p>
+        <p>
+            <?php
+            $phoneNumber = 'phoneNumber'; 
+            echo $restaurant->$phoneNumber ?>
+            <i class="fa-solid fa-phone"></i>
+        </p>
+        <p>
+            <?php 
+            $address = 'adress';
+            echo $restaurant->address; ?>
+            
+        </p>
+        <img class = "slide" src="https://picsum.photos/650/400?food1" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
+        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
+        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
+
+        <?php if(isset($_SESSION['id'])){ ?>
+            <span class="favRestaurant">
+                <form method='POST' action=<?php
+
+                    if(!checkFavRestaurant($db)) echo setFavRestaurant($db);
+                    else echo deleteFavRestaurant($db);
+
+                ?>>
+
+                    <input type='hidden' name='clientId' value='1'>
+                    <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?>>
+                    <button type='submit' name='favRestaurantSubmit' class = <?php 
+                        if (isset($_SESSION['id']) && checkFavRestaurant($db)) echo "exists" 
+                ?>
+                        ><i class='fa-solid fa-heart'></i></button> 
+                </form>
+
+            </span>
+        <?php } ?> 
+                
+        
+    </section>
+
 <?php } ?>
