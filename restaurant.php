@@ -2,14 +2,17 @@
 
     require_once('sql/connection.php');
     require_once('sql/restaurant.php');
+    require_once('templates/restaurant.php');
 
     require_once('templates/comments.php');
     require_once('sql/comments.php');
+
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
-    require_once('sql/dishes.php');
+    require_once('sql/dish.php');
     require_once('sql/favRestaurant.php');
+    require_once('sql/favDish.php');
 
     require_once('cart.php');
 
@@ -20,7 +23,7 @@
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
     $restaurant = Restaurant::getRestaurant($db);
-    $menu = getMenu($db);
+    $menu = Dish::getMenu($db);
     $images = getImages($db);
 
     $comments = Comments::getComments($db);
@@ -45,6 +48,7 @@
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
     <script src="favRestaurant.js" defer></script>
+    <script src="favDish.js" defer></script>    
     <title>Restaurante</title>
 </head>
 <body>
@@ -60,7 +64,7 @@
     
     <section id = "dishes">
 
-        <?php output_dishes($menu,$images)?>
+        <?php output_dishes($menu,$images,$db)?>
     
     </section>
     <section id = "reviews">
