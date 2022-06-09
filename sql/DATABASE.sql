@@ -17,7 +17,9 @@ CREATE TABLE Client(
     phoneNumber integer NOT NULL UNIQUE,
     adress varchar NOT NULL,
     password varchar NOT NULL,
-    username varchar NOT NULL UNIQUE
+    username varchar NOT NULL UNIQUE,
+    photo varchar
+
 );
 
 CREATE TABLE Restaurant(
@@ -148,7 +150,7 @@ CREATE TABLE Comments(
 
 
 INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
-    912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol");
+    912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol","");
 
 
 ----//----

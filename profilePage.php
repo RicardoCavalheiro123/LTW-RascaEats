@@ -17,7 +17,9 @@
     $adress = $client['adress'];
     $phoneNumber = $client['phoneNumber'];
     $password = $client['password'];
-
+    $photo =  $client['photo'];
+    $photoSelected = True;
+    if(is_null($photo)) $photoSelected = False;
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +38,35 @@
         <div class="header">
 
             <h1>Profile Page</h1>
+            
+            <?php 
+            if($photoSelected){ ?>
 
-            <img class="avatar" src="images/pinheiro.jpg" alt="Avatar">
+                
+ 
+            <img class="avatar" src=<?php echo $photo ?> alt="Avatar">
+                    
+                    
+
+            <form action="photoSelect.php" method="post" class="ph">
+                        <button class="button-4" role="button">Choose foto</button>
+                    </form>    
+
+            <?php
+            }
+            else{ ?>
+                <span class="bold"><p>You didn't select a photo yet!</p></span>
+                <div class="photo">
+                    <form action="photoSelect.php" method="post" class="">
+                        <button class="button-4" role="button">Choose foto</button>
+                    </form>
+                </div>
+                
+                <?php
+            }
+            
+            ?>
+            
     </div>
 
 
