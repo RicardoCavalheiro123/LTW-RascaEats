@@ -35,6 +35,7 @@
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
+    $name = 'restaurantName';
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +54,7 @@
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
     <script src="favRestaurant.js" defer></script>
-    <title>Restaurante</title>
+    <title><?=$restaurant->$name?></title>
 </head>
 <body>
 <?php output_header()?>
