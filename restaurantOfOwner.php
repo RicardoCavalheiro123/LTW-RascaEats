@@ -9,7 +9,7 @@
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
-    require_once('sql/dishes.php');
+    require_once('sql/dish.php');
     require_once('sql/favRestaurant.php');
 
     require_once('cart.php');
@@ -29,12 +29,12 @@
         }
     }
     
-    $menu = getMenu($db);
+ 
+    $menu = Dish::getMenu($db);
     $images = getImages($db);
 
-    
-
-    $comments = getComments($db);
+    $comments = Comments::getComments($db);
+    $ratings = Comments::getRatings($db);
 ?>
 
 <!DOCTYPE html>

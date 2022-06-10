@@ -9,7 +9,7 @@
         public $rating;
         public int $ownerId;
 
-        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, float $rating, int $ownerId)
+        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, $rating, int $ownerId)
         {
             $this->restaurantId = $id;
             $this->restaurantName = $name;
