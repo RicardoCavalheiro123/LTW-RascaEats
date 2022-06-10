@@ -4,8 +4,7 @@
 
 
 <?php function drawLogoutForm(string $name) { ?>
-    
-                    
+
   <form action="actionlogout.php" method="post" class="logout">
 
     <a href="orders.php">Minhas encomendas</a>
@@ -21,10 +20,12 @@
   </form>
 <?php } ?>
 
+
+
 <?php function output_header_wo_search(){ ?>
   <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
-        <i class="fa-solid fa-utensils"></i>
+        <i class="fa-solid fa-utensils" id="utensils"></i>
 
         <div class = "l" id="loginForm">
             <?php 
@@ -79,6 +80,8 @@
     </header>
 <?php } ?>
 
+
+
 <?php function output_footer(){ ?>
   <footer>
         <div class="footer-content">
@@ -89,3 +92,6 @@
         </div>
     </footer>
 <?php } ?>
+
+
+

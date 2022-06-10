@@ -2,14 +2,17 @@
 
     require_once('sql/connection.php');
     require_once('sql/restaurant.php');
+    require_once('templates/restaurant.php');
 
     require_once('templates/comments.php');
     require_once('sql/comments.php');
+
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
-    require_once('sql/dishes.php');
+    require_once('sql/dish.php');
     require_once('sql/favRestaurant.php');
+    require_once('sql/favDish.php');
 
     require_once('cart.php');
 
@@ -28,12 +31,13 @@
         }
     }
     
-    $menu = getMenu($db);
+
+    $menu = Dish::getMenu($db);
     $images = getImages($db);
 
-    
+    $comments = Comments::getComments($db);
+    $ratings = Comments::getRatings($db);
 
-    $comments = getComments($db);
 ?>
 
 <!DOCTYPE html>
@@ -46,74 +50,30 @@
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/comments.css">
     <link rel="stylesheet" href="css/dishes.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
     <script src="favRestaurant.js" defer></script>
+    <script src="favDish.js" defer></script>    
     <title>Restaurante</title>
 </head>
 <body>
-<?php output_header()?>
+<?php 
+
+    output_header();
+
+    output_restaurant($restaurant, $db, $ratings);
+
+    output_cart();
+
+?>
     
-
-    <section id= "restaurant">
-        <p>
-            <?php
-            $category = 'category';
-            echo $restaurant->$category ?>
-        </p>
-        <p>
-            <?php 
-            $name = 'restaurantName';
-            echo $restaurant->$name ?>
-        </p>
-        <p>
-            <?php 
-            $rating = 'rating';
-            echo $restaurant->$rating ?><i class="fa-solid fa-star"></i>
-        </p>
-        <p>
-            <?php
-            $phoneNumber = 'phoneNumber'; 
-            echo $restaurant->phoneNumber ?>
-            <i class="fa-solid fa-phone"></i>
-        </p>
-        <p>
-            <?php 
-            $address = 'adress';
-            echo $restaurant->address; ?>
-            
-        </p>
-        <img class = "slide" src="https://picsum.photos/650/400?food1" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
-        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
-
-        
-
-        <?php if(isset($_SESSION['id'])){ ?>
-            <span class="favRestaurant">
-
-                    <button type='submit' name='favRestaurantSubmit' <?php 
-                        if (checkFavRestaurant($db)) echo "class = exists" 
-                        ?> 
-                        onclick="toggleFavRestaurant(<?=$_SESSION['id']?>, <?=$_GET['id']?>)">
-                        <i class='fa-solid fa-heart'></i>
-                    </button> 
-
-            </span>
-        <?php } ?> 
-                
-        
-    </section>
-
-    <?php output_cart(); ?>
     <section id = "dishes">
 
-        <?php output_dishes($menu,$images)?>
+        <?php output_dishes($menu,$images,$db)?>
     
     </section>
     <section id = "reviews">
@@ -126,7 +86,7 @@
                 <p><a href="login_register.php">Efetue login para comentar</a></p>
 <?php       } 
         else{
-            echo "<form method='POST' action='".setComments($db)."'> "?>
+            echo "<form method='POST' action='".Comments::setComments($db)."'> "?>
             <input type='hidden' name='clientId' value= <?php echo $_SESSION['id']?> >
             <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?> >
             <?php echo "<input type='hidden' name='date' value='".date('Y-m-d')."'> "?>

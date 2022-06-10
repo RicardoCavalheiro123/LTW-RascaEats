@@ -6,7 +6,7 @@
         public string $address;
         public string $category;
         public int $phoneNumber;
-        public float $rating;
+        public $rating;
         public int $ownerId;
 
         public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, float $rating, int $ownerId)

@@ -38,7 +38,7 @@ CREATE TABLE Restaurant(
 
 CREATE TABLE RestaurantPhoto(
     restaurantId integer PRIMARY KEY,
-    photo varchar,
+    photo varchar NOT NULL,
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
@@ -47,10 +47,10 @@ CREATE TABLE RestaurantPhoto(
 
 CREATE TABLE Dish(
     dishId integer PRIMARY KEY,
-    restaurantId integer,
-    dishName varchar,
-    price real,
-    category varchar,
+    restaurantId integer NOT NULL,
+    dishName varchar NOT NULL,
+    price real NOT NULL,
+    category varchar NOT NULL,
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
@@ -59,7 +59,7 @@ CREATE TABLE Dish(
 
 CREATE TABLE DishPhoto(
     dishId integer PRIMARY KEY,
-    photo varchar,
+    photo varchar NOT NULL,
     CONSTRAINT fk_dishId FOREIGN KEY (dishId)
         REFERENCES Dish(dishId) 
         ON DELETE CASCADE
@@ -68,8 +68,8 @@ CREATE TABLE DishPhoto(
 
 CREATE TABLE Request(
     requestId integer PRIMARY KEY,
-    clientId integer,
-    state varchar,
+    clientId integer NOT NULL,
+    state varchar NOT NULL,
     CONSTRAINT fk_clientId FOREIGN KEY (clientId)
         REFERENCES Client(clientId) 
         ON DELETE CASCADE
@@ -79,7 +79,7 @@ CREATE TABLE Request(
 CREATE TABLE Currentrequest(
     dishId integer,
     requestId integer,
-    quantidade integer,
+    quantidade integer NOT NULL,
     CONSTRAINT fk_dishId FOREIGN KEY (dishId)
         REFERENCES Dish(dishId) 
         ON DELETE CASCADE
@@ -146,15 +146,15 @@ INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
 
 ----//----
 
-INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", 5, 1);
-INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", 3.7, 2);
-INSERT INTO Restaurant VALUES(4, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", 4.3, 1);
-INSERT INTO Restaurant VALUES(5, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", 3.2, 1);
-INSERT INTO Restaurant VALUES(6, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", 4.6, 1);
-INSERT INTO Restaurant VALUES(7, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", 4.1, 1);
-INSERT INTO Restaurant VALUES(8, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", 3.9, 1);
-INSERT INTO Restaurant VALUES(9, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", 4.3, 1);
-INSERT INTO Restaurant VALUES(10, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", 4.2, 1);
+INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", NULL,2);
+INSERT INTO Restaurant VALUES(3, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(4, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(5, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(6, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(7, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(8, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(9, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", NULL,1);
 
 ----//----
 
@@ -215,7 +215,6 @@ INSERT INTO FavRestaurant VALUES(1,1);
 
 INSERT INTO FavDish VALUES(1,12);
 INSERT INTO FavDish VALUES(1,16);
-INSERT INTO FavDish VALUES(2,23);
 
 ----//----
 
@@ -226,7 +225,6 @@ INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, espe
 INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",1,'2022-6-17');
 
 ----//----
-
 
 INSERT INTO DishPhoto VALUES(8,'images/Grande_Mac.jpg');
 INSERT INTO DishPhoto VALUES(9,'images/McGalinha.jpg');
