@@ -61,8 +61,8 @@ img:hover {
 }
 
 .details{
-    
-    padding-bottom:14em;
+    min-height: 610px;
+
 }
 
 
@@ -363,6 +363,9 @@ header form{
     width: 100%;
   }
   
+  .logout img {
+    
+  }
   
  .row{
     width: 100%;

@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Client;
 DROP TABLE IF EXISTS Restaurant;
-DROP TABLE IF EXISTS RestaurantOwner;
+
 DROP TABLE IF EXISTS RestaurantPhoto;
 DROP TABLE IF EXISTS Dish;
 DROP TABLE IF EXISTS DishPhoto;
@@ -140,14 +140,14 @@ CREATE TABLE Comments(
 
 
 INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
-    912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol","");
+    912345678, "Maia", "$2y$10$YuSkSIe/xhgLIMDLCJhlpellgYApo7tr9xkPMP6tp/PLWcK.DBspy", "antol",NULL);
 
 
 
 ----//----
 
 INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", NULL,2);
 INSERT INTO Restaurant VALUES(3, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", NULL,1);
 INSERT INTO Restaurant VALUES(4, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", NULL,1);
 INSERT INTO Restaurant VALUES(5, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", NULL,1);

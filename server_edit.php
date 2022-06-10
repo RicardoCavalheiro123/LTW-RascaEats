@@ -17,7 +17,7 @@
 
     if($userPhoto) {
       $fileName = "images/user" .$userPhoto .".png";
-      echo $fileName;
+      $_SESSION['img'] =  $fileName; 
       $stmt = $db->prepare('
         Update Client set photo = ?
         WHERE clientId = ?
@@ -110,6 +110,7 @@
       $stmt->execute(array($_POST['newPhone_number'],$_SESSION['id']));
       header('Location: profilePage.php');
   }
+    
   header('Location: profilePage.php');
   
   
