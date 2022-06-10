@@ -1,3 +1,4 @@
+
 <?php 
 
     require_once('sql/connection.php');
@@ -23,8 +24,8 @@
     if (isset($_SESSION['id'])){
 
         $isOwner = Restaurant::isRestaurantOwner($restaurant,$_SESSION['id']);
-        if($isOwner){
-            header("Location: restaurantOfOwner.php?id=$restaurant->restaurantId");
+        if(!$isOwner){
+            header("Location: restaurant.php?id=$restaurant->restaurantId");
         }
     }
     
@@ -62,12 +63,16 @@
         <p>
             <?php
             $category = 'category';
-            echo $restaurant->$category ?>
+            echo $restaurant->$category;
+       
+            ?>
         </p>
+        
         <p>
             <?php 
             $name = 'restaurantName';
-            echo $restaurant->$name ?>
+            echo $restaurant->$name ;
+            ?>
         </p>
         <p>
             <?php 
@@ -91,8 +96,10 @@
         <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
         <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
         <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
-
-        
+   
+        <form action="editRestaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurant">
+                <button class="button-4" name= "editInfo" id = "editInfo" role="button">Edit Information</button>
+        </form>
 
         <?php if(isset($_SESSION['id'])){ ?>
             <span class="favRestaurant">

@@ -4,9 +4,19 @@
 
 
 <?php function drawLogoutForm(string $name) { ?>
+    
+                    
   <form action="actionlogout.php" method="post" class="logout">
+
     <a href="orders.php">Minhas encomendas</a>
+    
     <a href="profilePage.php"><?=$name?></a>
+    <?php if(isset($_SESSION['img'])){
+            ?>
+            <img src= "<?php echo $_SESSION['img']; ?>" alt="1" style="width:2%">
+            <?php
+            }
+            ?>
     <button class="button-4" role="button">Logout</button>
   </form>
 <?php } ?>
@@ -19,8 +29,10 @@
         <div class = "l" id="loginForm">
             <?php 
             if (isset($_SESSION['id'])){ 
-                    drawLogoutForm($_SESSION['name'])?>
+                    drawLogoutForm($_SESSION['name']);
                     
+                    
+                  ?>  
                 
 <?php            }
             else{ ?>

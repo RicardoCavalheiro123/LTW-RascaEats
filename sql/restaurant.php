@@ -7,8 +7,9 @@
         public string $category;
         public int $phoneNumber;
         public float $rating;
+        public int $ownerId;
 
-        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, float $rating)
+        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, float $rating, int $ownerId)
         {
             $this->restaurantId = $id;
             $this->restaurantName = $name;
@@ -16,6 +17,7 @@
             $this->category = $category;
             $this->phoneNumber = $phoneNumber;
             $this->rating = $rating;
+            $this->ownerId = $ownerId;
         }
 
         static function getRestaurants(PDO $db, int $count) : array {
@@ -31,6 +33,7 @@
                     $restaurant['category'],
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
+                    $restaurant['ownerId'],
                 );
             }
 
@@ -50,6 +53,7 @@
                 $restaurant['category'],
                 $restaurant['phoneNumber'],
                 $restaurant['rating'],
+                $restaurant['ownerId'],
             );
         }
         
@@ -78,11 +82,17 @@
                     $restaurant['category'],
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
+                    $restaurant['ownerId'],
                 );
             }
 
 
             return $restaurants;
+
+        }
+        static function isRestaurantOwner(Restaurant $restaurant, int $UserId) {
+            if($restaurant->ownerId == $UserId) return True;
+            else return false;
 
         }
 
