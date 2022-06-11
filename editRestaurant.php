@@ -65,11 +65,19 @@ if (isset($_SESSION['id'])){
 
             <span class="bold"><p>Restaurant Category</p></span>
             <span class="b"><p>(<?php echo $restaurant->category;?>)</p></span>
-            <input type="text" class = "input-field" name = "Restaurant_Category" placeholder= "<?php echo $restaurant->category;?>" >
+            
+            <select id="cars" name = "Restaurant_Category" class = "input-field">
+                <option value="Fast-Food">Fast-Food</option>
+                <option value="Italiano">Italiano</option>
+                <option value="Tradicional">Tradicional</option>
+                <option value="Japonês">Japonês</option>
+            </select>
+            
         </div>
         <div class="row">
             <span class="bold">Phone Number</span>
             <span class="b"><p>(<?php echo $restaurant->phoneNumber;?>)</p></span>
+            
             <input type="text" class = "input-field" name = "Phone_Number" placeholder= "<?php echo $restaurant->phoneNumber;?>" >
         </div>
         <div class="row">

@@ -46,6 +46,11 @@ header h1 a{
     padding-top: 0.4em;
 }
 
+#loginForm img{
+    position: relative;
+    top:7px;
+}
+
 #loginForm > .login > input[type="button"] {
     background: none;
     border: none;

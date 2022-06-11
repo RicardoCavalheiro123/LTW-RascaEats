@@ -120,6 +120,7 @@ CREATE TABLE FavDish(
 );
 
 CREATE TABLE Comments(
+    commentId integer PRIMARY KEY,
     clientId integer NOT NULL,
     restaurantId integer NOT NULL,
     comment varchar NOT NULL,
@@ -133,8 +134,17 @@ CREATE TABLE Comments(
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    PRIMARY KEY(clientId, restaurantId)
+        ON UPDATE CASCADE
+    
+);
+
+CREATE TABLE Answer(
+    commentId integer PRIMARY KEY,
+    text varchar NOT NULL,
+    CONSTRAINT fk_commentId FOREIGN KEY (commentId)
+        REFERENCES Comments(commentId)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
@@ -218,11 +228,11 @@ INSERT INTO FavDish VALUES(1,16);
 
 ----//----
 
-INSERT INTO Comments VALUES(1,1,"Muito bom",5,'2022-5-13');
-INSERT INTO Comments VALUES(1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia",2,'2022-4-11');
-INSERT INTO Comments VALUES(2,3,"Já comi melhor",3,'2022-2-1');
-INSERT INTO Comments VALUES(2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
-INSERT INTO Comments VALUES(2,2,"Não passou o vibe check",1,'2022-6-17');
+INSERT INTO Comments VALUES(1, 1,1,"Muito bom",5,'2022-5-13');
+INSERT INTO Comments VALUES(2, 1,2,"Não gostei da comida, ambiente muito mau, e preços muito elevados para esta economia",2,'2022-4-11');
+INSERT INTO Comments VALUES(3, 2,3,"Já comi melhor",3,'2022-2-1');
+INSERT INTO Comments VALUES(4, 2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
+INSERT INTO Comments VALUES(5, 2,2,"Não passou o vibe check",1,'2022-6-17');
 
 ----//----
 
