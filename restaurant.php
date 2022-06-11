@@ -35,8 +35,7 @@
     $menu = Dish::getMenu($db);
     $images = getImages($db);
 
-    $comments = Comments::getComments($db);
-    $ratings = Comments::getRatings($db);
+
     $name = 'restaurantName';
     
 

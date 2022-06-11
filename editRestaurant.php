@@ -3,25 +3,39 @@
 
 require_once('sql/connection.php');
 require_once('sql/restaurant.php');
+require_once('templates/restaurant.php');
 
 require_once('templates/comments.php');
+require_once('sql/comments.php');
+
 require_once('templates/common.php');
 
+require_once('templates/dishes.php');
+require_once('sql/dish.php');
+require_once('sql/favRestaurant.php');
+require_once('sql/favDish.php');
 
-session_start();
+    session_start();
 
 
-$db = getDatabaseConnection();
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $db = getDatabaseConnection();
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-$restaurant = Restaurant::getRestaurant($db);
-if (isset($_SESSION['id'])){
+    $restaurant = Restaurant::getRestaurant($db);
+    if (isset($_SESSION['id'])){
 
-    $isOwner = Restaurant::isRestaurantOwner($restaurant,$_SESSION['id']);
-    if(!$isOwner){
-        header("Location: restaurant.php?id=$restaurant->restaurantId");
+        $isOwner = Restaurant::isRestaurantOwner($restaurant,$_SESSION['id']);
+        if(!$isOwner){
+            header("Location: restaurant.php?id=$restaurant->restaurantId");
+        }
     }
-}
+    $menu = Dish::getMenu($db);
+    $menu = Dish::getMenu($db);
+    $images = getImages($db);
+
+    $comments = Comments::getComments($db);
+    $ratings = Comments::getRatings($db);
+  
 ?>
 
 
@@ -87,7 +101,57 @@ if (isset($_SESSION['id'])){
         </div>
 
     </div>
-    <?php } ?>
+    <?php }
+    else{
+        ?>
+ 
+    <div class = "content-table">
+        <table class = "table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Category</td>
+                    <td>Photo</td>
+                    <td colspan = "2">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+      
+        <?php foreach($menu as $dish){ ?>
+            <tr>
+                    
+
+                        <td><?php echo $dish['dishName'] ?></td>
+                        <td><?php echo $dish['price'] ?></td>
+                        <td><?php echo $dish['category'] ?></td>
+                        <td><img src=<?php foreach($images as $image){
+                        if($image['dishId'] == $dish['dishId']) echo $image['photo'];
+                    } ?>></td>
+                    
+                        <td>
+                            <form action="edit_dish.php?id=<?php echo $restaurant->restaurantId;?>&dish=<?php echo $dish['dishId'];?>" method="post" class="editdish">
+                                <button class="button-3" name = "editdish" id = "editdish" role="button">Edit</button>
+                            </form>
+                            <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>&dish=<?php echo $dish['dishId'];?>" method="post" class="edit">
+                                <button class="button-3" name = "deleteDish" id = "deleteDish" role="button">Delete</button>
+                            </form>
+                        </td>
+
+                
+                </tr>
+            <?php 
+            
+        } ?>
+        </tbody>
+  </table>
+  <form action="addDish.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="add">
+            <button class="button-3" name = "addDish" id = "addDish" role="button"><i class="fa-solid fa-plus"></i> Add a Dish</button>
+        </form>
+    </div>
+        <?php 
+        
+    } ?>
 
 
 

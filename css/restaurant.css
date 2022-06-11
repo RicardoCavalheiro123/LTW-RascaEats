@@ -390,3 +390,64 @@ footer{
   .button-3:-webkit-details-marker {
     display: none;
   }
+
+  .content-table{
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.5em;
+    min-width: 400px;
+
+    grid-column-start: 4;    
+    min-height: 700px;
+  
+  }
+  .content-table thead{
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+  }
+  .content-table thead tr{
+    background-color: #425e3a;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+
+ 
+  }
+
+  .content-table img{
+    border-radius: 50%;
+    max-width: 100%;
+  }
+  .content-table tbody td{
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .content-table th{
+    padding: 12px 15px;
+    
+   }
+   .content-table td{
+    padding: 20px 50px;
+    border-bottom: 1px solid #dddddd;
+    min-width: 120px;
+ 
+   
+    
+   }
+   
+   .content-table tr:last-of-type{
+    border-bottom: 2px solid #dddddd;
+   }
+   .editRestaurantDish{
+    grid-row-start: 4;
+    grid-column-start: 1;
+    padding-left: 4em;
+
+   }
+   #addDish{
+    width: 150px;
+    margin-top: 40px;
+   }

@@ -21,6 +21,19 @@
             $stmt->execute(array($_GET['id']));
             return $stmt->fetchAll();
         }
+        function getDish(PDO $db,int $id) : Dish{
+            $stmt = $db->prepare('SELECT * FROM Dish WHERE dishId = ?');
+            $stmt->execute(array($id));
+            $dish = $stmt->fetch();
+            return new Dish(
+                $dish['dishId'],
+                $dish['restaurantId'],
+                $dish['dishName'],
+                $dish['price'],
+                $dish['category'],
+            );
+        }
+        
     }
 
 
@@ -29,5 +42,7 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    
 
 ?>
