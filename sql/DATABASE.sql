@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS Currentrequest;
 DROP TABLE IF EXISTS FavRestaurant;
 DROP TABLE IF EXISTS FavDish;
 DROP TABLE IF EXISTS Comments;
+DROP TABLE IF EXISTS Answer;
 
 CREATE TABLE Client(
     clientId integer PRIMARY KEY,
@@ -140,7 +141,7 @@ CREATE TABLE Comments(
 
 CREATE TABLE Answer(
     commentId integer PRIMARY KEY,
-    text varchar NOT NULL,
+    comment varchar NOT NULL,
     CONSTRAINT fk_commentId FOREIGN KEY (commentId)
         REFERENCES Comments(commentId)
         ON DELETE CASCADE
@@ -233,6 +234,8 @@ INSERT INTO Comments VALUES(2, 1,2,"Não gostei da comida, ambiente muito mau, e
 INSERT INTO Comments VALUES(3, 2,3,"Já comi melhor",3,'2022-2-1');
 INSERT INTO Comments VALUES(4, 2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
 INSERT INTO Comments VALUES(5, 2,2,"Não passou o vibe check",1,'2022-6-17');
+INSERT INTO Comments VALUES(6, 1,1,"Não gostei. Péssimo atendimento.",1,'2022-5-12');
+INSERT INTO Comments VALUES(7, 1,1,"Comida razoável.",3,'2021-1-12');
 
 ----//----
 
@@ -242,3 +245,8 @@ INSERT INTO DishPhoto VALUES(10,'images/cola.jpg');
 INSERT INTO DishPhoto VALUES(11,'images/nujetes.jpg');
 INSERT INTO DishPhoto VALUES(12,'images/Gelado_Oreo.jpg');
 INSERT INTO DishPhoto VALUES(13,'images/Tarte_de_Maca.jpg');
+
+----//----
+
+INSERT INTO Answer VALUES(1,"Em nome da Casa agradecemos a comentário. Volte Sempre!");
+INSERT INTO Answer VALUES(7,"Agradecemos a avaliação. Esperemos que de uma próxima seja ainda mais agradável!");

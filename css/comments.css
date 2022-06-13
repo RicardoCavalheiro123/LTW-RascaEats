@@ -9,9 +9,18 @@
     padding-bottom: 0.5em;
 }
 
+
 .comments .username p{
     color: rgb(32, 74, 150);
     font-size: 1.5em;
+
+}
+.comments .usernameOwner p{
+    color: rgb(32, 74, 150);
+    font-size: 1.2em;
+    text-align: right;
+    font-weight: bold;
+
 }
 
 .comments .username{
@@ -52,6 +61,19 @@
 }
 
 .comments .comment{
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.comments .commentOwner p{
+    border: 1px;
+    border-style: solid;
+    padding: 0.5em;
+    background-color:rgb(190, 196, 218);
+ 
+}
+
+.comments .commentOwner{
     grid-row: 3;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -139,4 +161,16 @@
 #reviews .rating > input:checked ~ label{
     color: rgb(235, 199, 0);
 }
+#reviews .deleteAnswer{
+    row-gap: 0;
+}
 
+#reviews .button-4{
+    margin-top: 0px;
+    width: 120px;
+    margin-bottom: 30px;
+
+}
+#reviews .deleteAnswer{
+    right: 0%;
+}

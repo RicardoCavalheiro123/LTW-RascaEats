@@ -7,6 +7,7 @@ require_once('templates/restaurant.php');
 
 require_once('templates/comments.php');
 require_once('sql/comments.php');
+require_once('sql/answers.php');
 
 require_once('templates/common.php');
 
@@ -35,9 +36,10 @@ require_once('cart.php');
  
     $menu = Dish::getMenu($db);
     $images = getImages($db);
-
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
+    $answers = Answers::getAnswers($db);
+
     $name = 'restaurantName';
 ?>
 <!DOCTYPE html>
@@ -82,36 +84,9 @@ require_once('cart.php');
     
     <section id = "reviews">
         <h3>Comentários:</h3>
-        <?php output_comments($comments)?>
+        <?php output_comments($comments,$answers,True,$db)?>
 
-        <h3>Deixe o seu comentário - </h3>
-
-        <?php if (!isset($_SESSION['id'])){ ?> 
-                <p><a href="login_register.php">Efetue login para comentar</a></p>
-<?php       } 
-        else{
-            echo "<form method='POST' action='".Comments::setComments($db)."'> "?>
-            <input type='hidden' name='clientId' value= <?php echo $_SESSION['id']?> >
-            <input type='hidden' name='restaurantId' value= <?php echo $_GET['id'] ?> >
-            <?php echo "<input type='hidden' name='date' value='".date('Y-m-d')."'> "?>
-            <textarea name='comment'></textarea><br>
-            <div class ="rating">
-                <input type="radio" id="fiveStars" name="rating" value="5" />
-                <label for="fiveStars" title="five stars">☆</label>
-                <input type="radio" id="fourStars" name="rating" value="4" />
-                <label for="fourStars" title="four stars">☆</label>
-                <input type="radio" id="threeStars" name="rating" value="3" />
-                <label for="threeStars" title="three stars">☆</label>
-                <input type="radio" id="twoStars" name="rating" value="2" />
-                <label for="twoStars" title="two stars">☆</label>
-                <input type="radio" id="oneStar" name="rating" value="1" />
-                <label for="oneStar" title="one star">☆</label>      
-            </div>      
-            <button type='submit' name='commentSubmit'>Comment</button>
-
-        </form>
-<?php  } ?>
-
+        
     </section>
     <footer>
         <div class="footer-content">
@@ -124,3 +99,4 @@ require_once('cart.php');
 
     </body>
 </html>
+

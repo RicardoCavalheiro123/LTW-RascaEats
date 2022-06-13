@@ -7,6 +7,8 @@
     require_once('templates/comments.php');
     require_once('sql/comments.php');
 
+    require_once('sql/answers.php');
+
     require_once('templates/common.php');
 
     require_once('templates/dishes.php');
@@ -36,6 +38,7 @@
     $images = getImages($db);
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
+    $answers = Answers::getAnswers($db);
 
     $name = 'restaurantName';
     
@@ -80,7 +83,7 @@
     </section>
     <section id = "reviews">
         <h3>Comentários:</h3>
-        <?php output_comments($comments)?>
+        <?php output_comments($comments,$answers,False,$db)?>
 
         <h3>Deixe o seu comentário - </h3>
 
