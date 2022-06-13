@@ -41,6 +41,7 @@ require_once('cart.php');
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
+    $answers = Answers::getAnswers($db);
 
     $name = 'restaurantName';
 ?>
@@ -84,7 +85,8 @@ require_once('cart.php');
     </form>
     
     <section id = "reviews">
-        <?php output_comments_answers($comments)?>
+    <h3>Comentários:</h3>
+        <?php output_comments($comments,$answers,True,$db)?>
 
 
         
