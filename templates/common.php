@@ -1,11 +1,22 @@
 <?php 
     declare(strict_types = 1); 
-?>
+     function drawLogoutForm(string $name, $db) { 
+        $stmt = $db->prepare('SELECT * FROM Restaurant WHERE ownerId = ?');
+        $stmt->execute(array($_SESSION['id']));
 
-
-<?php function drawLogoutForm(string $name) { ?>
+        $isOwner = $stmt->fetch();
+    
+    ?>
 
   <form action="actionlogout.php" method="post" class="logout">
+    <?php 
+    if($isOwner){ ?>
+        <a href="restaurants.php">Meus Restaurantes<a>
+    <?php }
+    else{ ?>
+        <a href="register_restaurant.php">Registar um Restaurante<a> <?php
+    } ?>
+    
 
     <a href="orders.php">Minhas encomendas</a>
     
@@ -22,7 +33,7 @@
 
 
 
-<?php function output_header_wo_search(){ ?>
+<?php function output_header_wo_search($db){ ?>
   <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils" id="utensils"></i>
@@ -30,7 +41,7 @@
         <div class = "l" id="loginForm">
             <?php 
             if (isset($_SESSION['id'])){ 
-                    drawLogoutForm($_SESSION['name']);
+                    drawLogoutForm($_SESSION['name'], $db);
                     
                     
                   ?>  
@@ -51,7 +62,7 @@
     </header>
 <?php } ?>
 
-<?php function output_header(){ ?>
+<?php function output_header($db){ ?>
   <header>
         <h1><a href="frontPage.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils" id="utensils"></i>
@@ -59,7 +70,7 @@
         <div class = "l" id="loginForm">
             <?php 
             if (isset($_SESSION['id'])){ 
-                    drawLogoutForm($_SESSION['name'])?>
+                    drawLogoutForm($_SESSION['name'], $db)?>
                     
                 
 <?php            }
@@ -92,6 +103,9 @@
         </div>
     </footer>
 <?php } ?>
+
+
+
 
 
 

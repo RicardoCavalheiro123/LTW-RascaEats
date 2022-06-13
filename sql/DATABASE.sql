@@ -28,19 +28,11 @@ CREATE TABLE Restaurant(
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber integer NOT NULL,
-    rating real,
-    ownerId integer,
+    rating real NOT NULL ON CONFLICT REPLACE DEFAULT 0,
+    ownerId integer NOT NULL,
+    photo varchar NOT NULL,
     CONSTRAINT fk_clientId FOREIGN KEY (ownerId)
         REFERENCES Client(clientId)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-CREATE TABLE RestaurantPhoto(
-    restaurantId integer PRIMARY KEY,
-    photo varchar NOT NULL,
-    CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
-        REFERENCES Restaurant(restaurantId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -51,17 +43,9 @@ CREATE TABLE Dish(
     dishName varchar NOT NULL,
     price real NOT NULL,
     category varchar NOT NULL,
+    photo varchar NOT NULL,
     CONSTRAINT fk_restaurantId FOREIGN KEY (restaurantId)
         REFERENCES Restaurant(restaurantId) 
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-CREATE TABLE DishPhoto(
-    dishId integer PRIMARY KEY,
-    photo varchar NOT NULL,
-    CONSTRAINT fk_dishId FOREIGN KEY (dishId)
-        REFERENCES Dish(dishId) 
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -156,48 +140,35 @@ INSERT INTO Client VALUES(1, "António Ferreira", "antonio@gmail.com",
 
 ----//----
 
-INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", NULL,2);
-INSERT INTO Restaurant VALUES(3, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(4, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(5, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(6, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(7, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(8, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", NULL,1);
-INSERT INTO Restaurant VALUES(9, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", NULL,1);
+INSERT INTO Restaurant VALUES(1, "Bar de Minas", "R. Dr. Roberto Frias", "Tradicional", "220202020", NULL,2,'images/BarDeMinas.png');
+INSERT INTO Restaurant VALUES(2, "McDonald's", "Estr. da Circunvalação 8114 8116, 4200-163 Porto", "Fast-Food", "220202020", NULL,2,'images/McDonalds.png');
+INSERT INTO Restaurant VALUES(3, "San Martino", "R. Caetano Remeão 84, 4405-537 Valadares", "Italiano", "220202020", NULL,1, 'images/SanMartino.png');
+INSERT INTO Restaurant VALUES(4, "Capa Negra", "Rua do Campo Alegre 191, 4150-177 Porto", "Tradicional", "220202020", NULL,1, 'images/CapaNegra.png');
+INSERT INTO Restaurant VALUES(5, "O Buraco", "R. do Bolhão 95", "Tradicional", "220202020", NULL,1, 'images/OBuraco.png');
+INSERT INTO Restaurant VALUES(6, "Pizza-Hut", "Av. de Fernão de Magalhães 1862, 4350-158 Porto", "Fast-Food", "220202020", NULL,1,'images/PizzaHut.png');
+INSERT INTO Restaurant VALUES(7, "Telepizza", "R. de Soares dos Reis 528, 4400-315 Porto", "Fast-Food", "220202020", NULL,1,'images/Telepizza.png');
+INSERT INTO Restaurant VALUES(8, "Casa d'Oro", "R. do Ouro 797, Porto", "Italiano", "220202020", NULL,1,'images/CasaDoro.png');
+INSERT INTO Restaurant VALUES(9, "Di Casa", "R. Fernando Lopes Vieira 262, 4430-703 Vila Nova de Gaia", "Italiano", "220202020", NULL,1, 'images/DiCasa.png');
 
 ----//----
 
-INSERT INTO Dish VALUES(1, 1, "Massa com Atum", 4.0, "Prato Principal");
-INSERT INTO Dish VALUES(2, 1, "Peitos de Frango com Arroz", 4.5, "Prato Principal");
-INSERT INTO Dish VALUES(3, 1, "Bife de Novilho com Legumes", 5.0, "Prato Principal");
-INSERT INTO Dish VALUES(4, 1, "Sopa de Legumes", 2.5, "Entrada");
-INSERT INTO Dish VALUES(5, 1, "Canja", 2.5, "Entrada");
-INSERT INTO Dish VALUES(6, 1, "Bolo de Cenoura", 2.0, "Sobremesa");
-INSERT INTO Dish VALUES(7, 1, "Fruta do Dia", 1.5, "Sobremesa");
+INSERT INTO Dish VALUES(1, 1, "Massa com Atum", 4.0, "Prato Principal",'images/Grande_Mac.jpg');
+INSERT INTO Dish VALUES(4, 1, "Sopa de Legumes", 2.5, "Entrada",'images/nujetes.jpg');
+INSERT INTO Dish VALUES(6, 1, "Bolo de Cenoura", 2.0, "Sobremesa", 'images/Tarte_de_Maca.jpg');
 
-INSERT INTO Dish VALUES(8, 2, "Grande Mac", 5.0, "Prato Principal");
-INSERT INTO Dish VALUES(9, 2, "McGalinha", 4.0, "Prato Principal");
-INSERT INTO Dish VALUES(10, 2, "Cola", 2.5, "Bebida");
-INSERT INTO Dish VALUES(11, 2, "Nujetes", 1.0, "Entrada");
-INSERT INTO Dish VALUES(12, 2, "Gelado de Oreo", 1.5, "Sobremesa");
-INSERT INTO Dish VALUES(13, 2, "Tarte de Maçã", 1.0, "Sobremesa");
+INSERT INTO Dish VALUES(8, 2, "Grande Mac", 5.0, "Prato Principal",'images/Grande_Mac.jpg');
+INSERT INTO Dish VALUES(9, 2, "McGalinha", 4.0, "Prato Principal",'images/McGalinha.jpg');
+INSERT INTO Dish VALUES(10, 2, "Cola", 2.5, "Bebida",'images/cola.jpg');
+INSERT INTO Dish VALUES(11, 2, "Nujetes", 1.0, "Entrada",'images/nujetes.jpg');
+INSERT INTO Dish VALUES(12, 2, "Gelado de Oreo", 1.5, "Sobremesa", 'images/Gelado_Oreo.jpg');
+INSERT INTO Dish VALUES(13, 2, "Tarte de Maçã", 1.0, "Sobremesa", 'images/Tarte_de_Maca.jpg');
 
-INSERT INTO Dish VALUES(14, 3, "Sandes de Presunto", 1.0, "Prato Principal");
-INSERT INTO Dish VALUES(15, 3, "Cachorro Especial", 2.5, "Prato Principal");
-INSERT INTO Dish VALUES(16, 3, "Cerveja", 0.5, "Bebida");
-INSERT INTO Dish VALUES(17, 3, "Batatas Fritas", 1.0, "Entrada");
-INSERT INTO Dish VALUES(18, 3, "Tremoços", 0.4, "Entrada");
-INSERT INTO Dish VALUES(19, 3, "Vinho Tinto", 0.3, "Bebida");
+INSERT INTO Dish VALUES(14, 3, "Sandes de Presunto", 1.0, "Prato Principal",'images/nujetes.jpg');
+INSERT INTO Dish VALUES(15, 3, "Cachorro Especial", 2.5, "Prato Principal",'images/nujetes.jpg');
 
-INSERT INTO Dish VALUES(20, 4, "Pizza de Pepperoni", 10.0, "Prato Principal");
-INSERT INTO Dish VALUES(21, 4, "Lasanha", 15.0, "Prato Principal");
-INSERT INTO Dish VALUES(22, 4, "Água", 2.0, "Bebida");
-INSERT INTO Dish VALUES(23, 4, "Pão de Alho", 5.0, "Entrada");
-INSERT INTO Dish VALUES(24, 4, "Esparguete à Bolonhesa", 17.0, "Prato Principal");
-INSERT INTO Dish VALUES(25, 4, "Almôndegas com Massa", 16.0, "Prato Principal");
-INSERT INTO Dish VALUES(26, 4, "Pizza Vegetariana", 11.0, "Prato Principal");
-INSERT INTO Dish VALUES(27, 4, "Gelado", 13.0, "Sobremesa");
+INSERT INTO Dish VALUES(20, 4, "Pizza de Pepperoni", 10.0, "Prato Principal",'images/McGalinha.jpg');
+INSERT INTO Dish VALUES(21, 4, "Lasanha", 15.0, "Prato Principal",'images/Grande_Mac.jpg');
+INSERT INTO Dish VALUES(27, 4, "Gelado", 13.0, "Sobremesa",'images/Gelado_Oreo.jpg');
 
 ----//----
 
@@ -216,6 +187,7 @@ INSERT INTO Currentrequest VALUES(20,1,4);
 INSERT INTO Currentrequest VALUES(14,6,3);
 INSERT INTO Currentrequest VALUES(23,5,1);
 INSERT INTO Currentrequest VALUES(11,4,5);
+INSERT INTO Currentrequest VALUES(11,3,5);
 
 ----//----
 
@@ -234,11 +206,4 @@ INSERT INTO Comments VALUES(3, 2,3,"Já comi melhor",3,'2022-2-1');
 INSERT INTO Comments VALUES(4, 2,4,"Paguei um rim, mas gostei muito da comida, especialmente do pão de alho",4,'2022-1-22');
 INSERT INTO Comments VALUES(5, 2,2,"Não passou o vibe check",1,'2022-6-17');
 
-----//----
 
-INSERT INTO DishPhoto VALUES(8,'images/Grande_Mac.jpg');
-INSERT INTO DishPhoto VALUES(9,'images/McGalinha.jpg');
-INSERT INTO DishPhoto VALUES(10,'images/cola.jpg');
-INSERT INTO DishPhoto VALUES(11,'images/nujetes.jpg');
-INSERT INTO DishPhoto VALUES(12,'images/Gelado_Oreo.jpg');
-INSERT INTO DishPhoto VALUES(13,'images/Tarte_de_Maca.jpg');

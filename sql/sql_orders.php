@@ -33,7 +33,7 @@
              ?> 
             <article id = "order">
                 <img src="https://picsum.photos/200/200?<?=$restaurantName?>">
-                <!-- <p>Número do pedido: //$order['requestId']</p> -->
+                
                 <article id = "description">
                 <p><?=$restaurantName?></p>
                 <?php 

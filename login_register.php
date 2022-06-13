@@ -24,7 +24,7 @@ $categories = Restaurant::getCategories($db);
     <title>Ex</title>
 </head>
 <body>
-<?php output_header_wo_search() ?>
+<?php output_header_wo_search($db) ?>
     <div class="hero">
     
         <div class="form-box">

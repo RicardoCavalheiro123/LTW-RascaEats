@@ -95,8 +95,32 @@
             else return false;
 
         }
+        static function setRating(Restaurant $restaurant, float $newRating, PDO $db) {
+            $oldRestaurantId = $restaurant->restaurantId;
+            $stmt = $db->prepare('DELETE FROM Restaurant WHERE restaurantId = ?');
+            $stmt->execute(array($restaurant->restaurantId));
+
+            $stmt = $db->prepare('INSERT INTO Restaurant (restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId, photo) 
+            VALUES (?, ?, ?, ?, ?, ? ,?, ?)');
+
+            $stmt->execute(array($oldRestaurantId, $restaurant->restaurantName,$restaurant->address,$restaurant->category,
+            $restaurant->phoneNumber,$newRating,$restaurant->ownerId, $restaurant->$photo));
+
+        }
+        static function getRestaurantsOwned(int $ownerId, $db){
+            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE ownerId = ?');
+            $stmt->execute(array($ownerId));
+            return $stmt->fetchAll();
+        }
+        static function getRestaurantImage($db, $restaurantId){
+            $stmt = $db->prepare('SELECT photo FROM Restaurant WHERE RestaurantId = ?');
+            $stmt->execute(array($restaurantId));
+            return $stmt->fetch();
+        }
 
 
     }
+
+
 
 ?>

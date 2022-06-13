@@ -1,14 +1,16 @@
 <?php
 
     class Comments{
+        public int $commentId;
         public int $clientId;
         public int $restaurantId;
         public string $comment;
         public int $rating;
         public string $published;
 
-        public function __construct(int $clientId, int $restaurantId, string $comment, int $rating, string $published)
+        public function __construct(int $commentId, int $clientId, int $restaurantId, string $comment, int $rating, string $published)
         {
+            $this->commentId = $commentId;
             $this->clientId = $clientId;
             $this->restaurantId = $restaurantId;
             $this->comment = $comment;
