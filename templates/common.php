@@ -16,7 +16,7 @@
     else{ ?>
         <a href="register_restaurant.php">Registar um Restaurante<a> <?php
     } ?>
-    
+
 
     <a href="orders.php">Minhas encomendas</a>
     

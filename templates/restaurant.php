@@ -47,10 +47,6 @@
         </p>
         
         <img class = "slide" src= <?php echo $restaurantImage; ?> alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
-        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
 
         <?php if(isset($_SESSION['id'])){ ?>
             <span class="favRestaurant">
@@ -117,10 +113,6 @@
             
         </p>
         <img class = "slide" src= <?php echo $restaurantImage; ?> alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
-        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
 
         <form action="editRestaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurant">
                 <button class="button-4" name= "editInfo" id = "editInfo" role="button">Edit Information</button>

@@ -8,8 +8,9 @@
         public int $phoneNumber;
         public $rating;
         public int $ownerId;
+        public string $photo;
 
-        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, $rating, int $ownerId)
+        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, $rating, int $ownerId, string $photo)
         {
             $this->restaurantId = $id;
             $this->restaurantName = $name;
@@ -18,6 +19,7 @@
             $this->phoneNumber = $phoneNumber;
             $this->rating = $rating;
             $this->ownerId = $ownerId;
+            $this->photo = $photo;
         }
 
         static function getRestaurants(PDO $db, int $count) : array {
@@ -34,6 +36,7 @@
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
                     $restaurant['ownerId'],
+                    $restaurant['photo'],
                 );
             }
 
@@ -54,6 +57,7 @@
                 $restaurant['phoneNumber'],
                 $restaurant['rating'],
                 $restaurant['ownerId'],
+                $restaurant['photo'],
             );
         }
         
@@ -83,6 +87,7 @@
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
                     $restaurant['ownerId'],
+                    $restaurant['photo'],
                 );
             }
 
@@ -104,7 +109,7 @@
             VALUES (?, ?, ?, ?, ?, ? ,?, ?)');
 
             $stmt->execute(array($oldRestaurantId, $restaurant->restaurantName,$restaurant->address,$restaurant->category,
-            $restaurant->phoneNumber,$newRating,$restaurant->ownerId, $restaurant->$photo));
+            $restaurant->phoneNumber,$newRating,$restaurant->ownerId, $restaurant->photo));
 
         }
         static function getRestaurantsOwned(int $ownerId, $db){

@@ -30,8 +30,10 @@ require_once('sql/favDish.php');
         }
     }
     $menu = Dish::getMenu($db);
-    $menu = Dish::getMenu($db);
-    $images = getImages($db);
+
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);

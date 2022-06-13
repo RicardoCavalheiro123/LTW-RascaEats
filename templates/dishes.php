@@ -1,6 +1,6 @@
 <?php
 
-    function output_dishes($menu,$db,$restaurantImage){
+    function output_dishes($menu,$db){
         foreach($menu as $dish){ ?>
             <article class = "dish">
                 <img src= <?php echo $dish['photo']?>>
