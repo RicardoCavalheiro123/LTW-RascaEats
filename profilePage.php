@@ -36,7 +36,7 @@
     <title>Profile</title>
 </head>
 <body>
-<?php output_header_wo_search()?>
+<?php output_header_wo_search($db)?>
     <div class="profile">
 
 

@@ -30,8 +30,10 @@ require_once('sql/favDish.php');
         }
     }
     $menu = Dish::getMenu($db);
-    $menu = Dish::getMenu($db);
-    $images = getImages($db);
+
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
@@ -58,8 +60,9 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header()?>
+    <?php output_header($db)?>
 
+    
     <?php 
     if(isset($_POST['editInfo'])){ ?>
     <div class = "editInf">
@@ -146,6 +149,7 @@ require_once('sql/favDish.php');
         </tbody>
   </table>
   <form action="addDish.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="add">
+            <button class = "button-3" id ="returnToRestaurant"><a href="restaurant.php?id=<?=$_GET['id']?>" ><i class="fa-solid fa-arrow-left"></i> Return to restaurant</a></button>
             <button class="button-3" name = "addDish" id = "addDish" role="button"><i class="fa-solid fa-plus"></i> Add a Dish</button>
         </form>
     </div>

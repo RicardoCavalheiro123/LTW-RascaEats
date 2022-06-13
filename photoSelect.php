@@ -6,6 +6,9 @@
     require_once('sql/client.php');
     require_once('templates/common.php');
 
+    $db = getDatabaseConnection();
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
  
     
 ?>
@@ -23,7 +26,7 @@
     <title>Profile</title>
 </head>
 <body>
-<?php output_header_wo_search()?>
+<?php output_header_wo_search($db)?>
 <div id="photos">
 <form action="server_edit.php" method="post" class="photoChoose">
     <div class="row">

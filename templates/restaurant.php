@@ -1,4 +1,4 @@
-<?php function output_restaurant($restaurant, $db, $ratings){ ?>
+<?php function output_restaurant($restaurant, $db, $ratings, $restaurantImage){ ?>
     <section id= "restaurant">
         <p>
             <?php
@@ -45,11 +45,8 @@
             echo $restaurant->address; ?>
             
         </p>
-        <img class = "slide" src="https://picsum.photos/650/400?food1" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
-        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
+        
+        <img class = "slide" src= <?php echo $restaurantImage; ?> alt="Restaurant photo">
 
         <?php if(isset($_SESSION['id'])){ ?>
             <span class="favRestaurant">
@@ -68,7 +65,7 @@
 
 <?php } ?>
 
-<?php function output_restaurant_owner($restaurant, $db, $ratings){ ?>
+<?php function output_restaurant_owner($restaurant, $db, $ratings, $restaurantImage){ ?>
     <section id= "restaurant">
         <p>
             <?php
@@ -115,11 +112,7 @@
             echo $restaurant->address; ?>
             
         </p>
-        <img class = "slide" src="https://picsum.photos/650/400?food1" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food2" alt="Restaurant photo">
-        <img class = "slide" src="https://picsum.photos/650/400?food3" alt="Restaurant photo">
-        <button class="left-button" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="right-button" onclick="plusDivs(+1)">&#10095;</button>
+        <img class = "slide" src= <?php echo $restaurantImage; ?> alt="Restaurant photo">
 
         <form action="editRestaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurant">
                 <button class="button-4" name= "editInfo" id = "editInfo" role="button">Edit Information</button>
@@ -139,5 +132,69 @@
                 
         
     </section>
+
+<?php } ?>
+
+<?php function output_list_restaurants($categories, $db){ ?>
+    
+    <section id= "restaurants"><?php 
+        foreach($categories as $category){  ?>
+            <section id = "category">
+                <h2>
+                <?php echo $category['category']?>
+                </h2> <?php $restaurants = Restaurant::getRestaurantCategory($db, $category['category']);
+                foreach($restaurants as $restaurant){ ?>
+                    <article>
+                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="https://picsum.photos/300/300?<?php echo $restaurant['restaurantName']?>" alt="Restaurant photo"></a>
+                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
+                        <p><?php echo $restaurant['rating']?>/5.0 ☆</p>
+                        <p><?php echo $restaurant['adress']?></p>
+                    </article>
+        <?php   } ?>
+            </section>
+
+        <?php   } ?>
+        
+        
+    </section>
+
+<?php } ?>
+
+<?php function output_restaurant_register( $db){ ?>
+    <div class = "editInf">
+    <form action="restaurant_register_server.php" method="post" class="logout" enctype ="multipart/form-data">
+        <div class="row">
+            <span class="bold">Restaurant Name</span>
+            <input type="text" class = "input-field" name = "Restaurant_Name" placeholder= "Restaurant Name" >
+            
+        </div>
+        <div class="row">
+            <span class="bold">Address</span>
+            <input type="text" class = "input-field" name = "Address" placeholder= "Address">
+        </div>
+        <div class="row">
+
+            <span class="bold"><p>Restaurant Category</p></span>
+            
+            <select id="cars" name = "Restaurant_Category" class = "input-field">
+                <option value="Fast-Food">Fast-Food</option>
+                <option value="Italiano">Italiano</option>
+                <option value="Tradicional">Tradicional</option>
+                <option value="Japonês">Japonês</option>
+            </select>
+            
+        </div>
+        <div class="row">
+            <span class="bold">Phone Number</span>
+            <input type="text" class = "input-field" name = "Phone_Number" placeholder= "Phone Number" >
+        </div>
+        <div class="row">
+            <input type="file" name="file">
+        </div>
+        <div class="row">
+        
+            <button class="button-3" name = "registerRestaurant" id = "editRestaurant" role="button">Add Restaurant</button></div>
+    </form>
+</div>
 
 <?php } ?>

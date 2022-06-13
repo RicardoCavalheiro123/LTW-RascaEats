@@ -21,7 +21,7 @@
             $stmt->execute(array($_GET['id']));
             return $stmt->fetchAll();
         }
-        function getDish(PDO $db,int $id) : Dish{
+        static function getDish(PDO $db,int $id) : Dish{
             $stmt = $db->prepare('SELECT * FROM Dish WHERE dishId = ?');
             $stmt->execute(array($id));
             $dish = $stmt->fetch();
@@ -33,15 +33,17 @@
                 $dish['category'],
             );
         }
+
+        static function getDishImages($db, $id){
+            $stmt = $db->prepare('SELECT photo FROM Dish WHERE restaurantId = ?');
+            $stmt->execute(array($id));
+            return $stmt->fetch();
+        }
         
     }
 
 
-    function getImages($db){
-        $stmt = $db->prepare('SELECT * FROM DishPhoto');
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+    
 
     
 

@@ -35,7 +35,10 @@
     
 
     $menu = Dish::getMenu($db);
-    $images = getImages($db);
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
+
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
     $answers = Answers::getAnswers($db);
@@ -65,12 +68,12 @@
     <script src="favDish.js" defer></script>    
     <title><?=$restaurant->$name?></title>
 </head>
-<body>
+    <body>
 <?php 
 
-    output_header();
+    output_header($db);
 
-    output_restaurant($restaurant, $db, $ratings);
+    output_restaurant($restaurant, $db, $ratings, $restaurantImage);
 
     output_cart();
 
@@ -78,7 +81,7 @@
     
     <section id = "dishes">
 
-        <?php output_dishes($menu,$images,$db)?>
+        <?php output_dishes($menu,$db,$restaurantImage)?>
     
     </section>
     <section id = "reviews">

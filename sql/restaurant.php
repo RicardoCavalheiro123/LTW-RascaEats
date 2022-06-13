@@ -8,8 +8,9 @@
         public int $phoneNumber;
         public $rating;
         public int $ownerId;
+        public string $photo;
 
-        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, $rating, int $ownerId)
+        public function __construct(int $id, string $name, string $address, string $category, int $phoneNumber, $rating, int $ownerId, string $photo)
         {
             $this->restaurantId = $id;
             $this->restaurantName = $name;
@@ -18,6 +19,7 @@
             $this->phoneNumber = $phoneNumber;
             $this->rating = $rating;
             $this->ownerId = $ownerId;
+            $this->photo = $photo;
         }
 
         static function getRestaurants(PDO $db, int $count) : array {
@@ -34,6 +36,7 @@
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
                     $restaurant['ownerId'],
+                    $restaurant['photo'],
                 );
             }
 
@@ -54,6 +57,7 @@
                 $restaurant['phoneNumber'],
                 $restaurant['rating'],
                 $restaurant['ownerId'],
+                $restaurant['photo'],
             );
         }
         
@@ -83,6 +87,7 @@
                     $restaurant['phoneNumber'],
                     $restaurant['rating'],
                     $restaurant['ownerId'],
+                    $restaurant['photo'],
                 );
             }
 
@@ -100,15 +105,27 @@
             $stmt = $db->prepare('DELETE FROM Restaurant WHERE restaurantId = ?');
             $stmt->execute(array($restaurant->restaurantId));
 
-            $stmt = $db->prepare('INSERT INTO Restaurant (restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId) 
-            VALUES (?, ?, ?, ?, ?, ? ,?)');
+            $stmt = $db->prepare('INSERT INTO Restaurant (restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId, photo) 
+            VALUES (?, ?, ?, ?, ?, ? ,?, ?)');
 
             $stmt->execute(array($oldRestaurantId, $restaurant->restaurantName,$restaurant->address,$restaurant->category,
-            $restaurant->phoneNumber,$newRating,$restaurant->ownerId));
+            $restaurant->phoneNumber,$newRating,$restaurant->ownerId, $restaurant->photo));
 
+        }
+        static function getRestaurantsOwned(int $ownerId, $db){
+            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE ownerId = ?');
+            $stmt->execute(array($ownerId));
+            return $stmt->fetchAll();
+        }
+        static function getRestaurantImage($db, $restaurantId){
+            $stmt = $db->prepare('SELECT photo FROM Restaurant WHERE RestaurantId = ?');
+            $stmt->execute(array($restaurantId));
+            return $stmt->fetch();
         }
 
 
     }
+
+
 
 ?>

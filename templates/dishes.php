@@ -1,11 +1,9 @@
 <?php
 
-    function output_dishes($menu,$images, $db){
+    function output_dishes($menu,$db){
         foreach($menu as $dish){ ?>
             <article class = "dish">
-                <img src=<?php foreach($images as $image){
-                    if($image['dishId'] == $dish['dishId']) echo $image['photo'];
-                } ?>>
+                <img src= <?php echo $dish['photo']?>>
                 <section>
                     <p class="dishName"><?php echo $dish['dishName'] ?></p>
                     <p class = "dishPrice"><?php echo $dish['price'] ?></p>

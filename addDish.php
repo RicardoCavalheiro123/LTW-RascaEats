@@ -32,7 +32,9 @@ require_once('sql/favDish.php');
     }
     
     $menu = Dish::getMenu($db);
-    $images = getImages($db);
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
@@ -60,7 +62,7 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header()?>
+    <?php output_header($db)?>
 
     <?php 
     if(isset($_POST['addDish'])){ ?>

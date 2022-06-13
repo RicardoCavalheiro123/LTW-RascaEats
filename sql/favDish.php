@@ -30,6 +30,15 @@
         if(count($result) > 0) return true;
     }
 
+    function getFavDish($db, $id){
+        $stmt = $db->prepare('SELECT * FROM favDish WHERE dishId = ? AND clientId = ?' );
+        $stmt->execute(array($id,$_SESSION['id']));
+
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
     
 
 ?>

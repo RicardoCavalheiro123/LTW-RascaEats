@@ -35,10 +35,12 @@ require_once('cart.php');
     
  
     $menu = Dish::getMenu($db);
-    $images = getImages($db);
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
+
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
-    $answers = Answers::getAnswers($db);
 
     $name = 'restaurantName';
 ?>
@@ -55,7 +57,6 @@ require_once('cart.php');
     <link rel="stylesheet" href="css/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
     <script src="search.js" defer></script>
     <script src="favRestaurant.js" defer></script>
@@ -65,9 +66,9 @@ require_once('cart.php');
 <body>
 <?php 
 
-    output_header();
+    output_header($db);
 
-    output_restaurant_owner($restaurant, $db, $ratings);
+    output_restaurant_owner($restaurant, $db, $ratings, $restaurantImage);
 
     output_cart();
 
@@ -75,7 +76,7 @@ require_once('cart.php');
     
     <section id = "dishes">
 
-        <?php output_dishes($menu,$images,$db)?>
+        <?php output_dishes($menu,$db)?>
         
     </section>
     <form action="editRestaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurantDish">
@@ -83,19 +84,12 @@ require_once('cart.php');
     </form>
     
     <section id = "reviews">
-        <h3>Comentários:</h3>
-        <?php output_comments($comments,$answers,True,$db)?>
+        <?php output_comments_answers($comments)?>
+
 
         
     </section>
-    <footer>
-        <div class="footer-content">
-            <h4>Descubra e reserve dos melhores restaurantes</h4>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Rasca Eats</p>
-        </div>
-    </footer>
+    <?php output_footer()?>
 
     </body>
 </html>
