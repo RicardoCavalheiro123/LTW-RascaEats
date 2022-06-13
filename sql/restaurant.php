@@ -95,6 +95,18 @@
             else return false;
 
         }
+        static function setRating(Restaurant $restaurant, float $newRating, PDO $db) {
+            $oldRestaurantId = $restaurant->restaurantId;
+            $stmt = $db->prepare('DELETE FROM Restaurant WHERE restaurantId = ?');
+            $stmt->execute(array($restaurant->restaurantId));
+
+            $stmt = $db->prepare('INSERT INTO Restaurant (restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId) 
+            VALUES (?, ?, ?, ?, ?, ? ,?)');
+
+            $stmt->execute(array($oldRestaurantId, $restaurant->restaurantName,$restaurant->address,$restaurant->category,
+            $restaurant->phoneNumber,$newRating,$restaurant->ownerId));
+
+        }
 
 
     }

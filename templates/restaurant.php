@@ -14,23 +14,22 @@
             <?php 
             $rating = 'rating';
 
-            if(is_null($restaurant->$rating)) $restaurant->$rating = 0;
-            $count = 0; $sum = 0;
+            $count = 0; $sum = 0.0;
 
-
-            foreach($ratings as $rate){
-                $count += 1;
-                $sum = $sum + (int)$rate['rating'];
-                $restaurant->$rating = $rate;
-
+            if(sizeof($ratings) == 0){
+                echo $restaurant->rating;
             }
-
-            $restaurant->$rating = $sum / $count;
-
-            
-            echo $restaurant->$rating; 
-   
-            
+            else{
+                foreach($ratings as $rate){
+                    $count += 1;
+                    $sum = $sum + number_format($rate['rating'],1);
+    
+                }
+    
+                $newRating = number_format($sum / number_format($count),1);
+                echo $newRating;       
+                Restaurant::setRating($restaurant,$newRating,$db);  
+            }
             
             ?><i class="fa-solid fa-star"></i>
         </p>
@@ -85,23 +84,22 @@
             <?php 
             $rating = 'rating';
 
-            if(is_null($restaurant->$rating)) $restaurant->$rating = 0;
-            $count = 0; $sum = 0;
+            $count = 0; $sum = 0.0;
 
-
-            foreach($ratings as $rate){
-                $count += 1;
-                $sum = $sum + (int)$rate['rating'];
-                $restaurant->$rating = $rate;
-
+            if(sizeof($ratings) == 0){
+                echo $restaurant->rating;
             }
-
-            $restaurant->$rating = $sum / $count;
-
-            
-            echo $restaurant->$rating; 
-   
-            
+            else{
+                foreach($ratings as $rate){
+                    $count += 1;
+                    $sum = $sum + number_format($rate['rating'],1);
+    
+                }
+    
+                $newRating = number_format($sum / number_format($count),1);
+                echo $newRating;       
+                Restaurant::setRating($restaurant,$newRating,$db);  
+            }
             
             ?><i class="fa-solid fa-star"></i>
         </p>

@@ -5,6 +5,7 @@
     require_once('sql/connection.php');
     require_once('sql/client.php');
     require_once('templates/common.php');
+    require_once('templates/profile.php');
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -29,89 +30,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Profile</title>
 </head>
 <body>
 <?php output_header_wo_search()?>
     <div class="profile">
-        <div class="header">
 
-            <h1>Profile Page</h1>
-            
-            <?php 
-            if($photoSelected){ ?>
 
-                
+        <?php output_profile_page_pfp($photoSelected, $photo); 
+
+        output_profile_page_details($name, $username, $email, $adress, $phoneNumber); ?>
+        
+        
+
  
-            <img class="avatar" src=<?php echo $photo ?> alt="Avatar">
-                    
-                    
-
-            <form action="photoSelect.php" method="post" class="ph">
-                        <button class="button-4" role="button">Choose foto</button>
-                    </form>    
-
-            <?php
-            }
-            else{ ?>
-                <span class="bold"><p>You didn't select a photo yet!</p></span>
-                <div class="photo">
-                    <form action="photoSelect.php" method="post" class="">
-                        <button class="button-4" role="button">Choose foto</button>
-                    </form>
-                </div>
-                
-                <?php
-            }
-            
-            ?>
-            
     </div>
-
-
-
-    <div class="details">
-        <h1>Details</h1>
-        <div class="row">
-            <span class="bold">Name:</span> <p><?=$name?></p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "name1" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            </form>
-        </div>
-        <div class="row">
-            <span class="bold">Username:</span> <p><?=$username?></p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "username" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            </form>
-        </div>
-        <div class="row">
-            <span class="bold">Email:</span> <p><?=$email?></p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "email" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            </form>
-        </div>
-        <div class="row">
-            <span class="bold">Password:</span> <p>****</p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3"  name = "password" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            </form>
-        </div>
-        <div class="row">
-            <span class="bold">Adress:</span> <p><?=$adress?></p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "adress" role="button">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            </form>
-        </div>
-        <div class="row">
-            <span class="bold">Phone Number:</span> <p><?=$phoneNumber?></p>
-            <form action="edit_profile.php" method="post" class="logout">
-                <button class="button-3" name = "phoneNumber" role="button">Edit <i class="fa-solid fa-pen-to-square"></i> </button>
-            </form>
-        </div>
-    </div>
- 
-</div>
 <?php output_footer() ?>
 
 </body>

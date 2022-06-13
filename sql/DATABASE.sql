@@ -28,7 +28,7 @@ CREATE TABLE Restaurant(
     adress varchar NOT NULL,
     category varchar NOT NULL,
     phoneNumber integer NOT NULL,
-    rating real,
+    rating real NOT NULL ON CONFLICT REPLACE DEFAULT 0,
     ownerId integer,
     CONSTRAINT fk_clientId FOREIGN KEY (ownerId)
         REFERENCES Client(clientId)
