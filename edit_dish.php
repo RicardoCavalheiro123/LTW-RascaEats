@@ -31,9 +31,9 @@ require_once('sql/favDish.php');
         }
     }
     
-    $menu = Dish::getMenu($db);
-    $dish = Dish::getDish($db,$_GET['dish']);
-    $images = getImages($db);
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
@@ -63,7 +63,7 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header()?>
+    <?php output_header($db)?>
 
     <?php 
     if(isset($_POST['editdish'])){ ?>
@@ -93,6 +93,10 @@ require_once('sql/favDish.php');
                 <option value="Entrada">Entrada</option>
             </select>
             
+        </div>
+        <div class = "row">
+            <label for="file">Escolha uma imagem: </label>
+            <input type="file" name="file">
         </div>
         
         

@@ -30,7 +30,7 @@
     <title>Restaurante</title>
 </head>
 <body>
-<?php output_header();
+<?php output_header($db);
 output_orders($db);
 output_footer();
 ?>

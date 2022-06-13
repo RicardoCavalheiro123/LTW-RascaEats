@@ -145,7 +145,7 @@
                 </h2> <?php $restaurants = Restaurant::getRestaurantCategory($db, $category['category']);
                 foreach($restaurants as $restaurant){ ?>
                     <article>
-                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="https://picsum.photos/300/300?<?php echo $restaurant['restaurantName']?>" alt="Restaurant photo"></a>
+                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>" alt="Restaurant photo" width="300px" height = "300px"></a>
                         <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
                         <p><?php echo $restaurant['rating']?>/5.0 ☆</p>
                         <p><?php echo $restaurant['adress']?></p>

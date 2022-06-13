@@ -92,6 +92,10 @@ require_once('sql/favDish.php');
             </select>
             
         </div>
+
+        <div class="row">
+            <input type="file" name="file">
+        </div>
         
         
             <button class="button-3" name = "addDish2" id = "addDish2" role="button">Save</button>

@@ -6,14 +6,16 @@
         public string $dishName;
         public float $price;
         public string $category;
+        public string $photo;
 
-        public function __construct(int $dishId, int $restaurantId, string $dishName, float $price, string $category)
+        public function __construct(int $dishId, int $restaurantId, string $dishName, float $price, string $category, string $photo)
         {
             $this->dishId = $dishId;
             $this->restaurantId = $restaurantId;
             $this->dishName = $dishName;
             $this->price = $price;
             $this->category = $category;
+            $this->photo = $photo;
         }
 
         static function getMenu($db){
@@ -31,6 +33,7 @@
                 $dish['dishName'],
                 $dish['price'],
                 $dish['category'],
+                $dish['photo']
             );
         }
 

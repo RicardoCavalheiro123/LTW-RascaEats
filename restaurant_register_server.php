@@ -38,7 +38,7 @@ if(isset($_POST['registerRestaurant'])){
 
     if(in_array($fileExt, $allowed)){
         if($fileError === 0){
-            $fileDestination = 'images/' . $Restaurant_Name . '.' . $fileExt;
+            $fileDestination = 'images/' . str_replace(' ', '', $Restaurant_Name) . '.' . $fileExt;
             move_uploaded_file($fileTmpName, $fileDestination);
         }
     }
