@@ -3,7 +3,7 @@
     session_start();
     if (!isset($_SESSION['id'])) die(header('Location: /'));
     require_once('sql/connection.php');
-    require_once('sql/client.php');
+    require_once('sql/client.class.php');
     require_once('templates/common.php');
     require_once('templates/profile.php');
 

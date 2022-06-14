@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once('sql/connection.php');
-require_once('sql/restaurant.php');
+require_once('sql/restaurant.class.php');
 
 require_once('templates/common.php');
 
@@ -33,12 +33,12 @@ $categories = Restaurant::getCategories($db);
                 <button type="button" class="toggle-btn" onclick="login()">Log in</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form id="login" action= "server.php" method="POST" class = "input-group">
+            <form id="login" action= "actions/action_login_register.php" method="POST" class = "input-group">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" class = "input-field" name = "username" placeholder="Username" required>
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" class = "input-field" name = "password" placeholder="Password" required>
-                <button type="submit" name = "submit_login" class = "submit-btn">Log in</button>
+                <button type="submit" name = "submit_login2" class = "submit-btn">Log in</button>
                 <?php
                     if(isset($_SESSION["error1"])){
                         $error = $_SESSION["error1"];
@@ -48,7 +48,7 @@ $categories = Restaurant::getCategories($db);
                         }
                 ?>  
             </form>
-            <form id="register" action = "server.php" method = "POST" class = "input-group">
+            <form id="register" action = "actions/action_login_register.php" method = "POST" class = "input-group">
                 <i class="fa-solid fa-signature"></i>
                 <input type="text" class = "input-field" name = "name" placeholder= " Full Name" required>
                 <i class="fa-solid fa-user"></i>

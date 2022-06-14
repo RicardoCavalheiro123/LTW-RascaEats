@@ -7,8 +7,8 @@
     require_once('templates/common.php');
     require_once('templates/favorites.php');
 
-    require_once('sql/restaurant.php');
-    require_once('sql/dish.php');
+    require_once('sql/restaurant.class.php');
+    require_once('sql/dish.class.php');
 
     $db = getDatabaseConnection();
 

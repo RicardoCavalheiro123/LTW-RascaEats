@@ -5,7 +5,7 @@
 
     require_once('sql/connection.php');
 
-    require_once('sql/client.php');
+    require_once('sql/client.class.php');
     $db = getDatabaseConnection();
     
 

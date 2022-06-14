@@ -4,7 +4,7 @@
     session_start();
 
     require_once('sql/connection.php');
-    require_once('sql/restaurant.php');
+    require_once('sql/restaurant.class.php');
 
 
     $db = getDatabaseConnection();

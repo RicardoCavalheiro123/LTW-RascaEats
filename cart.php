@@ -28,13 +28,13 @@
             }
             ?>
             <tr><td><?=$dish['dishName']?></td><td><?=$qt?></td><td><?=$dish['price']?></td>
-            <td><?=$qt*$dish['price']?></td><td><a href="action_remove_from_cart.php?id=<?=$_GET['id']?>&dishId=<?=$request?>">X</a></td></tr>
+            <td><?=$qt*$dish['price']?></td><td><a href="actions/action_remove_from_cart.php?id=<?=$_GET['id']?>&dishId=<?=$request?>">X</a></td></tr>
     <?php } ?>
     <tfoot>
         <tr><th colspan="3">Total:</th><th><?=$total?></th><th></th></tr>
     </tfoot>
     </table>
-    <a href="action_place_order.php?id=<?=$_GET['id']?>">Encomendar</a>
+    <a href="actions/action_place_order.php?id=<?=$_GET['id']?>">Encomendar</a>
 
     </section> <?php
      }

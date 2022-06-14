@@ -1,7 +1,7 @@
 <?php
 
     require_once('sql/connection.php');
-    require_once('sql/restaurant.php');
+    require_once('sql/restaurant.class.php');
     require_once('templates/common.php');
     require_once('templates/restaurant.php');
     require_once('templates/orders.php');

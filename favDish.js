@@ -18,7 +18,7 @@ async function postData(url,data) {
 
 
   function toggleFavDish(cId, dId){
-    postData('action_toggle_fav_dish.php/', {clientId: cId, dishId: dId})
+    postData('actions/action_toggle_fav_dish.php/', {clientId: cId, dishId: dId})
         .catch(() => console.error('Network Error'))
         .then(response => response.json())
         .catch(() => console.error('Error parsing JSON'))

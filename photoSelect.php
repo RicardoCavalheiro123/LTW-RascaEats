@@ -3,7 +3,7 @@
     session_start();
     if (!isset($_SESSION['id'])) die(header('Location: /'));
     require_once('sql/connection.php');
-    require_once('sql/client.php');
+    require_once('sql/client.class.php');
     require_once('templates/common.php');
 
     $db = getDatabaseConnection();
@@ -28,7 +28,7 @@
 <body>
 <?php output_header_wo_search($db)?>
 <div id="photos">
-<form action="server_edit.php" method="post" class="photoChoose">
+<form action="actions/action_edit_profile.php" method="post" class="photoChoose">
     <div class="row">
         <div class="column">
             <img src="images/user1.png" alt="1" style="width:100%">

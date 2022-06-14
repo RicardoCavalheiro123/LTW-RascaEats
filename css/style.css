@@ -532,7 +532,7 @@ footer{
     padding-top: 20px;
 	padding-left: 20px;
  
-}
-.no_restaurants .bold p{
-    text-align: center;
-}
+    }
+    .no_restaurants .bold p{
+        text-align: center;
+    }

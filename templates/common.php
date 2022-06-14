@@ -8,7 +8,7 @@
     
     ?>
 
-  <form action="actionlogout.php" method="post" class="logout">
+  <form action="actions/action_logout.php" method="post" class="logout">
     <?php 
     if($isOwner){ ?>
         <a href="restaurants.php">Meus Restaurantes<a>

@@ -1,10 +1,10 @@
 <?php 
 
 require_once('sql/connection.php');
-require_once('sql/restaurant.php');
+require_once('sql/restaurant.class.php');
 
 require_once('templates/comments.php');
-require_once('sql/comments.php');
+require_once('sql/comments.class.php');
 require_once('templates/common.php');
 
 session_start();
