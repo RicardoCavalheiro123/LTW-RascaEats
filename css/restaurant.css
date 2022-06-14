@@ -374,7 +374,14 @@ footer{
   .button-3:-webkit-details-marker {
     display: none;
   }
+#addRestaurantButton a, #viewOrdersButton a{
+  text-decoration: none;
+  color: #000;
+}
 
+#addRestaurantButton, #viewOrdersButton{
+  width: 200px;
+}
   .content-table{
     margin: auto;
     width: 70%;

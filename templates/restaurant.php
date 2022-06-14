@@ -130,6 +130,7 @@ use LDAP\Result;
 <?php } ?>
 
 <?php function output_list_owned_restaurants($db, $ownerRestaurants) { ?>
+    <section id = "restaurantes">
 
     <?php foreach($ownerRestaurants as $restaurant){ 
 
@@ -137,12 +138,14 @@ use LDAP\Result;
 
         <article>
             <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>"alt="Restaurant photo" width="300px" height = "300px"></a>
-            <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
+            <section id = "desc"><a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
             <p><?php echo $rating ?>/5.0 ☆</p>
-            <p><?php echo $restaurant['adress']?></p>
+            <p><?php echo $restaurant['adress']?></p></section>
         </article>
 
-    <?php } ?>
+    <?php } 
+    
+    ?></section>
 
 <?php } ?>
 
