@@ -31,17 +31,14 @@ require_once('sql/favDish.php');
         }
     }
     
-    $menu = Dish::getMenu($db);
-    $dish = Dish::getDish($db,$_GET['dish']);
-    $images = getImages($db);
+    $dishImages = Dish::getDishImages($db, $restaurant->restaurantId);
+    $restaurantImages = Restaurant::getRestaurantImage($db, $restaurant->restaurantId);
+    $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
     $ratings = Comments::getRatings($db);
+    $dish = Dish::getDish($db,$_GET['dish']);
     $name = 'restaurantName';
-    $imageDish;
-    foreach($images as $image){
-        if($image['dishId'] == $dish->dishId) $imageDish = $image['photo'];
-    }
 ?>
 
 <!DOCTYPE html>
@@ -63,13 +60,12 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header()?>
+    <?php output_header_wo_search($db)?>
 
     <?php 
     if(isset($_POST['editdish'])){ ?>
     <div class = "editInf">
-    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>&dish=<?php echo $dish->dishId;?>" method="post" class="logout">
-        <img src="<?php echo $imageDish; ?>">
+    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>&dish=<?php echo $dish->dishId;?>" method="post" class="logout" enctype ="multipart/form-data">
         <div class="row">
             <span class="bold">Name</span>
             <span class="b"><p>(<?php echo $dish->dishName;?>)</p></span>
@@ -86,13 +82,17 @@ require_once('sql/favDish.php');
             <span class="bold"><p>Category</p></span>
             <span class="b"><p>(<?php echo $dish->category;?>)</p></span>
 
-            <select id="cars" name = "dishCategory" class = "input-field">
+            <select id="category" name = "dishCategory" class = "input-field">
                 <option value="Prato Principal">Prato Principal</option>
                 <option value="Bebida">Bebida</option>
                 <option value="Sobremesa">Sobremesa</option>
                 <option value="Entrada">Entrada</option>
             </select>
             
+        </div>
+        <div class = "row">
+            <label for="file">Escolha uma imagem: </label>
+            <input type="file" name="file">
         </div>
         
         

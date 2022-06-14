@@ -9,7 +9,7 @@
     
     $requests = $_SESSION['cart'][$_GET['id']];
 
-    $stmt = $db->prepare('INSERT INTO Request(clientId, state) VALUES (?, "Processing")');
+    $stmt = $db->prepare('INSERT INTO Request(clientId, state) VALUES (?, "Em Preparação")');
     $stmt->execute(array($_SESSION['id'])); 
 
     $stmt = $db->prepare('SELECT last_insert_rowid()');

@@ -7,6 +7,7 @@ require_once('templates/restaurant.php');
 
 require_once('templates/comments.php');
 require_once('sql/comments.php');
+require_once('sql/answers.php');
 
 require_once('templates/common.php');
 
@@ -39,7 +40,7 @@ require_once('cart.php');
     $restaurantImage = $restaurantImages['photo'];
 
     $comments = Comments::getComments($db);
-    $ratings = Comments::getRatings($db);
+    $answers = Answers::getAnswers($db);
 
     $name = 'restaurantName';
 ?>
@@ -65,9 +66,9 @@ require_once('cart.php');
 <body>
 <?php 
 
-    output_header($db);
+    output_header_wo_search($db);
 
-    output_restaurant_owner($restaurant, $db, $ratings, $restaurantImage);
+    output_restaurant_owner($restaurant, $db, Restaurant::getRating($db,$_GET['id']), $restaurantImage);
 
     output_cart();
 
@@ -83,11 +84,14 @@ require_once('cart.php');
     </form>
     
     <section id = "reviews">
-        <?php output_comments_answers($comments)?>
+    <h3>Comentários:</h3>
+        <?php output_comments($comments,$answers,True,$db)?>
 
 
+        
     </section>
     <?php output_footer()?>
 
     </body>
 </html>
+

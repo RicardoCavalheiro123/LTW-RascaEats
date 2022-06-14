@@ -32,7 +32,7 @@
 </head>
 <body>
 <?php output_header_wo_search($db);
-output_orders($db);
+output_order_history($db);
 output_footer();
 ?>
 

@@ -60,13 +60,13 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header($db)?>
+    <?php output_header_wo_search($db)?>
 
     
     <?php 
     if(isset($_POST['editInfo'])){ ?>
     <div class = "editInf">
-    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="logout">
+    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="logout" enctype="multipart/form-data">
         <div class="row">
             <span class="bold">Restaurant Name</span>
             <span class="b"><p>(<?php echo $restaurant->restaurantName;?>)</p></span>
@@ -83,7 +83,7 @@ require_once('sql/favDish.php');
             <span class="bold"><p>Restaurant Category</p></span>
             <span class="b"><p>(<?php echo $restaurant->category;?>)</p></span>
             
-            <select id="cars" name = "Restaurant_Category" class = "input-field">
+            <select id="categories" name = "Restaurant_Category" class = "input-field">
                 <option value="Fast-Food">Fast-Food</option>
                 <option value="Italiano">Italiano</option>
                 <option value="Tradicional">Tradicional</option>
@@ -96,6 +96,10 @@ require_once('sql/favDish.php');
             <span class="b"><p>(<?php echo $restaurant->phoneNumber;?>)</p></span>
             
             <input type="text" class = "input-field" name = "Phone_Number" placeholder= "<?php echo $restaurant->phoneNumber;?>" >
+        </div>
+        <div class="row">
+            <label for="file">Escolha uma imagem: </label>
+            <input type="file" name="file">
         </div>
         <div class="row">
         
@@ -128,9 +132,7 @@ require_once('sql/favDish.php');
                         <td><?php echo $dish['dishName'] ?></td>
                         <td><?php echo $dish['price'] ?></td>
                         <td><?php echo $dish['category'] ?></td>
-                        <td><img src=<?php foreach($images as $image){
-                        if($image['dishId'] == $dish['dishId']) echo $image['photo'];
-                    } ?>></td>
+                        <td><img src=<?=$dish['photo']?>></td>
                     
                         <td>
                             <form action="edit_dish.php?id=<?php echo $restaurant->restaurantId;?>&dish=<?php echo $dish['dishId'];?>" method="post" class="editdish">
@@ -147,9 +149,11 @@ require_once('sql/favDish.php');
             
         } ?>
         </tbody>
-  </table>
-  <form action="addDish.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="add">
-            <button class = "button-3" id ="returnToRestaurant"><a href="restaurant.php?id=<?=$_GET['id']?>" ><i class="fa-solid fa-arrow-left"></i> Return to restaurant</a></button>
+    </table>
+
+        <button class = "button-3" id ="returnToRestaurant"><a href="restaurant.php?id=<?=$_GET['id']?>" ><i class="fa-solid fa-arrow-left"></i> Return to restaurant</a></button>
+        <form action="addDish.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="add">
+            
             <button class="button-3" name = "addDish" id = "addDish" role="button"><i class="fa-solid fa-plus"></i> Add a Dish</button>
         </form>
     </div>
@@ -160,5 +164,5 @@ require_once('sql/favDish.php');
 
 
     <?php output_footer()  ?>
-    </body>
+</body>
 </html>

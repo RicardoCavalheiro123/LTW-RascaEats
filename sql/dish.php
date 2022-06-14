@@ -6,14 +6,16 @@
         public string $dishName;
         public float $price;
         public string $category;
+        public string $photo;
 
-        public function __construct(int $dishId, int $restaurantId, string $dishName, float $price, string $category)
+        public function __construct(int $dishId, int $restaurantId, string $dishName, float $price, string $category, string $photo)
         {
             $this->dishId = $dishId;
             $this->restaurantId = $restaurantId;
             $this->dishName = $dishName;
             $this->price = $price;
             $this->category = $category;
+            $this->photo = $photo;
         }
 
         static function getMenu($db){
@@ -31,6 +33,7 @@
                 $dish['dishName'],
                 $dish['price'],
                 $dish['category'],
+                $dish['photo']
             );
         }
 
@@ -38,6 +41,12 @@
             $stmt = $db->prepare('SELECT photo FROM Dish WHERE restaurantId = ?');
             $stmt->execute(array($id));
             return $stmt->fetch();
+        }
+
+        static function getFavorites($db, $clientId){
+            $stmt = $db->prepare('SELECT Dish.dishId AS dishId, restaurantId, dishName, price, category, photo FROM FavDish JOIN Dish using(dishId) WHERE clientId = ?');
+            $stmt->execute(array($clientId));
+            return $stmt->fetchAll();
         }
         
     }

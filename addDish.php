@@ -62,13 +62,13 @@ require_once('sql/favDish.php');
     <title>Restaurante</title>
 </head>
 <body>
-    <?php output_header($db)?>
+    <?php output_header_wo_search($db)?>
 
     <?php 
     if(isset($_POST['addDish'])){ ?>
     <div class = "editInf">
-    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="logout">
-        <img src="<?php echo $imageDish; ?>">
+    <form action="restaurant_edit_server.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="logout" enctype ="multipart/form-data">
+
         <div class="row">
             <span class="bold">Name</span>
             <input type="text" class = "input-field" name = "dishName" required>
@@ -92,9 +92,13 @@ require_once('sql/favDish.php');
             </select>
             
         </div>
+
+        <div class="row">
+            <label for="file">Escolha uma imagem: </label>
+            <input type="file" name="file">
+        </div>
         
-        
-            <button class="button-3" name = "addDish2" id = "addDish2" role="button">Save</button>
+        <button class="button-3" name = "addDish2" id = "addDish2" role="button">Save</button>
     </form>
         </div>
 

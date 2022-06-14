@@ -74,8 +74,9 @@
         }
 
         static function searchRestaurants(PDO $db, string $search, int $count) : array {
-            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE restaurantName like ? limit ?');
-            $stmt->execute(array($search . '%', $count));
+            $stmt = $db->prepare('SELECT DISTINCT restaurantId, restaurantName, adress, restaurant.category AS category, phoneNumber, rating, ownerId, restaurant.photo AS photo FROM Restaurant WHERE restaurantName like ? OR category like ? 
+            UNION select DISTINCT restaurantId, restaurantName, adress, restaurant.category AS category, phoneNumber, rating, ownerId, restaurant.photo AS photo from dish JOIN restaurant USING (restaurantId) WHERE dishName LIKE ? limit ?');
+            $stmt->execute(array($search . '%', $search . '%', $search . '%', $count));
 
             $restaurants = array();
             while($restaurant = $stmt->fetch()) {
@@ -100,16 +101,10 @@
             else return false;
 
         }
-        static function setRating(Restaurant $restaurant, float $newRating, PDO $db) {
-            $oldRestaurantId = $restaurant->restaurantId;
-            $stmt = $db->prepare('DELETE FROM Restaurant WHERE restaurantId = ?');
-            $stmt->execute(array($restaurant->restaurantId));
+        static function setRating($restaurantId, float $newRating, PDO $db) {
 
-            $stmt = $db->prepare('INSERT INTO Restaurant (restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId, photo) 
-            VALUES (?, ?, ?, ?, ?, ? ,?, ?)');
-
-            $stmt->execute(array($oldRestaurantId, $restaurant->restaurantName,$restaurant->address,$restaurant->category,
-            $restaurant->phoneNumber,$newRating,$restaurant->ownerId, $restaurant->photo));
+            $stmt = $db->prepare('UPDATE Restaurant SET rating = ? WHERE restaurantId = ?');
+            $stmt->execute(array($newRating, $restaurantId));
 
         }
         static function getRestaurantsOwned(int $ownerId, $db){
@@ -123,9 +118,47 @@
             return $stmt->fetch();
         }
 
+        static function getRating($db, $restaurantId){
+            $stmt = $db->prepare('SELECT sum(rating) AS sum FROM Comments WHERE RestaurantId = ?');
+            $stmt->execute(array($restaurantId));
+            $sum = $stmt->fetch()['sum'];
+
+            $stmt = $db->prepare('SELECT count(*) AS count FROM Comments WHERE RestaurantId = ?');
+            $stmt->execute(array($restaurantId));
+            $count = $stmt->fetch()['count'];
+
+            $sum = number_format($sum,1);
+            
+            if($sum != 0.0){
+                $rating = number_format($sum / $count,1);
+            }
+            else{
+                $rating = number_format(0,1);
+            }
+
+            Restaurant::setRating($restaurantId,$rating,$db);
+            
+            return $rating;
+        }
+        static function checkOrder($db, $restaurantId, $clientId){
+            $stmt = $db->prepare('SELECT Distinct restaurantId FROM CurrentRequest JOIN Dish USING (dishId) JOIN Request USING (requestId) WHERE restaurantId = ? AND clientId = ?');
+            $stmt->execute(array($restaurantId, $clientId));
+
+            $orders = $stmt->fetchAll();
+
+            if(count($orders) > 0) return true;
+
+            return false;
+        }
+
+
+        static function getFavorites($db, $clientId){
+            $stmt = $db->prepare('SELECT Restaurant.restaurantId AS restaurant, restaurantName, adress, category, phoneNumber, rating, ownerId, photo FROM FavRestaurant JOIN Restaurant using(restaurantId) WHERE clientId = ?');
+            $stmt->execute(array($clientId));
+            return $stmt->fetchAll();
+        }
+
 
     }
-
-
 
 ?>

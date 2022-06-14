@@ -17,8 +17,9 @@
         <a href="register_restaurant.php">Registar um Restaurante<a> <?php
     } ?>
 
-
+    <a href="favorites.php">Meus Favoritos</a>
     <a href="orders.php">Minhas encomendas</a>
+    
     
     <a href="profilePage.php"><?=$name?></a>
     <?php if(isset($_SESSION['img'])){

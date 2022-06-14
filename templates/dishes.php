@@ -23,7 +23,7 @@
                     <?php } ?>  
                 </section>
             </article> <?php 
-            }
+        }
     }
 
 ?>

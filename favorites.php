@@ -5,12 +5,17 @@
     }
     require_once('sql/connection.php');
     require_once('templates/common.php');
-    require_once('sql/sql_orders.php');
-    require_once('templates/orders.php');
+    require_once('templates/favorites.php');
+
+    require_once('sql/restaurant.php');
+    require_once('sql/dish.php');
 
     $db = getDatabaseConnection();
 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    $favRestaurants = Restaurant::getFavorites($db,$_SESSION['id']);
+    $favDishes = Dish::getFavorites($db,$_SESSION['id']);
 
 
 ?>
@@ -32,7 +37,7 @@
 </head>
 <body>
 <?php output_header_wo_search($db);
-output_orders($db);
+output_favorites($db,$favRestaurants,$favDishes);
 output_footer();
 ?>
 

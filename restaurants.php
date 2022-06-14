@@ -4,6 +4,7 @@
     require_once('sql/restaurant.php');
     require_once('templates/common.php');
     require_once('templates/restaurant.php');
+    require_once('templates/orders.php');
 
     session_start();
 
@@ -27,25 +28,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
-    <title><?=$restaurant->$name?></title>
+    <title>Os seus restaurantes</title>
 </head>
     <body>
 
-        <?php output_header($db); ?>
+        <?php output_header_wo_search($db); ?>
 
-            <?php foreach($ownerRestaurants as $restaurant){ ?>
+        <a href="order_history.php">Ver Encomendas</a>
 
-                <article>
-                    <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="https://picsum.photos/300/300?<?php echo $restaurant['restaurantName']?>" alt="Restaurant photo"></a>
-                    <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
-                    <p><?php echo $restaurant['rating']?>/5.0 ☆</p>
-                    <p><?php echo $restaurant['adress']?></p>
-                </article>
+        <?php output_list_owned_restaurants($db,$ownerRestaurants);
 
-            <?php } ?>
-
-        
-        <?php output_footer(); ?>
+        output_footer(); ?>
     
 
     </body>

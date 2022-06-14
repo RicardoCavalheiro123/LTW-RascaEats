@@ -1,4 +1,8 @@
-<?php function output_restaurant($restaurant, $db, $ratings, $restaurantImage){ ?>
+<?php
+
+use LDAP\Result;
+
+ function output_restaurant($restaurant, $db, $rating, $restaurantImage){ ?>
     <section id= "restaurant">
         <p>
             <?php
@@ -11,27 +15,7 @@
             echo $restaurant->$name ?>
         </p>
         <p>
-            <?php 
-            $rating = 'rating';
-
-            $count = 0; $sum = 0.0;
-
-            if(sizeof($ratings) == 0){
-                echo $restaurant->rating;
-            }
-            else{
-                foreach($ratings as $rate){
-                    $count += 1;
-                    $sum = $sum + number_format($rate['rating'],1);
-    
-                }
-    
-                $newRating = number_format($sum / number_format($count),1);
-                echo $newRating;       
-                Restaurant::setRating($restaurant,$newRating,$db);  
-            }
-            
-            ?><i class="fa-solid fa-star"></i>
+            <?php echo $rating ?><i class="fa-solid fa-star"></i>
         </p>
         <p>
             <?php
@@ -65,7 +49,7 @@
 
 <?php } ?>
 
-<?php function output_restaurant_owner($restaurant, $db, $ratings, $restaurantImage){ ?>
+<?php function output_restaurant_owner($restaurant, $db, $rating, $restaurantImage){ ?>
     <section id= "restaurant">
         <p>
             <?php
@@ -78,27 +62,7 @@
             echo $restaurant->$name ?>
         </p>
         <p>
-            <?php 
-            $rating = 'rating';
-
-            $count = 0; $sum = 0.0;
-
-            if(sizeof($ratings) == 0){
-                echo $restaurant->rating;
-            }
-            else{
-                foreach($ratings as $rate){
-                    $count += 1;
-                    $sum = $sum + number_format($rate['rating'],1);
-    
-                }
-    
-                $newRating = number_format($sum / number_format($count),1);
-                echo $newRating;       
-                Restaurant::setRating($restaurant,$newRating,$db);  
-            }
-            
-            ?><i class="fa-solid fa-star"></i>
+            <?php echo $rating?><i class="fa-solid fa-star"></i>
         </p>
         <p>
             <?php
@@ -143,11 +107,16 @@
                 <h2>
                 <?php echo $category['category']?>
                 </h2> <?php $restaurants = Restaurant::getRestaurantCategory($db, $category['category']);
-                foreach($restaurants as $restaurant){ ?>
+                foreach($restaurants as $restaurant){ 
+                    
+                    $rating = Restaurant::getRating($db,$restaurant['restaurantId']);
+                    
+                    
+                    ?>
                     <article>
-                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="https://picsum.photos/300/300?<?php echo $restaurant['restaurantName']?>" alt="Restaurant photo"></a>
+                        <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>" alt="Restaurant photo" width="300px" height = "300px"></a>
                         <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
-                        <p><?php echo $restaurant['rating']?>/5.0 ☆</p>
+                        <p><?php echo $rating?>/5.0 ☆</p>
                         <p><?php echo $restaurant['adress']?></p>
                     </article>
         <?php   } ?>
@@ -157,6 +126,23 @@
         
         
     </section>
+
+<?php } ?>
+
+<?php function output_list_owned_restaurants($db, $ownerRestaurants) { ?>
+
+    <?php foreach($ownerRestaurants as $restaurant){ 
+
+        $rating = Restaurant::getRating($db,$restaurant['restaurantId']); ?>
+
+        <article>
+            <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>"alt="Restaurant photo" width="300px" height = "300px"></a>
+            <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
+            <p><?php echo $rating ?>/5.0 ☆</p>
+            <p><?php echo $restaurant['adress']?></p>
+        </article>
+
+    <?php } ?>
 
 <?php } ?>
 

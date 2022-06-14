@@ -61,7 +61,7 @@ img:hover {
 }
 
 .details{
-    min-height: 610px;
+    min-height: 630px;
 
 }
 
@@ -103,18 +103,20 @@ footer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .footer-bottom{
-    background: transparent;
-    color: white;
-    padding: 0px 0;
-    text-align: center;
+  background: transparent;
+  color: white;
+  padding: 0px 0;
+  text-align: center;
+  display: block;
 
 }
 
 .footer-bottom p{
-    font-size: 14px;
-    word-spacing: 2px;
-    text-transform: capitalize;
-    color: white;
+  font-size: 14px;
+  word-spacing: 2px;
+  padding: 0px;
+  text-transform: capitalize;
+  color: white;
 }
 
 header {

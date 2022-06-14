@@ -37,7 +37,7 @@
                 $stmt = $db->prepare('INSERT INTO Comments (clientId, restaurantId, comment, rating, published) VALUES (?, ?, ?, ?, ?)');
     
                 $stmt->execute(array($clientId, $restaurantId, $comment, intval($rating), $date));
-    
+                
                 echo "<meta http-equiv='refresh' content='0'>";
     
             }
