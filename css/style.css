@@ -242,6 +242,15 @@ header form{
 
 }
 
+@media (max-width: 60em) {
+    #category{
+        display: grid;
+        grid-template-columns: 300px 300px;
+        justify-content: space-around;
+
+    }
+}
+
 
 #category {
     display: grid;
@@ -495,3 +504,6 @@ footer{
   }
 
  
+  .selecionado{
+    display: none;
+  }

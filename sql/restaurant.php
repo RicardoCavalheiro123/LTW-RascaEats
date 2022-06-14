@@ -153,7 +153,7 @@
 
 
         static function getFavorites($db, $clientId){
-            $stmt = $db->prepare('SELECT Restaurant.restaurantId AS restaurant, restaurantName, adress, category, phoneNumber, rating, ownerId, photo FROM FavRestaurant JOIN Restaurant using(restaurantId) WHERE clientId = ?');
+            $stmt = $db->prepare('SELECT Restaurant.restaurantId AS restaurantId, restaurantName, adress, category, phoneNumber, rating, ownerId, photo FROM FavRestaurant JOIN Restaurant using(restaurantId) WHERE clientId = ?');
             $stmt->execute(array($clientId));
             return $stmt->fetchAll();
         }

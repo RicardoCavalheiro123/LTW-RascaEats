@@ -36,7 +36,30 @@
     <title>Restaurante</title>
 </head>
 <body>
-<?php output_header_wo_search($db);
+<?php output_header_wo_search($db); ?>
+<button onclick="toggleDishes()" id ="restButton">Restaurantes</button>
+<button onclick="toggleRestaurants()" id = "dishButton">Pratos</button>
+<script>
+    function toggleRestaurants(){
+        const restaurants = document.querySelector("#restaurantes")
+        if(restaurants.classList.contains("selecionado")){
+            restaurants.classList.remove("selecionado")
+        }
+        else{
+            restaurants.classList.add("selecionado")
+        }
+    }
+    function toggleDishes(){
+        const dishes = document.querySelector("#pratos")
+        if(dishes.classList.contains("selecionado")){
+            dishes.classList.remove("selecionado")
+        }
+        else{
+            dishes.classList.add("selecionado")
+        }
+    }
+</script>
+<?php
 output_favorites($db,$favRestaurants,$favDishes);
 output_footer();
 ?>
