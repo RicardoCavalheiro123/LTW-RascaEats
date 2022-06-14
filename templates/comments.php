@@ -45,7 +45,7 @@
                 <?php  
                 }
                 else if($hadAnswer && $Owner){ ?>
-                    <form action="delete_answer.php?id=<?php echo $comment['commentId'];?>" method="post" class="deleteAnswer">
+                    <form action="../actions/delete_answer.php?id=<?php echo $comment['commentId'];?>" method="post" class="deleteAnswer">
                         <button class="button-4" name= "deleteAnswer" id = "deleteAnswer" role="button">Delete Answer</button>
                     </form>
                     <?php

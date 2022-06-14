@@ -3,8 +3,8 @@
 
     session_start();
 
-    require_once('sql/connection.php');
-    require_once('sql/restaurant.class.php');
+    require_once(__DIR__. '/../sql/connection.php');
+    require_once(__DIR__. '/../sql/restaurant.class.php');
 
 
     $db = getDatabaseConnection();

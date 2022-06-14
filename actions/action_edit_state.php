@@ -1,7 +1,7 @@
 <?php 
     declare(strict_types = 1);
 
-    require_once('sql/connection.php');
+    require_once(__DIR__.'../sql/connection.php');
 
     $db = getDatabaseConnection();
 
@@ -13,6 +13,6 @@
     $stmt = $db->prepare('UPDATE Request SET state = ? WHERE requestId = ?');
     $stmt->execute(array($state , $requestId));
     
-    header('Location: order_history.php');
+    header('Location: ../pages/order_history.php');
 
 ?>

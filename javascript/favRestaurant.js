@@ -19,7 +19,7 @@ async function postData(url, data) {
 
   function toggleFavRestaurant(cId, rId){
 
-    postData('action_toggle_favorite.php/', {clientId: cId , restaurantId: rId })
+    postData('../actions/action_toggle_favorite.php/', {clientId: cId , restaurantId: rId })
         .catch(() => console.error('Network Error'))
         .then(response => response.json())
         .catch(() => console.error('Error parsing JSON'))

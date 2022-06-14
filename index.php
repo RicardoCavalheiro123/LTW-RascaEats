@@ -1,4 +1,4 @@
 <?php 
-    header('Location: pages/frontpage.php');
+    header('Location: pages/front_page.php');
 ?>
 

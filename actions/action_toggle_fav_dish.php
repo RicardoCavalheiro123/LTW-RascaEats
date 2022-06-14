@@ -3,7 +3,7 @@
 
     session_start();
 
-    require_once('sql/connection.php');
+    require_once(__DIR__. '/../sql/connection.php');
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 

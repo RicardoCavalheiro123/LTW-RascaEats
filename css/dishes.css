@@ -12,10 +12,12 @@
 #dishes{
     grid-column: 1/2;
     grid-row:3/3;
-    padding: 1em;
+    padding-left: 4em;
     margin:0 auto;
     display: grid;
     grid-template-columns: auto auto;
+    background-color: rgb(221, 221, 221);
+    
 }
 
 #dishes section p.dishPrice::after{
@@ -27,11 +29,16 @@
     grid-column: 2;
 }
 
+article.dish section{
+    padding-left: 1em;
+}
+
 
 article.dish{
     margin-bottom: 1em;
     display: flex;
-    flex-direction: column;
+    background-color: white;
+    margin-right: 1em;
 }
 
 
@@ -98,3 +105,14 @@ p.dishPrice {
     width: 300px;
     height: 200px;
 }
+
+@media(max-width: 60em){
+    article.dish{
+        flex-direction: column;
+    }
+
+    #dishes{
+        background-color: white;
+    }
+}
+

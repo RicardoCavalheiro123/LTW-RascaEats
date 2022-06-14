@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
-    <script src="search.js" defer></script>
+    <script src="../javascript/search.js" defer></script>
     <title>Rasca Eats</title>
 </head>
 <body>

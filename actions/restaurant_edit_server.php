@@ -1,12 +1,12 @@
 
 <?php 
 
-require_once('sql/connection.php');
-require_once('sql/restaurant.class.php');
+require_once(__DIR__. '/../sql/connection.php');
+require_once(__DIR__. '/../sql/restaurant.class.php');
 
-require_once('templates/comments.php');
-require_once('sql/comments.class.php');
-require_once('templates/common.php');
+require_once(__DIR__. '/../templates/comments.php');
+require_once(__DIR__. '/../sql/comments.class.php');
+require_once(__DIR__. '/../templates/common.php');
 
 session_start();
 
@@ -47,17 +47,17 @@ if(isset($_POST['editRestaurant'])){
         if(in_array($fileExt, $allowed)){
             if($fileError === 0){
                 echo "file quase movido";
-                $fileDestination = 'images/Restaurant' . $Restaurant_id . '.' . $fileExt;
-                $jpg = 'images/Restaurant' . $Restaurant_id . '.jpg';
-                $jpeg = 'images/Restaurant' . $Restaurant_id. '.jpeg';
-                $png = 'images/Restaurant' . $Restaurant_id. '.png';
+                $fileDestination = '../images/Restaurant' . $Restaurant_id . '.' . $fileExt;
+                $jpg = '../images/Restaurant' . $Restaurant_id . '.jpg';
+                $jpeg = '../images/Restaurant' . $Restaurant_id. '.jpeg';
+                $png = '../images/Restaurant' . $Restaurant_id. '.png';
                 unlink($jpg); unlink($jpeg); unlink($png);
                 
                 move_uploaded_file($fileTmpName, $fileDestination);
 
                 $stmt = $db->prepare(' UPDATE Restaurant SET photo = ? WHERE restaurantId = ? ');
                 
-                $stmt->execute(array('images/Restaurant' . $Restaurant_id. '.' . $fileExt, $Restaurant_id));
+                $stmt->execute(array('../images/Restaurant' . $Restaurant_id. '.' . $fileExt, $Restaurant_id));
             }
         }
     }
@@ -96,7 +96,7 @@ if(isset($_POST['editRestaurant'])){
 
         $stmt->execute(array($Restaurant_Phone_Number,$Restaurant_id));   
     }
-    header("Location: restaurantOfOwner.php?id=" . $Restaurant_id);
+    header("Location: ../pages/owner_restaurant.php?id=" . $Restaurant_id);
 }
 
 if(isset($_POST['deleteDish'])){
@@ -134,17 +134,17 @@ if(isset($_POST['editdish'])){
         if(in_array($fileExt, $allowed)){
             if($fileError === 0){
                 
-                $fileDestination = 'images/Dish' . $dish_id . '.' . $fileExt;
-                $jpg = 'images/Dish' . $dish_id . '.jpg';
-                $jpeg = 'images/Dish' . $dish_id. '.jpeg';
-                $png = 'images/Dish' . $dish_id. '.png';
+                $fileDestination = '../images/Dish' . $dish_id . '.' . $fileExt;
+                $jpg = '../images/Dish' . $dish_id . '.jpg';
+                $jpeg = '../images/Dish' . $dish_id. '.jpeg';
+                $png = '../images/Dish' . $dish_id. '.png';
                 unlink($jpg); unlink($jpeg); unlink($png);
                 
                 move_uploaded_file($fileTmpName, $fileDestination);
 
                 $stmt = $db->prepare(' UPDATE Dish SET photo = ? WHERE dishId = ? ');
                 
-                $stmt->execute(array('images/Dish' . $dish_id. '.' . $fileExt, $dish_id));
+                $stmt->execute(array('../images/Dish' . $dish_id. '.' . $fileExt, $dish_id));
             }
         }
     }
@@ -177,7 +177,7 @@ if(isset($_POST['editdish'])){
     
         $stmt->execute(array($dish_Category,$dish_id));
     }
-    header("Location: editRestaurant.php?id=$rest_id");
+    header("Location: ../pages/edit_restaurant.php?id=$rest_id");
  
 }
 if(isset($_POST['deleteDish'])){
@@ -230,11 +230,10 @@ if(isset($_POST['addDish2'])){
 
     if(in_array($fileExt, $allowed)){
         if($fileError === 0){
-            echo "file quase movido";
-            $fileDestination = 'images/Dish' . $dishId . '.' . $fileExt;
-            $jpg = 'images/Dish' . $dishId . '.jpg';
-            $jpeg = 'images/Dish' . $dishId . '.jpeg';
-            $png = 'images/Dish' . $dishId . '.png';
+            $fileDestination = '../images/Dish' . $dishId . '.' . $fileExt;
+            $jpg = '../images/Dish' . $dishId . '.jpg';
+            $jpeg = '../images/Dish' . $dishId . '.jpeg';
+            $png = '../images/Dish' . $dishId . '.png';
             unlink($jpg); unlink($jpeg); unlink($png);
             
             move_uploaded_file($fileTmpName, $fileDestination);
@@ -243,12 +242,12 @@ if(isset($_POST['addDish2'])){
         }
     }
 
-    $photo = 'images/Dish'. $dishId . '.' . $fileExt;
+    $photo = '../images/Dish'. $dishId . '.' . $fileExt;
 
     $stmt = $db->prepare('INSERT INTO Dish(restaurantId, dishName, price, category, photo) VALUES(?, ?, ?, ?, ?)');
     $stmt->execute(array($rest_id, $dish_Name,$dish_Price,$dish_Category, $photo));
 
-    header("Location: editRestaurant.php?id=$rest_id");
+    header("Location: ../pages/edit_restaurant.php?id=$rest_id");
 
 }
 

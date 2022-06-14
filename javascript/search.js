@@ -2,7 +2,7 @@ const searchInput = document.querySelector("#searchrestaurant")
 
 if(searchInput){
     searchInput.addEventListener('input', async function() {
-        const response = await fetch('api_restaurants.php?search=' + this.value)
+        const response = await fetch('../api/api_restaurants.php?search=' + this.value)
         const restaurants = await response.json()
         const s = document.createElement('section')
         s.setAttribute('id', 'rs');
@@ -54,9 +54,9 @@ if(searchInput){
                 const p2 = document.createElement('p')
                 const p3 = document.createElement('p')
                 img.src = restaurant.photo
-                link1.href = 'restaurant.php?id=' + restaurant.restaurantId
+                link1.href = '..pages/restaurant.php?id=' + restaurant.restaurantId
                 link1.appendChild(img)
-                link2.href = 'restaurant.php?id=' + restaurant.restaurantId
+                link2.href = '..pages/restaurant.php?id=' + restaurant.restaurantId
                 p1.textContent = restaurant.restaurantName
                 link2.appendChild(p1)
                 p2.textContent = restaurant.rating + '/5.0 ☆'

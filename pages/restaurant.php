@@ -1,22 +1,21 @@
 <?php 
 
-    require_once('sql/connection.php');
-    require_once('sql/restaurant.class.php');
-    require_once('templates/restaurant.php');
+    require_once(__DIR__. '/../sql/connection.php');
+    require_once(__DIR__. '/../sql/restaurant.class.php');
+    require_once(__DIR__. '/../templates/restaurant.php');
 
-    require_once('templates/comments.php');
-    require_once('sql/comments.class.php');
+    require_once(__DIR__. '/../templates/comments.php');
+    require_once(__DIR__. '/../sql/comments.class.php');
 
-    require_once('sql/answers.class.php');
+    require_once(__DIR__. '/../sql/answers.class.php');
 
-    require_once('templates/common.php');
+    require_once(__DIR__. '/../templates/common.php');
 
-    require_once('templates/dishes.php');
-    require_once('sql/dish.class.php');
-    require_once('sql/favRestaurant.php');
-    require_once('sql/favDish.php');
-
-    require_once('cart.php');
+    require_once(__DIR__. '/../templates/dishes.php');
+    require_once(__DIR__. '/../sql/dish.class.php');
+    require_once(__DIR__. '/../sql/favRestaurant.php');
+    require_once(__DIR__. '/../sql/favDish.php');
+    require_once(__DIR__. '/../templates/cart.php');
 
     session_start();
 
@@ -29,7 +28,7 @@
 
         $isOwner = Restaurant::isRestaurantOwner($restaurant,$_SESSION['id']);
         if($isOwner){
-            header("Location: restaurantOfOwner.php?id=$restaurant->restaurantId");
+            header("Location: ../pages/owner_restaurant.php?id=$restaurant->restaurantId");
         }
     }
     
@@ -53,17 +52,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/restaurant.css">
-    <link rel="stylesheet" href="css/comments.css">
-    <link rel="stylesheet" href="css/dishes.css">
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/restaurant.css">
+    <link rel="stylesheet" href="../css/comments.css">
+    <link rel="stylesheet" href="../css/dishes.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/edit.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
-    <script src="cart.js" defer></script>
-    <script src="favRestaurant.js" defer></script>
-    <script src="favDish.js" defer></script>    
+    <script src="../javascript/cart.js" defer></script>
+    <script src="../javascript/favRestaurant.js" defer></script>
+    <script src="../javascript/favDish.js" defer></script>    
     <title><?=$restaurant->$name?></title>
 </head>
     <body>
@@ -76,12 +75,13 @@
     output_cart();
 
 ?>
-    
+    <?php if(count($menu) > 0) { ?>
     <section id = "dishes">
 
         <?php output_dishes($menu,$db,$restaurantImage)?>
     
     </section>
+<?php } ?>
     <section id = "reviews">
         <h3>Comentários:</h3>
         <?php output_comments($comments,$answers,False,$db)?>
@@ -89,7 +89,7 @@
         <h3>Deixe o seu comentário - </h3>
 
         <?php if (!isset($_SESSION['id'])){ ?> 
-                <p><a href="login_register.php">Efetue login para comentar</a></p>
+                <p><a href="../pages/login_register.php">Efetue login para comentar</a></p>
 <?php       } 
         else{
 

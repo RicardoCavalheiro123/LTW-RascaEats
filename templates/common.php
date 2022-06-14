@@ -8,20 +8,20 @@
     
     ?>
 
-  <form action="actions/action_logout.php" method="post" class="logout">
+  <form action="../actions/action_logout.php" method="post" class="logout">
     <?php 
     if($isOwner){ ?>
-        <a href="restaurants.php">Meus Restaurantes<a>
+        <a href="../pages/restaurants.php">Meus Restaurantes<a>
     <?php }
     else{ ?>
-        <a href="register_restaurant.php">Registar um Restaurante<a> <?php
+        <a href="../pages/register_restaurant.php">Registar um Restaurante<a> <?php
     } ?>
 
-    <a href="favorites.php">Meus Favoritos</a>
-    <a href="orders.php">Minhas encomendas</a>
+    <a href="../pages/favorites.php">Meus Favoritos</a>
+    <a href="../pages/orders.php">Minhas encomendas</a>
     
     
-    <a href="profilePage.php"><?=$name?></a>
+    <a href="../pages/profile_page.php"><?=$name?></a>
     <?php if(isset($_SESSION['img'])){
             ?>
             <img src= "<?php echo $_SESSION['img']; ?>" alt="1" style="width:2%">
@@ -36,7 +36,7 @@
 
 <?php function output_header_wo_search($db){ ?>
   <header>
-        <h1><a href="frontPage.php">Rasca Eats</a></h1>
+        <h1><a href="../pages/front_page.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils" id="utensils"></i>
 
         <div class = "l" id="loginForm">
@@ -51,7 +51,7 @@
             else{ ?>
                 
                     <div class="login">
-                        <a href="login_register.php">Login | Register</a>
+                        <a href="../pages/login_register.php">Login | Register</a>
                     </div>
 <?php       }
                 ?>
@@ -65,7 +65,7 @@
 
 <?php function output_header($db){ ?>
   <header>
-        <h1><a href="frontPage.php">Rasca Eats</a></h1>
+        <h1><a href="../pages/front_page.php">Rasca Eats</a></h1>
         <i class="fa-solid fa-utensils" id="utensils"></i>
   
         <div class = "l" id="loginForm">
@@ -78,7 +78,7 @@
             else{ ?>
                 
                     <div class="login">
-                        <a href="login_register.php">Login | Register</a>
+                        <a href="../pages/login_register.php">Login | Register</a>
                     </div>
 <?php       }
                 ?>

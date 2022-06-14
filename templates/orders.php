@@ -74,7 +74,7 @@
             <?php }  ?> <p>Total: <?=$total?></p> 
                   <p><?=$order['state']?></p></article>
 
-                <form action="actions/action_edit_state.php?id=<?php echo $order['requestId'];?>" method="post" class="logout">
+                <form action="../actions/action_edit_state.php?id=<?php echo $order['requestId'];?>" method="post" class="logout">
                     <select id="state" name = "state" class = "input-field">
                         <option value="Em Preparação">Em Preparação</option>
                         <option value="Pronto">Pronto</option>

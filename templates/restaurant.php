@@ -78,7 +78,7 @@ use LDAP\Result;
         </p>
         <img class = "slide" src= <?php echo $restaurantImage; ?> alt="Restaurant photo">
 
-        <form action="editRestaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurant">
+        <form action="../pages/edit_restaurant.php?id=<?php echo $restaurant->restaurantId;?>" method="post" class="editRestaurant">
                 <button class="button-4" name= "editInfo" id = "editInfo" role="button">Edit Information</button>
         </form>
         
@@ -151,7 +151,7 @@ use LDAP\Result;
 
 <?php function output_restaurant_register( $db){ ?>
     <div class = "editInf">
-    <form action="restaurant_register_server.php" method="post" class="logout" enctype ="multipart/form-data">
+    <form action="../actions/restaurant_register_server.php" method="post" class="logout" enctype ="multipart/form-data">
         <div class="row">
             <span class="bold">Restaurant Name</span>
             <input type="text" class = "input-field" name = "Restaurant_Name" placeholder= "Restaurant Name" >

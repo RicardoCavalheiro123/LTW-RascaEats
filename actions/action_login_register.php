@@ -63,7 +63,7 @@
             $id = $stmt->fetch();
             $_SESSION['id'] = $id['clientId'];
             $_SESSION['name'] = $username; 
-            header('Location: ../frontPage.php');
+            header('Location: ../pages/front_page.php');
         }   
 
     }
@@ -78,7 +78,7 @@
             
             $_SESSION['id'] = $validLogin['clientId'];
             $_SESSION['name'] = $username; 
-            header('Location: ../frontPage.php');
+            header('Location: ../pages/front_page.php');
         }
         else{
             $_SESSION["error1"] = "Username or Password incorrect";

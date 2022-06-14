@@ -3,9 +3,8 @@
 
     session_start();
 
-    require_once('sql/connection.php');
-
-    require_once('sql/client.class.php');
+    require_once(__DIR__. '/../sql/connection.php');
+    require_once(__DIR__. '/../sql/client.class.php');
     $db = getDatabaseConnection();
     
 
@@ -16,7 +15,7 @@
 
 
     if($userPhoto) {
-      $fileName = "images/user" .$userPhoto .".png";
+      $fileName = "../images/user" .$userPhoto .".png";
       $_SESSION['img'] =  $fileName; 
       $stmt = $db->prepare('
         Update Client set photo = ?
@@ -24,7 +23,7 @@
       ');
         
         $stmt->execute(array($fileName,$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
     }
     if(isset($_POST['namebtn'])){
         $stmt = $db->prepare('
@@ -33,7 +32,7 @@
       ');
     
         $stmt->execute(array($_POST['newName'],$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
 
     }
 
@@ -45,7 +44,7 @@
       ');
     
         $stmt->execute(array($_POST['newUsername'],$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
 
     }
 
@@ -60,7 +59,7 @@
           ');
           $options = ['cost => 12'];
             $stmt->execute(array(password_hash($_POST['password1'],PASSWORD_DEFAULT, $options),$_SESSION['id']));
-            header('Location: profilePage.php');
+            header('Location: ../pages/profile_page.php');
         }
         else{
             $_SESSION["error"] = "Passwords do not match";
@@ -77,7 +76,7 @@
       ');
     
         $stmt->execute(array($_POST['newEmail'],$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
     }
     if(isset($_POST['adressbtn'])){
         
@@ -87,7 +86,7 @@
       ');
     
         $stmt->execute(array($_POST['newAdress'],$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
     }
     if(isset($_POST['phoneNumberbtn'])){
         
@@ -97,7 +96,7 @@
       ');
     
         $stmt->execute(array($_POST['newPhone_number'],$_SESSION['id']));
-        header('Location: profilePage.php');
+        header('Location: ../pages/profile_page.php');
     }
     
     if(isset($_POST['phoneNumberbtn'])){
@@ -108,10 +107,10 @@
     ');
   
       $stmt->execute(array($_POST['newPhone_number'],$_SESSION['id']));
-      header('Location: profilePage.php');
+      header('Location: ../pages/profile_page.php');
   }
     
-  header('Location: profilePage.php');
+  header('Location: ../pages/profile_page.php');
   
   
     

@@ -30,14 +30,17 @@ body{
     flex-direction: column;
 }
 
-#desc > a, #desc > p{
+#desc > a, #desc > p, #description > p{
     padding: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em; 
 }
 
 #desc > a{
     text-decoration: none;
     font-weight: bolder;
     color: black;
+    font-size: larger;
 }
 
 #dish p{
@@ -64,10 +67,7 @@ body{
     content: "€";
 }
 
-#description > p{
-    padding: 1em;
-    font-size: larger;
-}
+
 .bold p{
     text-align: center;
     padding-top: 20vh;
@@ -75,10 +75,36 @@ body{
     
 }
 
+#restaurantes h2, #pratos h2{
+    padding-left: 1em;
+    color: rgb(32, 74, 150);
+}
+
+#pratos #desc > p:last-child::after {
+    content: " €";
+}
+
+#restButton{
+    width: 150px;
+}
+
 #orders_dish{
     min-height: 84vh;
 }
 
+@media(max-width: 60em){
+    #order, #pratos article, #restaurantes article{
+        display: flex;
+        padding-left: 1em;
+        flex-direction: column;
+    } 
+    #desc a, #desc p{
+        padding: 0.1em;
+    }
+    button#restButton, button#dishButton{
+        left: 23%;
+    }
+}
 #all_favorites{
     min-height: 76vh;
 }

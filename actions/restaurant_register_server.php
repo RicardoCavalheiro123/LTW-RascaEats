@@ -1,11 +1,11 @@
 <?php 
 
-require_once('sql/connection.php');
-require_once('sql/restaurant.class.php');
+require_once(__DIR__.'../sql/connection.php');
+require_once(__DIR__.'../sql/restaurant.class.php');
 
-require_once('templates/comments.php');
-require_once('sql/comments.class.php');
-require_once('templates/common.php');
+require_once(__DIR__.'../templates/comments.php');
+require_once(__DIR__.'../sql/comments.class.php');
+require_once(__DIR__.'../templates/common.php');
 
 session_start();
 
@@ -38,7 +38,7 @@ if(isset($_POST['registerRestaurant'])){
 
     if(in_array($fileExt, $allowed)){
         if($fileError === 0){
-            $fileDestination = 'images/' . str_replace(' ', '', $Restaurant_Name) . '.' . $fileExt;
+            $fileDestination = '../images/' . str_replace(' ', '', $Restaurant_Name) . '.' . $fileExt;
             move_uploaded_file($fileTmpName, $fileDestination);
         }
     }
@@ -57,7 +57,7 @@ if(isset($_POST['registerRestaurant'])){
 
     
 
-    header("Location: restaurantOfOwner.php?id=". $restaurantId['last_insert_rowid()'] );
+    header("Location: ../pages/owner_restaurant.php?id=". $restaurantId['last_insert_rowid()'] );
 }
 
 

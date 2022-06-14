@@ -2,10 +2,10 @@
     declare(strict_types = 1);
     session_start();
     if (!isset($_SESSION['id'])) die(header('Location: /'));
-    require_once('sql/connection.php');
-    require_once('sql/client.class.php');
-    require_once('templates/common.php');
-    require_once('templates/profile.php');
+    require_once(__DIR__. '/../sql/connection.php');
+    require_once(__DIR__. '/../sql/client.class.php');
+    require_once(__DIR__. '/../templates/common.php');
+    require_once(__DIR__. '/../templates/profile.php');
 
     $db = getDatabaseConnection();
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -29,8 +29,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <title>Profile</title>

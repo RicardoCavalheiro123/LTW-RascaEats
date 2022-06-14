@@ -25,3 +25,62 @@
     text-decoration: none;
     padding-bottom: 0.1em;
 }
+
+#cart{
+
+    grid-row-start: 2;
+    padding: 4em;
+}
+
+#cart table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    padding: 4em;
+  }
+  
+  #cart th{
+    padding: 1em;
+    text-align: center;
+    background-color: rgb(32, 74, 150);
+    color: white;
+
+  }
+
+  #cart td{
+    padding: 1em;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+
+  
+
+  #cart table tbody tr :nth-child(3)::after, #cart table tbody tr :nth-child(4)::after{
+      content: "€";
+  }
+  
+  #cart tfoot th:nth-child(2)::after{
+    content: "€";
+  }
+  
+  #cart tr {
+    background-color: #ffddd2;  
+    border: 5px solid white;
+  }
+  
+  #cart thead tr, #cart tfoot tr  {
+    background-color: #edf6f9;
+  }
+
+@media(max-width: 60em){
+    #cart{
+        padding: 1em;
+        position: unset;
+    }
+}
+
+@media(max-width: 1554px){
+    #cart{
+        position: unset;
+    }
+}

@@ -25,7 +25,7 @@
   
 
     static function getClientId(PDO $db, string $username, string $password) : ?Client {
-        $stmt = $db->prepare('SELECT clientId, clientName, email, adress, phoneNumber, username FROM client WHERE username = ? and password = ?');
+        $stmt = $db->prepare('SELECT clientId, clientName, email, adress, phoneNumber, username, photo FROM client WHERE username = ? and password = ?');
         $stmt->execute(array($username,$password));
     
         if ($client = $stmt->fetch()) {
@@ -36,6 +36,7 @@
             $client['adress'],
             $client['phoneNumber'],
             $client['username'],
+            $client['photo']
           );
           
         } else return null;
