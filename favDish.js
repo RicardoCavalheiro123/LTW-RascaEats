@@ -5,9 +5,9 @@ function encodeForAjax(data) {
     }).join('&')
   }
 
-async function postData(data) {
+async function postData(url,data) {
 
-    return fetch('action_toggle_fav_dish.php/', {
+    return fetch(url, {
       method: 'post',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -18,7 +18,7 @@ async function postData(data) {
 
 
   function toggleFavDish(cId, dId){
-    postData({clientId: cId, dishId: dId})
+    postData('action_toggle_fav_dish.php/', {clientId: cId, dishId: dId})
         .catch(() => console.error('Network Error'))
         .then(response => response.json())
         .catch(() => console.error('Error parsing JSON'))

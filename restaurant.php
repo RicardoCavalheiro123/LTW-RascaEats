@@ -62,7 +62,6 @@
     <script src="https://kit.fontawesome.com/7dd8778261.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
-    <script src="search.js" defer></script>
     <script src="favRestaurant.js" defer></script>
     <script src="favDish.js" defer></script>    
     <title><?=$restaurant->$name?></title>

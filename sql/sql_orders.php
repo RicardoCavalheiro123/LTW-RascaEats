@@ -25,7 +25,7 @@
     }
 
     function get_restaurantName($db, $dishId){
-        $stmt = $db->prepare('SELECT restaurantName FROM Restaurant JOIN Dish using(restaurantId) WHERE dishId = ?');
+        $stmt = $db->prepare('SELECT * FROM Restaurant JOIN Dish using(restaurantId) WHERE dishId = ?');
         $stmt->execute(array($dishId));
         return $stmt->fetch();
     }

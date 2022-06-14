@@ -2,7 +2,7 @@ body{
     display: block;
 }
 
-#order{
+#order, #restaurantes article, #pratos article{
     display: flex;
     flex-direction: row;
     gap: 2em;
@@ -10,7 +10,7 @@ body{
     padding-left: 6em;
 }
 
-#order > img{
+#order > img, #restaurantes article img, #pratos article img{
     flex: 0;
     max-height: 200px;
     border-radius: 10%;
@@ -19,6 +19,21 @@ body{
 #dish{
     display: flex;
     flex-direction: row;
+}
+
+#desc{
+    display: flex;
+    flex-direction: column;
+}
+
+#desc > a, #desc > p{
+    padding: 1em;
+}
+
+#desc > a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
 }
 
 #dish p{

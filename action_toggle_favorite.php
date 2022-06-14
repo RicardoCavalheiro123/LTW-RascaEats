@@ -10,7 +10,9 @@
     $clientId = $_POST['clientId'];
     $restaurantId = $_POST['restaurantId'];
 
-    $stmt = $db->prepare('SELECT * FROM favRestaurant WHERE restaurantId = ? AND clientId = ?' );
+    echo $restaurantId;
+
+    $stmt = $db->prepare('SELECT * FROM FavRestaurant WHERE restaurantId = ? AND clientId = ?' );
     $stmt->execute(array($restaurantId, $clientId));
 
     $result = $stmt->fetch();

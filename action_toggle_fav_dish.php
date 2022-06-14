@@ -12,6 +12,7 @@
 
     echo $dishId;
 
+
     $stmt = $db->prepare('SELECT * FROM FavDish WHERE clientId = ? AND dishId = ?' );
     $stmt->execute(array($clientId, $dishId));
 

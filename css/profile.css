@@ -151,6 +151,8 @@ header {
     word-wrap: break-word;
   }
 
+
+
 .button-3 {
   appearance: none;
   background-color: #FAFBFC;
@@ -294,18 +296,20 @@ header {
  .row > p{
      padding-left: 5px;
  }
-
- .input-field{
-    padding: 10px 0;
-    margin: 5px 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 1px solid #999;
-    border-top: 0;
-    outline: none;
-    background: transparent;
-    margin-right: 15px;
+ .details .input-field{
+  width: 15%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #999;
+  border-top: 0;
+  outline: none;
+  background: transparent;
+  margin-right: 15px;
 }
+ 
+
 
 .error-message {
     background-color: #fce4e4;
