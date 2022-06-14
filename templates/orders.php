@@ -2,7 +2,7 @@
         $orders = get_orders($db);
         if(!$orders){?>
         
-        <span class = "bold"><p>You have no orders yet!</p></span>
+        <span class = "bold"><p>Nao existem encomendas!</p></span>
 
         <?php
             
@@ -46,6 +46,10 @@
         $orders = get_my_restaurant_orders($db);
         ?>
         <div id = "orders_dish"> <?php
+        if(!$orders){?>
+            <span class ="bold"><p>Nao existem Encomendas</p></span>
+        <?php
+        }
         foreach($orders as $order){
             $total = 0.0;
             $current_request = get_current_request($db, $order['requestId']);

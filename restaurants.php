@@ -36,11 +36,13 @@
 
         <?php output_header_wo_search($db); ?>
 
-        
-        <button class = "button-3" id = "viewOrdersButton"><a href="order_history.php">Ver encomendas</a></button>
-        <?php output_list_owned_restaurants($db,$ownerRestaurants); ?>
-        <button class = "button-3" id = "addRestaurantButton"><a href="register_restaurant.php"> + Adicionar Restaurante</a></button>
+        <div id = "restaurant_butt">
+            <button class = "button-3" id = "viewOrdersButton"><a href="order_history.php">Ver encomendas</a></button>
+            <?php output_list_owned_restaurants($db,$ownerRestaurants); ?>
+            <button class = "button-3" id = "addRestaurantButton"><a href="register_restaurant.php"> + Adicionar Restaurante</a></button>
+        </div>
         <?php output_footer(); ?>
+        
     
 
     </body>

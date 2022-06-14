@@ -15,7 +15,7 @@
         <section id = "restaurantes">
             <h2>Restaurantes</h2>
             <?php if(!$favRestaurants){?>
-                <span class = "bold"><p>You have not selected any Restaurant as your favorite!</p></span>
+                <span class = "bold"><p>Não selecionaste nenhum restaurante como favorito!</p></span>
             <?php
             }?>
             <?php foreach($favRestaurants as $restaurant){ 
@@ -38,7 +38,7 @@
         <section id = "pratos">
             <h2>Pratos</h2>
             <?php if(!$favDishes){?>
-                <span class = "bold"><p>You have not selected any Disht as your favorite!</p></span>
+                <span class = "bold"><p>Não selecionaste nenhum prato como favorito!</p></span>
             <?php
             }?>
             <?php $i = 0 ?>

@@ -507,3 +507,11 @@ footer{
   .selecionado{
     display: none;
   }
+
+ 
+  #all_favorites p{
+    font-size: large;
+  }
+  #restaurant_butt{
+    min-height: 83vh;
+  }
