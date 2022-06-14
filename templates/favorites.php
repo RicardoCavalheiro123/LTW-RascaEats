@@ -11,8 +11,13 @@
 
     function output_favorites($db, $favRestaurants,$favDishes){
         $i = 0; ?>
+        <div id = "all_favorites">
         <section id = "restaurantes">
             <h2>Restaurantes</h2>
+            <?php if(!$favRestaurants){?>
+                <span class = "bold"><p>You have not selected any Restaurant as your favorite!</p></span>
+            <?php
+            }?>
             <?php foreach($favRestaurants as $restaurant){ 
                 
                 $rating = Restaurant::getRating($db,$restaurant['restaurantId']);?>
@@ -32,7 +37,12 @@
 
         <section id = "pratos">
             <h2>Pratos</h2>
+            <?php if(!$favDishes){?>
+                <span class = "bold"><p>You have not selected any Disht as your favorite!</p></span>
+            <?php
+            }?>
             <?php $i = 0 ?>
+            
             <?php foreach($favDishes as $dish){ ?>
 
                 <article >
@@ -46,6 +56,7 @@
             
 
         </section>
+        </div>
     
 
 <?php    } ?>

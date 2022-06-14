@@ -78,3 +78,15 @@ body{
 #orders_dish{
     min-height: 84vh;
 }
+
+#all_favorites{
+    min-height: 76vh;
+}
+#all_favorites .bold p{
+    padding-top: 0vh;
+    min-height: 40px;
+    font-weight: 600;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 24px;
+}
