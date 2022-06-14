@@ -73,7 +73,7 @@ require_once(__DIR__. '/../templates/cart.php');
     output_cart();
 
 ?>
-    <?php if(count($menu)> 0){?>
+    <?php if(count($menu)> 0){ ?>
     <section id = "dishes">
 
         <?php output_dishes($menu,$db)?>

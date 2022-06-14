@@ -44,15 +44,15 @@
 
         if($userExists){
             $_SESSION["error1"] = "Username already used";
-            //header('Location: ../login_register.php');
+            header('Location: ../login_register.php');
         }
         else if($phoneExists){
             $_SESSION["error1"] = "Phone Number already used";
-             //header('Location: ../login_register.php');
+             header('Location: ../login_register.php');
         }
         else if($emailExists){
             $_SESSION["error1"] = "Email already used";
-             //header('Location: ../login_register.php');
+             header('Location: ../login_register.php');
         }
         else{
             $options = ['cost => 12'];
@@ -67,8 +67,7 @@
         }   
 
     }
-    else{
-
+    if(isset($_POST["submit_login"])){
         $username = $_POST['username'];
         $password = $_POST['password'];
         $stmt = $db->prepare('SELECT * FROM client WHERE username = ?');
@@ -82,7 +81,7 @@
         }
         else{
             $_SESSION["error1"] = "Username or Password incorrect";
-            header('Location: ../actions/action_login_register.php');
+            header('Location: ../pages/login_register.php');
         }
     }
     

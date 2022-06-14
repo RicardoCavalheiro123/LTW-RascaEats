@@ -2,7 +2,7 @@
 <?php 
 
     require_once(__DIR__. '/../sql/connection.php');
-    require_once(__DIR__. '/../restaurant.class.php');
+    require_once(__DIR__. '/../sql/restaurant.class.php');
     require_once(__DIR__. '/../templates/restaurant.php');
 
     require_once(__DIR__. '/../templates/comments.php');

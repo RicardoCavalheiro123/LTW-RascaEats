@@ -1,11 +1,11 @@
 <?php 
 
-require_once(__DIR__.'../sql/connection.php');
-require_once(__DIR__.'../sql/restaurant.class.php');
+require_once(__DIR__.'/../sql/connection.php');
+require_once(__DIR__.'/../sql/restaurant.class.php');
 
-require_once(__DIR__.'../templates/comments.php');
-require_once(__DIR__.'../sql/comments.class.php');
-require_once(__DIR__.'../templates/common.php');
+require_once(__DIR__.'/../templates/comments.php');
+require_once(__DIR__.'/../sql/comments.class.php');
+require_once(__DIR__.'/../templates/common.php');
 
 session_start();
 

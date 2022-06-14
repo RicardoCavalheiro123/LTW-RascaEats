@@ -38,7 +38,7 @@ $categories = Restaurant::getCategories($db);
                 <input type="text" class = "input-field" name = "username" placeholder="Username" required>
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" class = "input-field" name = "password" placeholder="Password" required>
-                <button type="submit" name = "submit_login2" class = "submit-btn">Log in</button>
+                <button type="submit" name = "submit_login" class = "submit-btn">Log in</button>
                 <?php
                     if(isset($_SESSION["error1"])){
                         $error = $_SESSION["error1"];

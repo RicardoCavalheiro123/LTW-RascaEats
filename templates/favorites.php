@@ -1,7 +1,7 @@
 <?php 
 
-require_once('common.php');
-require_once('dishes.php');
+require_once(__DIR__. '/../templates/common.php');
+require_once(__DIR__. '/../templates/dishes.php');
 
 
 ?>
