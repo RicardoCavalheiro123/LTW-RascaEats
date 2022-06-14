@@ -105,5 +105,5 @@ $categories = Restaurant::getCategories($db);
     </body>
 </html>
 <?php
-    unset($_SESSION["error"]);
+    unset($_SESSION["error1"]);
 ?>

@@ -93,3 +93,8 @@ p.dishPrice {
         border:  none;
     background: none;
 }
+
+#dishes img{
+    width: 300px;
+    height: 200px;
+}
