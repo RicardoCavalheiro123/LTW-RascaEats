@@ -1,7 +1,7 @@
 <?php 
 
-    require_once('templates/common.php');
-    require_once('templates/dishes.php');
+require_once(__DIR__. '/../templates/common.php');
+require_once(__DIR__. '/../templates/dishes.php');
 
 
 ?>
@@ -24,8 +24,8 @@
                 
 
                 <article>
-                    <a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>"alt="Restaurant photo" width="300px" height = "300px"></a>
-                    <section id = "desc"><a href="restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
+                    <a href="../pages/restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><img src="<?php echo $restaurant['photo']?>"alt="Restaurant photo" width="300px" height = "300px"></a>
+                    <section id = "desc"><a href="../pages/restaurant.php?id=<?php echo $restaurant['restaurantId']?>"><p><?php echo $restaurant['restaurantName']?></p></a>
                     <p><?php echo $rating ?>/5.0 ☆</p>
                     <p><?php echo $restaurant['adress']?></p></section>
                 </article>
@@ -46,8 +46,8 @@
             <?php foreach($favDishes as $dish){ ?>
 
                 <article >
-                    <a href="restaurant.php?id=<?php echo $dish['restaurantId']?>"><img src="<?php echo $dish['photo']?>"alt="Dish photo" width="300px" height = "300px"></a>
-                    <section id ="desc"><a href="restaurant.php?id=<?php echo $dish['restaurantId']?>"><p><?php echo $dish['dishName']?></p></a>
+                    <a href="../pages/restaurant.php?id=<?php echo $dish['restaurantId']?>"><img src="<?php echo $dish['photo']?>"alt="Dish photo" width="300px" height = "300px"></a>
+                    <section id ="desc"><a href="../pages/restaurant.php?id=<?php echo $dish['restaurantId']?>"><p><?php echo $dish['dishName']?></p></a>
                     <p><?php echo $dish['category']?></p>
                     <p><?php echo $dish['price']?></p></section>
                 </article>
