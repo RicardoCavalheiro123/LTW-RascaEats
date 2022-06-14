@@ -495,15 +495,6 @@ footer{
     text-shadow: 1px 1px rgba(250,250,250,.3);
   }
 
-  @media only screen and (min-width: 768px) {
-    
-    .logout a{visibility: visible;}
-    
-  }
-  @media only screen and (max-width: 768px) {
-    .logout a{visibility: hidden;}
-  }
-
  
   .selecionado{
     display: none;
