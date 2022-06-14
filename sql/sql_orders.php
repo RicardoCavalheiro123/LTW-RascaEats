@@ -30,6 +30,12 @@
         return $stmt->fetch();
     }
 
+    function get_restaurantPhoto($db, $dishId){
+        $stmt = $db->prepare('SELECT Restaurant.photo FROM Restaurant JOIN Dish using(restaurantId) WHERE dishId = ?');
+        $stmt->execute(array($dishId));
+        return $stmt->fetch();
+    }
+
     
 
 ?>

@@ -349,6 +349,7 @@ footer{
     padding-top: 0.5em;
     color: #fff;
     z-index: 3;
+  
     
 }
 .footer-content{
@@ -442,6 +443,11 @@ footer{
   .button-4:-webkit-details-marker {
     display: none;
   }
+ 
+  .logout img{
+    min-width: 20px;
+    min-height: 20px;
+  }
   .logout > a {
 
     background-image: linear-gradient(
@@ -497,7 +503,16 @@ footer{
     text-shadow: 1px 1px rgba(250,250,250,.3);
   }
 
+  @media only screen and (min-width: 768px) {
+    
+    .logout a{visibility: visible;}
+    
+  }
+  @media only screen and (max-width: 768px) {
+    .logout a{visibility: hidden;}
+  }
+
+ 
   .selecionado{
     display: none;
   }
-
