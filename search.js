@@ -9,11 +9,40 @@ if(searchInput){
 
         const section = document.querySelector('#restaurants')
         if(this.value != ''){
-            const articles = document.querySelectorAll('article.sr');
+            const divs = document.querySelector("body > div");
+            if(divs != null){
+                divs.remove();
+            }
+            
+
+            const articles = document.querySelectorAll('section#rs');
             for(const article of articles){
                 article.remove();
             }
             section.classList.add('searching');
+            const div = document.createElement("div");
+            let count = 0;
+            for(const restaur of restaurants) {
+                count++;
+            }
+            console.log(count);
+            if(count == 0){
+
+                const span = document.createElement("span");
+                span.classList.add("bold");
+                const p = document.createElement("p");
+                p.textContent = "Não foram encontrados Restaurantes!";
+                span.appendChild(p);
+                div.appendChild(span);
+
+                div.classList.add("no_restaurants");
+            }
+            else if(count<4){
+                div.classList.add("one_line");
+            }
+            const footer = document.querySelector('footer')
+
+           
             for(const restaurant of restaurants) {
                 console.log(restaurant)
                 const article = document.createElement('article')
@@ -24,7 +53,7 @@ if(searchInput){
                 const img = document.createElement('img')
                 const p2 = document.createElement('p')
                 const p3 = document.createElement('p')
-                img.src = "https://picsum.photos/300/300?" + restaurant.restaurantId
+                img.src = restaurant.photo
                 link1.href = 'restaurant.php?id=' + restaurant.restaurantId
                 link1.appendChild(img)
                 link2.href = 'restaurant.php?id=' + restaurant.restaurantId
@@ -42,9 +71,10 @@ if(searchInput){
                 s.appendChild(article)
                 document.body.insertBefore(s, document.body.lastElementChild);
             }
+            document.body.insertBefore(div, footer);
         }
         else{
-            const articles = document.querySelectorAll('article.sr')
+            const articles = document.querySelectorAll('section#rs')
             for(const article of articles){
                 article.remove();
             }
