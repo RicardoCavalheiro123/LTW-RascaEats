@@ -1,5 +1,6 @@
 #reviews{
-    padding-left: 4em;;
+    padding-left: 4em;
+    min-height: 16vh;
 }
 
 .comments {

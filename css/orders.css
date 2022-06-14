@@ -1,5 +1,6 @@
 body{
     display: block;
+  
 }
 
 #order{
@@ -8,11 +9,15 @@ body{
     gap: 2em;
     padding: 1em;
     padding-left: 6em;
+
+  
 }
+
 
 #order > img{
     flex: 0;
-    max-height: 200px;
+    height: 200px;
+    width: 325px;
     border-radius: 10%;
 }
 
@@ -26,6 +31,7 @@ body{
     padding: 0.1em;
     padding-left: 0.2em;
     padding-right: 0.2em;
+    font-size: larger;
 }
 
 #dish :first-child{
@@ -46,4 +52,15 @@ body{
 
 #description > p{
     padding: 1em;
+    font-size: larger;
+}
+.bold p{
+    text-align: center;
+    padding-top: 20vh;
+    min-height: 65vh;
+    
+}
+
+#orders_dish{
+    min-height: 84vh;
 }

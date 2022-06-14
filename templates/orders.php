@@ -1,12 +1,22 @@
 <?php function output_orders($db){
         $orders = get_orders($db);
+        if(!$orders){?>
+        
+        <span class = "bold"><p>You have no orders yet!</p></span>
+
+        <?php
+            
+        }
+        else{
+        ?>
+        <div id = "orders_dish"> <?php
         foreach($orders as $order){
             $total = 0.0;
             $current_request = get_current_request($db, $order['requestId']);
             $restaurantName = get_restaurantName($db, $current_request[0]['dishId'])['restaurantName'];
              ?> 
             <article id = "order">
-                <img src="https://picsum.photos/200/200?<?=$restaurantName?>">
+                <img src="<?=get_restaurantPhoto($db, $current_request[0]['dishId'])['photo']?>">
                 
                 <article id = "description">
                 <p><?=$restaurantName?></p>
@@ -23,19 +33,27 @@
 <?php       }  ?> <p>Total: <?=$total?></p> 
                   <p><?=$order['state']?></p></article>
             
-            </article> <?php
+            </article>  <?php
+        }
+        ?>
+        </div>
+        <?php
         }
     }
 
     function output_order_history($db){
+
         $orders = get_my_restaurant_orders($db);
+        ?>
+        <div id = "orders_dish"> <?php
         foreach($orders as $order){
             $total = 0.0;
             $current_request = get_current_request($db, $order['requestId']);
-            $restaurantName = get_restaurantName($db, $current_request[0]['dishId'])['restaurantName'];
-             ?> 
+            $restaurantName = get_restaurantName($db, $current_request[0]['dishId'])['restaurantName'];?>
+
             <article id = "order">
-                <img src="https://picsum.photos/200/200?<?=$restaurantName?>">
+
+                <img src="<?=get_restaurantPhoto($db, $current_request[0]['dishId'])['photo']?>">
                 
                 <article id = "description">
                 <p><?=$restaurantName?></p>
@@ -65,6 +83,9 @@
             
             </article> <?php
         }
+        ?>
+        </div> 
+        <?php
     }
 
 ?>
